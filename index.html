@@ -12,6 +12,7 @@
             --bg-color: #1e2230;
             --card-bg: #282d3f;
             --accent-color: #d8835e;
+            --accent-hover: #c4724e;
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
             --border-color: #374151;
@@ -34,12 +35,15 @@
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem 0;
+            padding: 1.5rem 0 3rem 0;
         }
 
-        /* Header / Hero */
-        header {
-            padding: 3rem 0;
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -47,8 +51,33 @@
             font-size: 2rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 2rem;
             letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Hero */
+        header {
+            padding: 3.5rem 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .hero-tag {
@@ -169,7 +198,7 @@
             text-align: center;
         }
 
-        /* Pills Grid for Industries & Key Offers */
+        /* Pills Grid */
         .pill-grid {
             display: flex;
             flex-wrap: wrap;
@@ -185,6 +214,45 @@
             color: var(--text-primary);
         }
 
+        /* Form Styles for Booking */
+        .booking-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-color);
+        }
+
         /* Footer */
         footer {
             padding: 3rem 0;
@@ -192,16 +260,11 @@
             font-size: 0.9rem;
         }
 
-        .footer-contact {
-            margin-bottom: 1rem;
-        }
-
         .footer-contact a {
             color: var(--accent-color);
             text-decoration: none;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .timeline-item {
                 flex-direction: column;
@@ -213,12 +276,18 @@
 <body>
 
     <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <a href="#" class="logo">kindly.</a>
+            <a href="#book" class="btn">Book an Appointment</a>
+        </nav>
+
         <!-- Hero Section -->
         <header>
-            <div class="logo">kindly.</div>
             <div class="hero-tag">AI-Powered Humans</div>
             <h1>We make AI work for people, not the other way around.</h1>
             <p class="hero-desc">Kindly is AI-powered. Human-delivered. Built from the Philippines, serving clients worldwide. Fast to deploy. Built for the future.</p>
+            <a href="#book" class="btn">Get Started — Book a Call</a>
         </header>
 
         <!-- What We Are -->
@@ -280,7 +349,7 @@
             </div>
         </section>
 
-        <!-- Key Capabilities & Offers -->
+        <!-- Key Capabilities -->
         <section>
             <div class="section-title">Key Capabilities</div>
             <div class="pill-grid">
@@ -366,6 +435,45 @@
                     <strong>Team live in 2–3 weeks</strong>
                     <p>Recruited, trained, QA'd, and ready to deliver.</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- Book an Appointment Section -->
+        <section id="book">
+            <div class="section-title">Book an Appointment</div>
+            <div class="booking-card">
+                <h2 style="margin-bottom: 0.5rem;">Let's discuss your custom AI solution</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Fill out the details below and our team will get back to you within 24 hours.</p>
+                
+                <!-- Live Formspree Endpoint -->
+                <form action="https://formspree.io/f/xjgnokjp" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="Name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="Email" placeholder="you@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="Service">
+                            <option value="Upskill">Upskill (AI Training)</option>
+                            <option value="Outsource">Outsource (Operations & QA)</option>
+                            <option value="Automate">Automate (AI Systems)</option>
+                            <option value="Data Solutions">Data Solutions & Labeling</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Meeting Date</label>
+                        <input type="date" id="date" name="Preferred Date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details or Questions</label>
+                        <textarea id="message" name="Message" rows="4" placeholder="Tell us about your team's needs..."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Submit Booking Request</button>
+                </form>
             </div>
         </section>
 
