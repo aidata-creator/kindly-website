@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kindly. — AI-Powered. Human-Delivered.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1e2230;
+            --card-bg: #282d3f;
+            --accent-color: #d8835e;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        /* Header / Hero */
+        header {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-tag {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-num {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card ul li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .card ul li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Timeline / Speed Section */
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .time-badge {
+            background-color: var(--accent-color);
+            color: #fff;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            min-width: 65px;
+            text-align: center;
+        }
+
+        /* Pills Grid for Industries & Key Offers */
+        .pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .pill {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-contact {
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <header>
+            <div class="logo">kindly.</div>
+            <div class="hero-tag">AI-Powered Humans</div>
+            <h1>We make AI work for people, not the other way around.</h1>
+            <p class="hero-desc">Kindly is AI-powered. Human-delivered. Built from the Philippines, serving clients worldwide. Fast to deploy. Built for the future.</p>
+        </header>
+
+        <!-- What We Are -->
+        <section>
+            <div class="section-title">What We Are</div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-num">01</div>
+                    <h3>AI-Enabled</h3>
+                    <p>We use AI to accelerate workflows and catch errors — while humans do the nuanced work machines can't.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">02</div>
+                    <h3>Kind to Workers</h3>
+                    <p>Fair wages, career growth, dignified work. Our people stay because they're valued.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">03</div>
+                    <h3>Quality You Trust</h3>
+                    <p>Multi-layer QA, dedicated analysts, real-time dashboards, and SLAs you can count on.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Services -->
+        <section>
+            <div class="section-title">Our Services</div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-num">01</div>
+                    <h3>Upskill</h3>
+                    <p>AI training for workers & enterprises. Practical, hands-on AI literacy for employees from frontliners to managers.</p>
+                    <ul>
+                        <li>Customized curriculum</li>
+                        <li>In-person & online</li>
+                        <li>Certification included</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-num">02</div>
+                    <h3>Outsource</h3>
+                    <p>AI-powered operations team handling QA, encoding, data processing, and content moderation.</p>
+                    <ul>
+                        <li>AI response review & annotation</li>
+                        <li>Data encoding & processing</li>
+                        <li>Scalable & reliable</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-num">03</div>
+                    <h3>Automate</h3>
+                    <p>AI-powered systems built to boost productivity, save time, and scale with your business.</p>
+                    <ul>
+                        <li>AI Audit</li>
+                        <li>Full Setup</li>
+                        <li>Regular Maintenance</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Capabilities & Offers -->
+        <section>
+            <div class="section-title">Key Capabilities</div>
+            <div class="pill-grid">
+                <div class="pill">Data Solutions</div>
+                <div class="pill">Data Labeling</div>
+                <div class="pill">Data Entry</div>
+                <div class="pill">Website Creation</div>
+                <div class="pill">AI QA / Validation</div>
+            </div>
+        </section>
+
+        <!-- Why Kindly -->
+        <section>
+            <div class="section-title">Why Kindly</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>AI-Enabled, Not AI-Replaced</h3>
+                    <p>We accelerate workflows while skilled humans do the nuanced work machines can't replicate.</p>
+                </div>
+                <div class="card">
+                    <h3>Kind to Workers</h3>
+                    <p>Better quality, lower turnover through fair wages, career growth, and dignified work environments.</p>
+                </div>
+                <div class="card">
+                    <h3>Quality You Can Measure</h3>
+                    <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLA reports.</p>
+                </div>
+                <div class="card">
+                    <h3>Scale Fast, Stay Lean</h3>
+                    <p>From 5 to 120+ on a single account. Shared, dedicated, or per-output. Only pay for what you need.</p>
+                </div>
+                <div class="card">
+                    <h3>Philippines Advantage</h3>
+                    <p>English-fluent, AI-savvy workforce. 86% of Filipino professionals already use AI tools.</p>
+                </div>
+                <div class="card">
+                    <h3>Operator Credibility</h3>
+                    <p>Built by entrepreneurs with 20+ years building impact-driven businesses across Southeast Asia.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries We Serve -->
+        <section>
+            <div class="section-title">Industries We Serve</div>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">We serve businesses wherever accurate data and AI create competitive advantage.</p>
+            <div class="pill-grid">
+                <div class="pill">Shipping & Logistics</div>
+                <div class="pill">AI & Machine Learning</div>
+                <div class="pill">Fintech & KYC</div>
+                <div class="pill">Healthcare</div>
+                <div class="pill">Market Research</div>
+                <div class="pill">Manufacturing</div>
+                <div class="pill">Social Enterprise</div>
+                <div class="pill">Aviation</div>
+                <div class="pill">Manpower & Staffing</div>
+                <div class="pill">Warehousing</div>
+                <div class="pill">Utilities</div>
+                <div class="pill">E-commerce</div>
+            </div>
+        </section>
+
+        <!-- Speed to Market -->
+        <section>
+            <div class="section-title">Speed to Market</div>
+            <div class="timeline-item">
+                <div class="time-badge">24h</div>
+                <div>
+                    <strong>Response within 24 hours</strong>
+                    <p>A real conversation, not an automated sequence.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">48h</div>
+                <div>
+                    <strong>Custom proposal in 48 hours</strong>
+                    <p>Tailored scope, pricing, and SLA.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">2wk</div>
+                <div>
+                    <strong>Team live in 2–3 weeks</strong>
+                    <p>Recruited, trained, QA'd, and ready to deliver.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p class="footer-contact">
+                Contact: <a href="mailto:hello@kindly.ph">hello@kindly.ph</a> | Manila, Philippines — Serving clients worldwide
+            </p>
+            <p>A business under Atindata. Atin Group.</p>
+            <p style="margin-top: 1rem; font-size: 0.8rem;">© 2026 Kindly. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
