@@ -1,436 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kindly. — AI-Powered. Human-Delivered.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #1e2230;
-            --card-bg: #282d3f;
-            --accent-color: #d8835e;
-            --accent-hover: #c4724e;
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --border-color: #374151;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kindly — AI-Enabled, Human-Delivered Services</title>
+  
+  <!-- Modern Dark Theme Styles -->
+  <style>
+    :root {
+      --bg-color: #1e2230;
+      --card-bg: #272c3d;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #d8835e;
+      --accent-hover: #c4724e;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.5;
-            padding: 0 1.5rem;
-        }
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 1.5rem 0 3rem 0;
-        }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
 
-        /* Navigation Bar */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
+    .logo span {
+      color: var(--accent);
+    }
 
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.5px;
-            text-decoration: none;
-        }
+    .hero {
+      max-width: 800px;
+      margin: 4rem auto 3rem auto;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
 
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #fff;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: all 0.2s ease-in-out;
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-            text-align: center;
-        }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.03em;
+    }
 
-        .btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(216, 131, 94, 0.25);
-        }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
 
-        /* Hero */
-        header {
-            padding: 3.5rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #ffffff;
+      padding: 0.85rem 1.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
 
-        .hero-tag {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+    .btn:hover {
+      background-color: var(--accent-hover);
+    }
 
-        h1 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
+    .services {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
 
-        .hero-desc {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 650px;
-            margin-bottom: 2rem;
-        }
+    .card {
+      background-color: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-        /* Section Styling */
-        section {
-            padding: 3.5rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
+    .card h3 {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
 
-        .section-title {
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
+    .card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
 
-        /* Grid Layouts */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
+    .booking-section {
+      max-width: 1100px;
+      margin: 5rem auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.25rem;
-        }
+    .booking-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
 
-        /* Cards */
-        .card {
-            background-color: var(--card-bg);
-            padding: 1.75rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
+    /* Calendly Embed Responsive Container */
+    .calendly-inline-widget {
+      min-width: 320px;
+      height: 700px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(216, 131, 94, 0.3);
-        }
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  </style>
 
-        .card-num {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 0.75rem;
-        }
-
-        .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .card ul {
-            list-style: none;
-            margin-top: 0.75rem;
-        }
-
-        .card ul li {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.4rem;
-            position: relative;
-            padding-left: 1.2rem;
-        }
-
-        .card ul li::before {
-            content: "•";
-            color: var(--accent-color);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        /* Timeline / Speed Section */
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            background: var(--card-bg);
-            padding: 1.25rem 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .time-badge {
-            background-color: var(--accent-color);
-            color: #fff;
-            font-weight: 700;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            min-width: 60px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        /* Pills Grid */
-        .pill-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-
-        .pill {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-            transition: all 0.2s ease;
-        }
-
-        .pill:hover {
-            border-color: var(--accent-color);
-            color: #fff;
-        }
-
-        /* Booking Container */
-        .booking-card {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 900px;
-            margin: 0 auto;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            overflow: hidden;
-        }
-
-        /* Footer */
-        footer {
-            padding: 2.5rem 0;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        .footer-contact a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .timeline-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            .booking-card {
-                padding: 1rem;
-            }
-        }
-    </style>
+  <!-- Calendly Embed Script -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Navigation -->
-        <nav>
-            <a href="#" class="logo">kindly.</a>
-            <a href="#book" class="btn">Book a Call</a>
-        </nav>
+  <!-- Navigation -->
+  <header>
+    <div class="logo">Kindly<span>.</span></div>
+    <a href="#book" class="btn">Book a Call</a>
+  </header>
 
-        <!-- Hero Section -->
-        <header>
-            <div class="hero-tag">AI-Powered. Human-Delivered.</div>
-            <h1>We make AI work for people, not replace them.</h1>
-            <p class="hero-desc">Built in the Philippines. Serving global enterprise teams with fast, reliable, and automated operations.</p>
-            <a href="#book" class="btn">Get Started — Book a Call</a>
-        </header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Accelerate Your Growth with AI & Human Expertise</h1>
+    <p>Kindly provides high-performing workforce solutions and AI integration designed to scale your operations rapidly.</p>
+    <a href="#book" class="btn">Schedule a Consultation</a>
+  </section>
 
-        <!-- What We Are -->
-        <section>
-            <div class="section-title">What We Are</div>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-num">01</div>
-                    <h3>AI-Enabled</h3>
-                    <p>AI speeds up execution while humans handle critical judgment.</p>
-                </div>
-                <div class="card">
-                    <div class="card-num">02</div>
-                    <h3>Worker-First</h3>
-                    <p>Fair pay and growth mean low turnover and higher output quality.</p>
-                </div>
-                <div class="card">
-                    <div class="card-num">03</div>
-                    <h3>Enterprise QA</h3>
-                    <p>Multi-layer reviews, real-time dashboards, and strict SLAs.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Our Services -->
-        <section>
-            <div class="section-title">Our Services</div>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-num">01</div>
-                    <h3>Upskill</h3>
-                    <p>Hands-on AI training for teams from frontline staff to managers.</p>
-                    <ul>
-                        <li>Custom AI curriculum</li>
-                        <li>Live workshops & certification</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-num">02</div>
-                    <h3>Outsource</h3>
-                    <p>AI-enhanced ops teams for QA, data labeling, and moderation.</p>
-                    <ul>
-                        <li>AI response evaluation</li>
-                        <li>Scalable processing teams</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-num">03</div>
-                    <h3>Automate</h3>
-                    <p>Custom AI workflows and tools to automate repetitive ops.</p>
-                    <ul>
-                        <li>Workflow AI audit</li>
-                        <li>Setup & continuous maintenance</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Key Capabilities -->
-        <section>
-            <div class="section-title">Key Capabilities</div>
-            <div class="pill-grid">
-                <div class="pill">Data Labeling & RLHF</div>
-                <div class="pill">AI QA & Model Evaluation</div>
-                <div class="pill">Automated Data Entry</div>
-                <div class="pill">Custom AI Workflows</div>
-                <div class="pill">Web & Portal Development</div>
-            </div>
-        </section>
-
-        <!-- Why Kindly -->
-        <section>
-            <div class="section-title">Why Kindly</div>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>AI + Human Synergy</h3>
-                    <p>Automate repetitive tasks; keep experts in the loop for complex judgment.</p>
-                </div>
-                <div class="card">
-                    <h3>Tech-Savvy PH Workforce</h3>
-                    <p>Top English fluency backed by local talent actively integrating AI and automation tools.</p>
-                </div>
-                <div class="card">
-                    <h3>Flexible Scaling</h3>
-                    <p>Scale seamlessly from 5 to 100+ operators on dedicated or per-output models.</p>
-                </div>
-                <div class="card">
-                    <h3>Proven Leadership</h3>
-                    <p>Backed by operators with 20+ years in tech and impact business across Southeast Asia.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Industries We Serve -->
-        <section>
-            <div class="section-title">Industries We Serve</div>
-            <div class="pill-grid">
-                <div class="pill">AI & Machine Learning</div>
-                <div class="pill">Logistics & Supply Chain</div>
-                <div class="pill">Fintech & Compliance</div>
-                <div class="pill">Healthcare</div>
-                <div class="pill">E-Commerce</div>
-                <div class="pill">Market Research</div>
-                <div class="pill">SaaS & Tech</div>
-            </div>
-        </section>
-
-        <!-- Speed to Market -->
-        <section>
-            <div class="section-title">Speed to Market</div>
-            <div class="timeline-item">
-                <div class="time-badge">24h</div>
-                <div><strong>Direct response</strong> within 24 hours.</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">48h</div>
-                <div><strong>Tailored proposal & scope</strong> in 48 hours.</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">2wk</div>
-                <div><strong>Full team deployed</strong> in 2–3 weeks.</div>
-            </div>
-        </section>
-
-        <!-- Book an Appointment Section -->
-        <section id="book">
-            <div class="section-title">Book an Appointment</div>
-            <div class="booking-card">
-                <h2 style="margin-bottom: 0.5rem; text-align: center;">Select a Date & Time</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; text-align: center;">Choose an available slot directly on our calendar.</p>
-                
-                <!-- Calendly Widget -->
-                <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/30min?hide_landing_page_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
-                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <p class="footer-contact">
-                Contact: <a href="mailto:hello@kindly.ph">hello@kindly.ph</a> | Manila, Philippines
-            </p>
-            <p>A business under Atindata. Atin Group.</p>
-            <p style="margin-top: 0.75rem; font-size: 0.8rem;">© 2026 Kindly. All rights reserved.</p>
-        </footer>
+  <!-- Core Services -->
+  <section class="services">
+    <div class="card">
+      <h3>Upskill</h3>
+      <p>Empower your existing workforce with cutting-edge AI tools and modern workflows to boost productivity and efficiency.</p>
     </div>
+    <div class="card">
+      <h3>Outsource</h3>
+      <p>Access top-tier talent managed seamlessly to execute key operational roles with high accuracy and speed.</p>
+    </div>
+    <div class="card">
+      <h3>Automate</h3>
+      <p>Implement custom AI-driven automation systems to streamline repetitive processes and scale operations effortlessly.</p>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="book" class="booking-section">
+    <h2>Ready to transform your workflow?</h2>
+    <!-- REPLACE 'YOUR_CALENDLY_USERNAME/30min' WITH YOUR ACTUAL CALENDLY LINK -->
+    <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_CALENDLY_USERNAME/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=1e2230&text_color=f3f4f6&primary_color=d8835e"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; Kindly. All rights reserved.</p>
+  </footer>
+
+  <!-- Voiceflow AI Assistant Embed Code -->
+  <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '6a62117cbd80ee072db5efa7' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production'
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; 
+        v.type = "text/javascript"; 
+        s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
 
 </body>
 </html>
