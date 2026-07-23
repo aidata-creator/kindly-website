@@ -48,18 +48,39 @@
 
     .logo span { color: var(--accent); }
 
-    .tagline {
-      font-size: 0.85rem;
+    /* Live Badge Element */
+    .live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(216, 131, 94, 0.12);
       color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(216, 131, 94, 0.25);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
 
     .hero {
       text-align: center;
-      padding: 3rem 0 4rem;
+      padding: 2rem 0 4rem;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -177,6 +198,48 @@
       font-size: 0.9rem;
     }
 
+    /* Interactive Calculator Section */
+    .calc-section {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .calc-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .calc-section p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .calc-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .calc-controls input[type="range"] {
+      width: 220px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .calc-result {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 1.25rem;
+    }
+
     /* Booking */
     .booking-section {
       text-align: center;
@@ -216,7 +279,9 @@
 
     <!-- Hero -->
     <section class="hero">
-      <div class="tagline">AI-powered · Human-delivered · Manila, Philippines</div>
+      <div class="live-status">
+        <span class="pulse-dot"></span> Accepting New Client Partners
+      </div>
       <h1>We make AI work for people — not the other way around.</h1>
       <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces. Fast to deploy. Built for the future.</p>
       <a href="#book" class="btn">Schedule Consultation</a>
@@ -242,21 +307,21 @@
 
         <div class="card">
           <h3>02 Outsource</h3>
-          <p>Need work done? We take it on. AI-powered operations team handling QA, encoding, data validation, and content moderation.</p>
+          <p>Need work done? We handle end-to-end data solutions, quality control, and execution managed by AI-accelerated teams.</p>
           <ul>
-            <li>AI response review & annotation</li>
-            <li>Data encoding & processing</li>
-            <li>Scalable from 5 to 120+ team members</li>
+            <li>Data solutions & encoding</li>
+            <li>Data labeling & annotation</li>
+            <li>AI response review & QA</li>
           </ul>
         </div>
 
         <div class="card">
           <h3>03 Automate</h3>
-          <p>AI systems that boost productivity. We assess your workflows and build AI-powered automations that save time and reduce errors.</p>
+          <p>AI systems that boost productivity. We build tailored workflows, automated processes, and custom conversational agents.</p>
           <ul>
-            <li>AI Audit</li>
-            <li>Full Setup</li>
-            <li>Regular Maintenance</li>
+            <li>Custom Chatbot Development</li>
+            <li>Workflow & AI Audit</li>
+            <li>Full Setup & Maintenance</li>
           </ul>
         </div>
       </div>
@@ -283,6 +348,21 @@
       </div>
     </section>
 
+    <!-- Interactive Time Savings Calculator -->
+    <section class="calc-section">
+      <h3>Estimate Your Monthly Time Savings</h3>
+      <p>Adjust the slider to see how many operational hours Kindly can save your team each month:</p>
+      
+      <div class="calc-controls">
+        <label for="teamSize">Team Size: <strong id="teamVal">5</strong> members</label>
+        <input type="range" id="teamSize" min="1" max="30" value="5" oninput="updateImpact()">
+      </div>
+
+      <div class="calc-result" id="impactResult">
+        ~200 Hours Saved Every Month
+      </div>
+    </section>
+
     <!-- Booking Section -->
     <section id="book" class="booking-section">
       <div class="section-title">
@@ -298,6 +378,16 @@
       <p style="margin-top: 0.5rem; opacity: 0.7;">A business under Atindata · Atin Group &copy; 2026 Kindly. All rights reserved.</p>
     </footer>
   </div>
+
+  <!-- Live Calculator Logic -->
+  <script>
+    function updateImpact() {
+      const teamSize = document.getElementById('teamSize').value;
+      document.getElementById('teamVal').innerText = teamSize;
+      const hoursSaved = teamSize * 40; // Est. 40 hours saved per team member monthly
+      document.getElementById('impactResult').innerText = `~${hoursSaved} Hours Saved Every Month`;
+    }
+  </script>
 
 </body>
 </html>
