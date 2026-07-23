@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kindly — Scale Your Business with AI & Human Talent</title>
+  <title>Kindly — Upskill, Outsource, Automate</title>
   
+  <!-- Modern Dark Theme Styles -->
   <style>
     :root {
       --bg-color: #1e2230;
       --card-bg: #272c3d;
-      --card-border: rgba(255, 255, 255, 0.08);
       --text-main: #f3f4f6;
       --text-muted: #9ca3af;
       --accent: #d8835e;
@@ -28,48 +28,79 @@
       color: var(--text-main);
       font-family: var(--font-family);
       line-height: 1.6;
+      padding: 0;
+      margin: 0;
     }
 
-    .container {
+    header {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* Navigation */
-    header {
-      padding: 2rem 0;
+      padding: 2rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--card-border);
     }
 
     .logo {
       font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: -0.02em;
+      color: var(--text-main);
     }
 
     .logo span {
       color: var(--accent);
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
+    .hero {
+      max-width: 850px;
+      margin: 3rem auto 3rem auto;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    /* Live Badge Element */
+    .live-status {
+      display: inline-flex;
       align-items: center;
+      gap: 0.5rem;
+      background: rgba(216, 131, 94, 0.12);
+      color: var(--accent);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(216, 131, 94, 0.25);
     }
 
-    .nav-links a {
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
       color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--text-main);
+      margin-bottom: 2rem;
     }
 
     .btn {
@@ -87,173 +118,105 @@
       background-color: var(--accent-hover);
     }
 
-    /* Hero Section */
-    .hero {
-      padding: 5rem 0 4rem;
-      text-align: center;
-      max-width: 850px;
-      margin: 0 auto;
-    }
-
-    .hero badge {
-      background: rgba(216, 131, 94, 0.15);
-      color: var(--accent);
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-size: 3.25rem;
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      line-height: 1.7;
-    }
-
-    /* Value Breakdown / Why Kindly */
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title h2 {
-      font-size: 2.25rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-    }
-
-    .features-grid {
+    /* Cards Grid */
+    .services {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-bottom: 6rem;
     }
 
-    .feature-card {
+    .card {
       background-color: var(--card-bg);
       padding: 2.5rem;
       border-radius: 12px;
-      border: 1px solid var(--card-border);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .feature-card h3 {
-      font-size: 1.35rem;
-      color: var(--text-main);
-      margin-bottom: 1rem;
-    }
-
-    .feature-card p {
-      color: var(--text-muted);
-      font-size: 0.975rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .feature-card ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .feature-card ul li {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      position: relative;
-      padding-left: 1.25rem;
-    }
-
-    .feature-card ul li::before {
-      content: "✓";
+    .card h3 {
+      font-size: 1.5rem;
       color: var(--accent);
-      position: absolute;
-      left: 0;
-      font-weight: bold;
-    }
-
-    /* How It Works */
-    .process-section {
-      background-color: var(--card-bg);
-      padding: 5rem 0;
-      border-radius: 16px;
-      margin-bottom: 6rem;
-      border: 1px solid var(--card-border);
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 0 2rem;
-    }
-
-    .step-item {
-      text-align: left;
-    }
-
-    .step-number {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .step-item h4 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .step-item p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* FAQ Section */
-    .faq-section {
-      margin-bottom: 6rem;
-    }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-      gap: 2rem;
-    }
-
-    .faq-item {
-      background-color: var(--card-bg);
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid var(--card-border);
-    }
-
-    .faq-item h4 {
-      font-size: 1.1rem;
-      color: var(--text-main);
       margin-bottom: 0.75rem;
     }
 
-    .faq-item p {
+    .card p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.975rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
     }
 
-    /* Booking Section */
-    .booking-section {
+    .card-footer {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.6rem 0.9rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+    }
+
+    /* Live Calculator Interactive Widget */
+    .calc-section {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 2.5rem;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
       text-align: center;
-      padding-bottom: 6rem;
+    }
+
+    .calc-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .calc-section p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .calc-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .calc-controls input[type="range"] {
+      width: 200px;
+      accent-color: var(--accent);
+    }
+
+    .calc-result {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 1rem;
+    }
+
+    .booking-section {
+      max-width: 1100px;
+      margin: 4rem auto 5rem auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+
+    .booking-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .booking-section p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
     }
 
     .calendly-inline-widget {
@@ -261,22 +224,14 @@
       height: 700px;
       border-radius: 12px;
       overflow: hidden;
-      margin-top: 2rem;
     }
 
-    /* Footer */
     footer {
       text-align: center;
-      padding: 3rem 0;
+      padding: 3rem 1.5rem;
       color: var(--text-muted);
       font-size: 0.875rem;
-      border-top: 1px solid var(--card-border);
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.25rem; }
-      .faq-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
   </style>
 
@@ -285,139 +240,91 @@
 </head>
 <body>
 
-  <div class="container">
-    <!-- Header -->
-    <header>
-      <div class="logo">Kindly<span>.</span></div>
-      <nav class="nav-links">
-        <a href="#solutions">Solutions</a>
-        <a href="#process">How It Works</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <a href="#book" class="btn">Book a Call</a>
-    </header>
+  <!-- Navigation -->
+  <header>
+    <div class="logo">Kindly<span>.</span></div>
+    <a href="#book" class="btn">Book Consultation</a>
+  </header>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="badge">AI Automation + Elite Human Talent</div>
-      <h1>Bridge the gap between manual work and modern scale.</h1>
-      <p>Kindly helps growing businesses eliminate repetitive tasks, train internal teams on custom AI workflows, and deploy managed remote specialists directly into your operations.</p>
-      <a href="#book" class="btn">Schedule Your Free Strategy Call</a>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="live-status">
+      <span class="pulse-dot"></span> Accepting New Client Partners
+    </div>
+    <h1>Scale Operations with AI Precision & Managed Talent</h1>
+    <p>Kindly bridges the gap between manual bottleneck tasks and modern efficiency. We train your internal team, deploy vetted specialists, and automate repetitive workflows.</p>
+    <a href="#book" class="btn">Schedule a Consultation</a>
+  </section>
 
-    <!-- Solutions / Replaced Basic Offers -->
-    <section id="solutions">
-      <div class="section-title">
-        <h2>How Kindly Transforms Your Operations</h2>
-        <p>We combine cutting-edge technology with hands-on talent integration.</p>
+  <!-- Tailored Core Offers -->
+  <section class="services">
+    <div class="card">
+      <div>
+        <h3>Upskill</h3>
+        <p>Transform your existing staff into AI-powered operators. We train your team on practical prompt frameworks, custom GPTs, and workflow tools designed to boost daily productivity by up to 40%.</p>
       </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <h3>Workforce AI Upskilling</h3>
-          <p>Equip your core team with practical AI tools designed to multiply their daily output without increasing burnout.</p>
-          <ul>
-            <li>Custom ChatGPT & Claude workflow training</li>
-            <li>Role-specific prompt libraries</li>
-            <li>Saves 10–15 hours per employee weekly</li>
-          </ul>
-        </div>
-
-        <div class="feature-card">
-          <h3>Managed Talent Solutions</h3>
-          <p>Fill operational gaps with fully vetted, dedicated talent managed to perform high-value execution tasks.</p>
-          <ul>
-            <li>Rigorous screening & onboarding</li>
-            <li>Seamless integration into your Slack/Tools</li>
-            <li>Ongoing quality assurance & oversight</li>
-          </ul>
-        </div>
-
-        <div class="feature-card">
-          <h3>Custom AI Systems</h3>
-          <p>Automate key client interactions, lead management, and manual data handling with tailored automations.</p>
-          <ul>
-            <li>24/7 AI customer query handlers</li>
-            <li>CRM & database sync workflows</li>
-            <li>Zero ongoing manual maintenance required</li>
-          </ul>
-        </div>
+      <div class="card-footer">
+        Key Outcome: Saves 10+ hours per employee/week
       </div>
-    </section>
+    </div>
 
-    <!-- How It Works -->
-    <section id="process" class="process-section">
-      <div class="section-title">
-        <h2>3 Steps to Operational Efficiency</h2>
-        <p>Our process is designed to deliver immediate time savings with zero disruption.</p>
+    <div class="card">
+      <div>
+        <h3>Outsource</h3>
+        <p>Gain access to pre-screened, dedicated remote talent integrated seamlessly into your existing stack (Slack, Notion, CRMs) to manage customer operations and execution tasks reliably.</p>
       </div>
-
-      <div class="steps-grid">
-        <div class="step-item">
-          <div class="step-number">01</div>
-          <h4>Operational Audit</h4>
-          <p>We analyze your team's daily workflows to pinpoint bottleneck tasks ripe for delegation or AI automation.</p>
-        </div>
-
-        <div class="step-item">
-          <div class="step-number">02</div>
-          <h4>Build & Integrate</h4>
-          <p>We deploy custom AI tools and match you with specialized talent tailored specifically to your company's stack.</p>
-        </div>
-
-        <div class="step-item">
-          <div class="step-number">03</div>
-          <h4>Scale & Optimize</h4>
-          <p>Your team reclaims lost hours while our systems and talent keep operations running smoothly around the clock.</p>
-        </div>
+      <div class="card-footer">
+        Key Outcome: Full operational coverage without hiring overhead
       </div>
-    </section>
+    </div>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="faq-section">
-      <div class="section-title">
-        <h2>Frequently Asked Questions</h2>
-        <p>Everything you need to know about partnering with Kindly.</p>
+    <div class="card">
+      <div>
+        <h3>Automate</h3>
+        <p>Eliminate manual data entry and repetitive follow-ups. We design and deploy custom, multi-step AI automation systems that connect your core business applications automatically.</p>
       </div>
-
-      <div class="faq-grid">
-        <div class="faq-item">
-          <h4>How long does integration take?</h4>
-          <p>Most clients see initial automated workflows live and operational talent onboarded within 7 to 14 business days after our discovery call.</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Do we need technical expertise on our team?</h4>
-          <p>Not at all. We handle all setup, prompt engineering, software integration, and team training for you.</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>What tools do you integrate with?</h4>
-          <p>We work with popular platforms including Slack, Google Workspace, Notion, HubSpot, Zapier, Make, and custom LLM APIs.</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>What happens during the initial consultation?</h4>
-          <p>We'll review your current processes, identify fast wins for automation, and build a tailored implementation plan.</p>
-        </div>
+      <div class="card-footer">
+        Key Outcome: 24/7 background process execution
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Booking Section -->
-    <section id="book" class="booking-section">
-      <div class="section-title">
-        <h2>Ready to Scale Your Operations?</h2>
-        <p>Select a convenient time below for a 30-minute discovery consultation.</p>
-      </div>
+  <!-- Live Impact Estimator -->
+  <section class="calc-section">
+    <h2>Estimate Your Monthly Time Savings</h2>
+    <p>Adjust the slider to see how many hours Kindly can recover for your team monthly:</p>
+    
+    <div class="calc-controls">
+      <label for="teamSize">Team Size: <strong id="teamVal">5</strong> members</label>
+      <input type="range" id="teamSize" min="1" max="30" value="5" oninput="updateImpact()">
+    </div>
 
-      <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=1e2230&text_color=f3f4f6&primary_color=d8835e"></div>
-    </section>
+    <div class="calc-result" id="impactResult">
+      ~200 Hours Saved Every Month
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-      <p>&copy; Kindly. All rights reserved.</p>
-    </footer>
-  </div>
+  <!-- Booking Section -->
+  <section id="book" class="booking-section">
+    <h2>Ready to transform your workflow?</h2>
+    <p>Select a 30-minute consultation slot below to discuss your current operational bottlenecks.</p>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=1e2230&text_color=f3f4f6&primary_color=d8835e"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; Kindly. All rights reserved.</p>
+  </footer>
+
+  <!-- Live Calculator Logic -->
+  <script>
+    function updateImpact() {
+      const teamSize = document.getElementById('teamSize').value;
+      document.getElementById('teamVal').innerText = teamSize;
+      const hoursSaved = teamSize * 40; // Est. 40 hours saved per team member monthly
+      document.getElementById('impactResult').innerText = `~${hoursSaved} Hours Saved Every Month`;
+    }
+  </script>
 
 </body>
 </html>
