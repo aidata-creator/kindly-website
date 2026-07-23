@@ -32,7 +32,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.5;
             padding: 0 1.5rem;
         }
 
@@ -83,7 +83,7 @@
 
         /* Hero */
         header {
-            padding: 4rem 0;
+            padding: 3.5rem 0;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -99,69 +99,69 @@
         h1 {
             font-size: clamp(2.2rem, 5vw, 3.5rem);
             line-height: 1.2;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .hero-desc {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--text-secondary);
-            max-width: 700px;
+            max-width: 650px;
             margin-bottom: 2rem;
         }
 
         /* Section Styling */
         section {
-            padding: 4rem 0;
+            padding: 3.5rem 0;
             border-bottom: 1px solid var(--border-color);
         }
 
         .section-title {
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 2px;
             color: var(--accent-color);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 600;
         }
 
         /* Grid Layouts */
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            gap: 1.25rem;
         }
 
         /* Cards */
         .card {
             background-color: var(--card-bg);
-            padding: 2rem;
+            padding: 1.75rem;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             border-color: rgba(216, 131, 94, 0.3);
         }
 
         .card-num {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--accent-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
         .card p {
@@ -171,13 +171,13 @@
 
         .card ul {
             list-style: none;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
         }
 
         .card ul li {
             color: var(--text-secondary);
             font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             position: relative;
             padding-left: 1.2rem;
         }
@@ -193,12 +193,12 @@
         /* Timeline / Speed Section */
         .timeline-item {
             display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
+            align-items: center;
+            gap: 1.25rem;
             background: var(--card-bg);
-            padding: 1.5rem;
+            padding: 1.25rem 1.5rem;
             border-radius: 8px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -206,25 +206,26 @@
             background-color: var(--accent-color);
             color: #fff;
             font-weight: 700;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 4px;
-            min-width: 65px;
+            min-width: 60px;
             text-align: center;
+            font-size: 0.9rem;
         }
 
         /* Pills Grid */
         .pill-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 0.6rem;
         }
 
         .pill {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-primary);
             transition: all 0.2s ease;
         }
@@ -247,9 +248,9 @@
 
         /* Footer */
         footer {
-            padding: 3rem 0;
+            padding: 2.5rem 0;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .footer-contact a {
@@ -260,7 +261,8 @@
         @media (max-width: 768px) {
             .timeline-item {
                 flex-direction: column;
-                gap: 0.75rem;
+                align-items: flex-start;
+                gap: 0.5rem;
             }
             .booking-card {
                 padding: 1rem;
@@ -274,14 +276,14 @@
         <!-- Navigation -->
         <nav>
             <a href="#" class="logo">kindly.</a>
-            <a href="#book" class="btn">Book an Appointment</a>
+            <a href="#book" class="btn">Book a Call</a>
         </nav>
 
         <!-- Hero Section -->
         <header>
-            <div class="hero-tag">AI-Powered Humans</div>
-            <h1>We make AI work for people, not the other way around.</h1>
-            <p class="hero-desc">Kindly is AI-powered. Human-delivered. Built from the Philippines, serving clients worldwide. Fast to deploy. Built for the future.</p>
+            <div class="hero-tag">AI-Powered. Human-Delivered.</div>
+            <h1>We make AI work for people, not replace them.</h1>
+            <p class="hero-desc">Built in the Philippines. Serving global enterprise teams with fast, reliable, and automated operations.</p>
             <a href="#book" class="btn">Get Started — Book a Call</a>
         </header>
 
@@ -292,17 +294,17 @@
                 <div class="card">
                     <div class="card-num">01</div>
                     <h3>AI-Enabled</h3>
-                    <p>We use AI to accelerate workflows and catch errors — while humans do the nuanced work machines can't.</p>
+                    <p>AI speeds up execution while humans handle critical judgment.</p>
                 </div>
                 <div class="card">
                     <div class="card-num">02</div>
-                    <h3>Kind to Workers</h3>
-                    <p>Fair wages, career growth, dignified work. Our people stay because they're valued.</p>
+                    <h3>Worker-First</h3>
+                    <p>Fair pay and growth mean low turnover and higher output quality.</p>
                 </div>
                 <div class="card">
                     <div class="card-num">03</div>
-                    <h3>Quality You Trust</h3>
-                    <p>Multi-layer QA, dedicated analysts, real-time dashboards, and SLAs you can count on.</p>
+                    <h3>Enterprise QA</h3>
+                    <p>Multi-layer reviews, real-time dashboards, and strict SLAs.</p>
                 </div>
             </div>
         </section>
@@ -314,31 +316,28 @@
                 <div class="card">
                     <div class="card-num">01</div>
                     <h3>Upskill</h3>
-                    <p>AI training for workers & enterprises. Practical, hands-on AI literacy for employees from frontliners to managers.</p>
+                    <p>Hands-on AI training for teams from frontline staff to managers.</p>
                     <ul>
-                        <li>Customized curriculum</li>
-                        <li>In-person & online</li>
-                        <li>Certification included</li>
+                        <li>Custom AI curriculum</li>
+                        <li>Live workshops & certification</li>
                     </ul>
                 </div>
                 <div class="card">
                     <div class="card-num">02</div>
                     <h3>Outsource</h3>
-                    <p>AI-powered operations team handling QA, encoding, data processing, and content moderation.</p>
+                    <p>AI-enhanced ops teams for QA, data labeling, and moderation.</p>
                     <ul>
-                        <li>AI response review & annotation</li>
-                        <li>Data encoding & processing</li>
-                        <li>Scalable & reliable</li>
+                        <li>AI response evaluation</li>
+                        <li>Scalable processing teams</li>
                     </ul>
                 </div>
                 <div class="card">
                     <div class="card-num">03</div>
                     <h3>Automate</h3>
-                    <p>AI-powered systems built to boost productivity, save time, and scale with your business.</p>
+                    <p>Custom AI workflows and tools to automate repetitive ops.</p>
                     <ul>
-                        <li>AI Audit</li>
-                        <li>Full Setup</li>
-                        <li>Regular Maintenance</li>
+                        <li>Workflow AI audit</li>
+                        <li>Setup & continuous maintenance</li>
                     </ul>
                 </div>
             </div>
@@ -348,11 +347,11 @@
         <section>
             <div class="section-title">Key Capabilities</div>
             <div class="pill-grid">
-                <div class="pill">Data Solutions</div>
-                <div class="pill">Data Labeling</div>
-                <div class="pill">Data Entry</div>
-                <div class="pill">Website Creation</div>
-                <div class="pill">AI QA / Validation</div>
+                <div class="pill">Data Labeling & RLHF</div>
+                <div class="pill">AI QA & Model Evaluation</div>
+                <div class="pill">Automated Data Entry</div>
+                <div class="pill">Custom AI Workflows</div>
+                <div class="pill">Web & Portal Development</div>
             </div>
         </section>
 
@@ -361,28 +360,20 @@
             <div class="section-title">Why Kindly</div>
             <div class="grid-2">
                 <div class="card">
-                    <h3>AI-Enabled, Not AI-Replaced</h3>
-                    <p>We accelerate workflows while skilled humans do the nuanced work machines can't replicate.</p>
+                    <h3>AI + Human Synergy</h3>
+                    <p>Automate repetitive tasks; keep experts in the loop for complex judgment.</p>
                 </div>
                 <div class="card">
-                    <h3>Kind to Workers</h3>
-                    <p>Better quality, lower turnover through fair wages, career growth, and dignified work environments.</p>
+                    <h3>Tech-Savvy PH Workforce</h3>
+                    <p>Top English fluency backed by local talent actively integrating AI and automation tools.</p>
                 </div>
                 <div class="card">
-                    <h3>Quality You Can Measure</h3>
-                    <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLA reports.</p>
+                    <h3>Flexible Scaling</h3>
+                    <p>Scale seamlessly from 5 to 100+ operators on dedicated or per-output models.</p>
                 </div>
                 <div class="card">
-                    <h3>Scale Fast, Stay Lean</h3>
-                    <p>From 5 to 120+ on a single account. Shared, dedicated, or per-output. Only pay for what you need.</p>
-                </div>
-                <div class="card">
-                    <h3>Philippines Advantage</h3>
-                    <p>English-fluent, AI-savvy workforce. 86% of Filipino professionals already use AI tools.</p>
-                </div>
-                <div class="card">
-                    <h3>Operator Credibility</h3>
-                    <p>Built by entrepreneurs with 20+ years building impact-driven businesses across Southeast Asia.</p>
+                    <h3>Proven Leadership</h3>
+                    <p>Backed by operators with 20+ years in tech and impact business across Southeast Asia.</p>
                 </div>
             </div>
         </section>
@@ -390,20 +381,14 @@
         <!-- Industries We Serve -->
         <section>
             <div class="section-title">Industries We Serve</div>
-            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">We serve businesses wherever accurate data and AI create competitive advantage.</p>
             <div class="pill-grid">
-                <div class="pill">Shipping & Logistics</div>
                 <div class="pill">AI & Machine Learning</div>
-                <div class="pill">Fintech & KYC</div>
+                <div class="pill">Logistics & Supply Chain</div>
+                <div class="pill">Fintech & Compliance</div>
                 <div class="pill">Healthcare</div>
+                <div class="pill">E-Commerce</div>
                 <div class="pill">Market Research</div>
-                <div class="pill">Manufacturing</div>
-                <div class="pill">Social Enterprise</div>
-                <div class="pill">Aviation</div>
-                <div class="pill">Manpower & Staffing</div>
-                <div class="pill">Warehousing</div>
-                <div class="pill">Utilities</div>
-                <div class="pill">E-commerce</div>
+                <div class="pill">SaaS & Tech</div>
             </div>
         </section>
 
@@ -412,33 +397,24 @@
             <div class="section-title">Speed to Market</div>
             <div class="timeline-item">
                 <div class="time-badge">24h</div>
-                <div>
-                    <strong>Response within 24 hours</strong>
-                    <p>A real conversation, not an automated sequence.</p>
-                </div>
+                <div><strong>Direct response</strong> within 24 hours.</div>
             </div>
             <div class="timeline-item">
                 <div class="time-badge">48h</div>
-                <div>
-                    <strong>Custom proposal in 48 hours</strong>
-                    <p>Tailored scope, pricing, and SLA.</p>
-                </div>
+                <div><strong>Tailored proposal & scope</strong> in 48 hours.</div>
             </div>
             <div class="timeline-item">
                 <div class="time-badge">2wk</div>
-                <div>
-                    <strong>Team live in 2–3 weeks</strong>
-                    <p>Recruited, trained, QA'd, and ready to deliver.</p>
-                </div>
+                <div><strong>Full team deployed</strong> in 2–3 weeks.</div>
             </div>
         </section>
 
-        <!-- Book an Appointment Section (Live Calendly Calendar) -->
+        <!-- Book an Appointment Section -->
         <section id="book">
             <div class="section-title">Book an Appointment</div>
             <div class="booking-card">
                 <h2 style="margin-bottom: 0.5rem; text-align: center;">Select a Date & Time</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem; text-align: center;">Choose an available slot directly on our calendar.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; text-align: center;">Choose an available slot directly on our calendar.</p>
                 
                 <!-- Calendly Widget -->
                 <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/30min?hide_landing_page_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
@@ -449,10 +425,10 @@
         <!-- Footer -->
         <footer>
             <p class="footer-contact">
-                Contact: <a href="mailto:hello@kindly.ph">hello@kindly.ph</a> | Manila, Philippines — Serving clients worldwide
+                Contact: <a href="mailto:hello@kindly.ph">hello@kindly.ph</a> | Manila, Philippines
             </p>
             <p>A business under Atindata. Atin Group.</p>
-            <p style="margin-top: 1rem; font-size: 0.8rem;">© 2026 Kindly. All rights reserved.</p>
+            <p style="margin-top: 0.75rem; font-size: 0.8rem;">© 2026 Kindly. All rights reserved.</p>
         </footer>
     </div>
 
