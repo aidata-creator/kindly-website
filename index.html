@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kindly — AI-powered, Human-delivered</title>
   
-  <!-- Modern Tech Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -32,7 +31,6 @@
       color: var(--text-main);
       font-family: var(--font-body);
       line-height: 1.6;
-      /* AI Grid Canvas Background Pattern */
       background-image: 
         radial-gradient(circle at 50% 0%, rgba(216, 131, 94, 0.15) 0%, transparent 45%),
         radial-gradient(circle at 80% 60%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
@@ -64,7 +62,6 @@
 
     .logo span { color: var(--accent); }
 
-    /* Live Badge Element */
     .live-status {
       display: inline-flex;
       align-items: center;
@@ -143,65 +140,6 @@
       box-shadow: 0 0 30px rgba(216, 131, 94, 0.4);
     }
 
-    /* Hero AI Visual Dashboard Preview */
-    .hero-mockup {
-      margin: 3.5rem auto 5rem;
-      background: rgba(15, 20, 35, 0.8);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(216, 131, 94, 0.1);
-      backdrop-filter: blur(16px);
-      text-align: left;
-    }
-
-    .mockup-header {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 1.25rem;
-    }
-
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #f59e0b; }
-    .dot-green { background: #10b981; }
-
-    .mockup-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-
-    .mockup-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      padding: 1rem;
-    }
-
-    .mockup-card label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 0.3rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .mockup-card .val {
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .mockup-card .status {
-      color: #34d399;
-      font-size: 0.8rem;
-      margin-top: 0.25rem;
-    }
-
-    /* Metrics Bar */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -243,7 +181,7 @@
     
     .section-title p { color: var(--text-muted); }
 
-    /* Services Grid with Glassmorphism */
+    /* Services Grid */
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -254,12 +192,10 @@
     .card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       padding: 2.5rem;
       border-radius: 16px;
       border: 1px solid var(--card-border);
       transition: all 0.3s ease;
-      position: relative;
     }
 
     .card:hover {
@@ -303,8 +239,36 @@
       font-size: 0.8rem;
     }
 
-    /* Integration / Tech Stack Badges Section */
-    .tech-stack-section {
+    /* Why Kindly Columns (From PDF Pillars) */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 6rem;
+    }
+
+    .pillar-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+    }
+
+    .pillar-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Industries Badges */
+    .industries-section {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
@@ -314,20 +278,20 @@
       text-align: center;
     }
 
-    .tech-badges {
+    .industry-badges {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.8rem;
       margin-top: 1.75rem;
     }
 
     .badge {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
-      padding: 0.6rem 1.25rem;
+      padding: 0.6rem 1.2rem;
       border-radius: 30px;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       color: var(--text-main);
     }
 
@@ -363,133 +327,6 @@
       font-size: 0.925rem;
     }
 
-    /* Interactive Calculator Section */
-    .calc-section {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 3rem 2rem;
-      margin-bottom: 5rem;
-      text-align: center;
-    }
-
-    .calc-section h3 {
-      font-family: var(--font-heading);
-      font-size: 1.6rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .calc-section p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-    }
-
-    .calc-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-    }
-
-    .calc-controls input[type="range"] {
-      width: 240px;
-      accent-color: var(--accent);
-      cursor: pointer;
-    }
-
-    .calc-result {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-top: 1.5rem;
-      text-shadow: 0 0 20px var(--accent-glow);
-    }
-
-    /* AI Readiness Audit Quiz */
-    .quiz-section {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 3rem 2rem;
-      margin-bottom: 5rem;
-    }
-
-    .quiz-container {
-      max-width: 650px;
-      margin: 0 auto;
-    }
-
-    .quiz-step { display: none; }
-    .quiz-step.active { display: block; }
-
-    .quiz-step h4 {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .quiz-options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-    }
-
-    .quiz-option-btn {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 1.1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      text-align: left;
-      font-size: 0.95rem;
-      font-family: var(--font-body);
-      transition: all 0.25s ease;
-    }
-
-    .quiz-option-btn:hover {
-      border-color: var(--accent);
-      background: var(--accent-glow);
-      transform: translateY(-2px);
-    }
-
-    .quiz-progress {
-      height: 4px;
-      background: var(--card-border);
-      border-radius: 2px;
-      margin-bottom: 2rem;
-      overflow: hidden;
-    }
-
-    .quiz-progress-bar {
-      height: 100%;
-      background: var(--accent);
-      width: 33%;
-      transition: width 0.3s ease;
-      box-shadow: 0 0 10px var(--accent);
-    }
-
-    .quiz-result-card { text-align: center; }
-
-    .quiz-result-card h4 {
-      color: var(--accent);
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .quiz-result-card p {
-      color: var(--text-muted);
-      margin-bottom: 1.75rem;
-      font-size: 1rem;
-    }
-
-    /* Booking */
     .booking-section {
       text-align: center;
       margin-bottom: 6rem;
@@ -505,134 +342,6 @@
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     }
 
-    /* Chatbox Toggle Button */
-    .chat-toggle {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background-color: var(--accent);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 8px 30px var(--accent-glow);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      z-index: 999;
-      transition: all 0.25s ease;
-    }
-
-    .chat-toggle:hover {
-      transform: scale(1.08);
-      background-color: var(--accent-hover);
-    }
-
-    /* Custom Floating Chat Window */
-    .chat-window {
-      display: none;
-      position: fixed;
-      bottom: 6rem;
-      right: 2rem;
-      width: 360px;
-      height: 480px;
-      background: var(--bg-color);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-      flex-direction: column;
-      z-index: 1000;
-      overflow: hidden;
-      backdrop-filter: blur(16px);
-    }
-
-    .chat-header {
-      background: var(--card-bg);
-      padding: 1rem 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .chat-header h4 { 
-      font-family: var(--font-heading);
-      font-size: 1rem; 
-      color: var(--text-main); 
-    }
-
-    .chat-close {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-
-    .chat-messages {
-      flex: 1;
-      padding: 1.25rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .msg {
-      max-width: 82%;
-      padding: 0.7rem 1rem;
-      border-radius: 10px;
-      font-size: 0.875rem;
-      line-height: 1.45;
-    }
-
-    .msg.bot {
-      background-color: rgba(255, 255, 255, 0.04);
-      color: var(--text-main);
-      align-self: flex-start;
-      border: 1px solid var(--card-border);
-    }
-
-    .msg.user {
-      background-color: var(--accent);
-      color: #fff;
-      align-self: flex-end;
-    }
-
-    .chat-input-area {
-      display: flex;
-      padding: 0.85rem;
-      background: var(--card-bg);
-      border-top: 1px solid var(--card-border);
-      gap: 0.5rem;
-    }
-
-    .chat-input-area input {
-      flex: 1;
-      background-color: var(--bg-color);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 0.6rem 0.85rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-family: var(--font-body);
-      outline: none;
-    }
-
-    .chat-input-area button {
-      background-color: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-family: var(--font-body);
-      cursor: pointer;
-    }
-
     footer {
       text-align: center;
       padding: 3.5rem 0;
@@ -644,7 +353,6 @@
     footer a { color: var(--accent); text-decoration: none; }
   </style>
 
-  <!-- Calendly Embed Script -->
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body>
@@ -659,116 +367,114 @@
     <!-- Hero -->
     <section class="hero">
       <div class="live-status">
-        <span class="pulse-dot"></span> Accepting New Client Partners
+        <span class="pulse-dot"></span> Manila, Philippines · Serving clients worldwide
       </div>
       <h1>We make AI work for people — not the other way around.</h1>
-      <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces. Fast to deploy. Built for the future.</p>
+      <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces[cite: 1].</p>
       <a href="#book" class="btn">Schedule Consultation</a>
-
-      <!-- Hero Visual Dashboard Mockup -->
-      <div class="hero-mockup">
-        <div class="mockup-header">
-          <div class="dot dot-red"></div>
-          <div class="dot dot-yellow"></div>
-          <div class="dot dot-green"></div>
-        </div>
-        <div class="mockup-grid">
-          <div class="mockup-card">
-            <label>Active Workflows</label>
-            <div class="val">14 Processes</div>
-            <div class="status">● Automated</div>
-          </div>
-          <div class="mockup-card">
-            <label>Human QA Accuracy</label>
-            <div class="val">99.8%</div>
-            <div class="status">● Verified</div>
-          </div>
-          <div class="mockup-card">
-            <label>Response Velocity</label>
-            <div class="val">&lt; 1.2 mins</div>
-            <div class="status">● Optimized</div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Metrics Bar -->
+    <!-- Stats Bar -->
     <div class="stats-bar">
       <div class="stat-item">
-        <h3>99.4%</h3>
-        <p>Human QA Accuracy</p>
+        <h3>5 to 120+</h3>
+        <p>Scalable Team Capacity[cite: 1]</p>
       </div>
       <div class="stat-item">
-        <h3>3x</h3>
-        <p>Execution Speed</p>
+        <h3>86%</h3>
+        <p>AI-Savvy Talent Pool[cite: 1]</p>
       </div>
       <div class="stat-item">
-        <h3>10,000+</h3>
-        <p>Monthly Hours Saved</p>
+        <h3>20+ Yrs</h3>
+        <p>Operator Leadership[cite: 1]</p>
       </div>
       <div class="stat-item">
         <h3>2–3 Wks</h3>
-        <p>Average Deployment</p>
+        <p>Fast Deployment[cite: 1]</p>
       </div>
     </div>
+
+    <!-- Why Kindly Pillars (Pulled directly from PDF) -->
+    <section>
+      <div class="section-title">
+        <h2>Why Kindly</h2>
+        <p>Not just another AI company[cite: 1].</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h4>⚡ AI-Enabled, Not Replaced</h4>
+          <p>We use AI to accelerate workflows and catch errors—while skilled humans do the nuanced work machines can't[cite: 1].</p>
+        </div>
+        <div class="pillar-card">
+          <h4>🌱 Kind to Workers</h4>
+          <p>Fair wages, career growth, and dignified work[cite: 1]. Our people stay because they're valued, ensuring better quality and lower turnover[cite: 1].</p>
+        </div>
+        <div class="pillar-card">
+          <h4>📊 Quality You Can Measure</h4>
+          <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLAs you can count on[cite: 1].</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Services -->
     <section>
       <div class="section-title">
         <h2>Our Services</h2>
-        <p>Work smarter. Grow faster.</p>
+        <p>Work smarter. Grow faster[cite: 1].</p>
       </div>
 
       <div class="services">
         <div class="card">
           <h3>01 Upskill</h3>
-          <p>AI training for your people. Practical, hands-on AI literacy for employees at every level—from frontliners to managers.</p>
+          <p>AI training for your people. Practical, hands-on AI literacy from frontliners to managers, tailored around your tools[cite: 1].</p>
           <ul>
-            <li>Customized curriculum</li>
-            <li>In-person & online</li>
-            <li>Certification included</li>
+            <li>Customized curriculum[cite: 1]</li>
+            <li>In-person & online[cite: 1]</li>
+            <li>Certification included[cite: 1]</li>
           </ul>
         </div>
 
         <div class="card">
           <h3>02 Outsource</h3>
-          <p>Need work done? We handle end-to-end data solutions, quality control, and execution managed by AI-accelerated teams.</p>
+          <p>AI-powered operations team handling QA, data encoding, annotation, content moderation, and validation[cite: 1].</p>
           <ul>
-            <li>Data solutions & encoding</li>
-            <li>Data labeling & annotation</li>
-            <li>AI response review & QA</li>
+            <li>AI response review & annotation[cite: 1]</li>
+            <li>Data encoding & processing[cite: 1]</li>
+            <li>Scalable from 5 to 120+ staff[cite: 1]</li>
           </ul>
         </div>
 
         <div class="card">
           <h3>03 Automate</h3>
-          <p>AI systems that boost productivity. We build tailored workflows, automated processes, and custom conversational agents.</p>
+          <p>AI systems that boost team productivity through complete audits, custom setups, and regular maintenance[cite: 1].</p>
           <ul>
-            <li>Custom Chatbot Development</li>
-            <li>Workflow & AI Audit</li>
-            <li>Full Setup & Maintenance</li>
+            <li>Full AI Process Audit[cite: 1]</li>
+            <li>Custom Workflow Setup[cite: 1]</li>
+            <li>Regular System Maintenance[cite: 1]</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Tech Stack / Compatibility Section -->
-    <section class="tech-stack-section">
+    <!-- Industries Served (Pulled from PDF) -->
+    <section class="industries-section">
       <div class="section-title" style="margin-bottom: 0;">
-        <h2>Seamless Stack Integration</h2>
-        <p>We work directly inside your existing operational tools.</p>
+        <h2>Industries We Serve</h2>
+        <p>Wherever accurate data and AI create competitive advantage[cite: 1].</p>
       </div>
-      <div class="tech-badges">
-        <span class="badge">⚡ OpenAI / GPT-4</span>
-        <span class="badge">🤖 Claude AI</span>
-        <span class="badge">📊 Google Workspace</span>
-        <span class="badge">🎧 Zendesk & HubSpot</span>
-        <span class="badge">💼 Notion & Airtable</span>
-        <span class="badge">🔗 Make / Zapier</span>
+      <div class="industry-badges">
+        <span class="badge">📦 Shipping & Logistics[cite: 1]</span>
+        <span class="badge">💳 Fintech & KYC[cite: 1]</span>
+        <span class="badge">🏥 Healthcare[cite: 1]</span>
+        <span class="badge">🛍️ E-commerce[cite: 1]</span>
+        <span class="badge">📈 Market Research[cite: 1]</span>
+        <span class="badge">✈️ Aviation[cite: 1]</span>
+        <span class="badge">🏗️ Warehousing[cite: 1]</span>
+        <span class="badge">🤖 AI & Machine Learning[cite: 1]</span>
       </div>
     </section>
 
-    <!-- Speed/Deployment Timeline -->
+    <!-- Speed / Timeline Section (Pulled from PDF) -->
     <section class="timeline-section">
       <div class="section-title" style="margin-bottom: 0;">
         <h2>AI Acceleration, Human at Heart</h2>
@@ -776,86 +482,15 @@
       <div class="timeline-grid">
         <div class="timeline-item">
           <div class="time">24h</div>
-          <p>Response within 24 hours — a real conversation, not a bot sequence.</p>
+          <p>Response within 24 hours — a real conversation, not an automated sequence[cite: 1].</p>
         </div>
         <div class="timeline-item">
           <div class="time">48h</div>
-          <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
+          <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA[cite: 1].</p>
         </div>
         <div class="timeline-item">
           <div class="time">2wk</div>
-          <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Time Savings Calculator -->
-    <section class="calc-section">
-      <h3>Estimate Your Monthly Time Savings</h3>
-      <p>Adjust the slider to see how many operational hours Kindly can save your team each month:</p>
-      
-      <div class="calc-controls">
-        <label for="teamSize">Team Size: <strong id="teamVal">5</strong> members</label>
-        <input type="range" id="teamSize" min="1" max="30" value="5" oninput="updateImpact()">
-      </div>
-
-      <div class="calc-result" id="impactResult">
-        ~200 Hours Saved Every Month
-      </div>
-    </section>
-
-    <!-- Quick AI Audit Widget -->
-    <section class="quiz-section">
-      <div class="section-title">
-        <h2>Quick Automation Audit</h2>
-        <p>Answer 3 quick questions to discover your highest-impact AI potential.</p>
-      </div>
-
-      <div class="quiz-container">
-        <div class="quiz-progress">
-          <div class="quiz-progress-bar" id="quizBar"></div>
-        </div>
-
-        <!-- Question 1 -->
-        <div class="quiz-step active" id="quizStep1">
-          <h4>1. Where does your operational bottleneck lie?</h4>
-          <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Data Entry & Processing')">📥 Manual Data Entry & Processing</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Customer Support Responses')">💬 Customer Support & Inquiries</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Repetitive Internal Workflows')">⚙️ Repetitive Internal Workflows</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Team AI Adoption & Literacy')">🎓 Low AI Literacy Across Staff</button>
-          </div>
-        </div>
-
-        <!-- Question 2 -->
-        <div class="quiz-step" id="quizStep2">
-          <h4>2. What is your primary tool stack environment?</h4>
-          <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Google Workspace & Spreadsheets')">📊 Spreadsheets & Google Workspace</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'CRMs & Helpdesks')">🎧 CRMs / Helpdesks (HubSpot, Zendesk, etc.)</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Custom Databases & APIs')">💻 Custom Databases & Internal Software</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Mostly Manual / Unstructured')">📝 Unstructured Emails & Docs</button>
-          </div>
-        </div>
-
-        <!-- Question 3 -->
-        <div class="quiz-step" id="quizStep3">
-          <h4>3. How large is the team handling this workload?</h4>
-          <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '1 - 5 staff members')">👥 1 – 5 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '6 - 20 staff members')">👥 6 – 20 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '21 - 50 staff members')">🏢 21 – 50 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '50+ staff members')">🚀 50+ enterprise staff</button>
-          </div>
-        </div>
-
-        <!-- Result Card -->
-        <div class="quiz-step" id="quizResult">
-          <div class="quiz-result-card">
-            <h4 id="auditRecommendation">Recommended: Custom Workflow Automation</h4>
-            <p id="auditDetails">Based on your selections, implementing AI-assisted agents and structured data workflows can reduce manual tasks by up to 60-80% within 3 weeks.</p>
-            <a href="#book" class="btn" onclick="prefillBookingNote()">Schedule Discovery Call for This Solution</a>
-          </div>
+          <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver[cite: 1].</p>
         </div>
       </div>
     </section>
@@ -864,135 +499,17 @@
     <section id="book" class="booking-section">
       <div class="section-title">
         <h2>Ready to get started?</h2>
-        <p>Select available slot below.</p>
+        <p>Select an available slot below.</p>
       </div>
       <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0b0f19&text_color=f8fafc&primary_color=d8835e"></div>
     </section>
 
     <!-- Footer -->
     <footer>
-      <p><a href="mailto:hello@kindly.ph">hello@kindly.ph</a> | Manila, Philippines · Serving clients worldwide</p>
-      <p style="margin-top: 0.5rem; opacity: 0.7;">A business under Atindata · Atin Group &copy; 2026 Kindly. All rights reserved.</p>
+      <p><a href="mailto:hello@kindly.ph">hello@kindly.ph</a> | Manila, Philippines · Serving clients worldwide[cite: 1]</p>
+      <p style="margin-top: 0.5rem; opacity: 0.7;">A business under Atindata · Atin Group &copy; 2026 Kindly. All rights reserved[cite: 1].</p>
     </footer>
   </div>
-
-  <!-- Chatbox Drawer -->
-  <button class="chat-toggle" onclick="toggleChat()">💬</button>
-
-  <div class="chat-window" id="chatWindow">
-    <div class="chat-header">
-      <h4>Kindly Assistant</h4>
-      <button class="chat-close" onclick="toggleChat()">✕</button>
-    </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="msg bot">Hi there! How can I help you learn more about Kindly's Upskill, Outsource, or Automate services?</div>
-    </div>
-    <div class="chat-input-area">
-      <input type="text" id="userInput" placeholder="Ask a question..." onkeydown="if(event.key==='Enter') sendMessage()">
-      <button onclick="sendMessage()">Send</button>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script>
-    function updateImpact() {
-      const teamSize = document.getElementById('teamSize').value;
-      document.getElementById('teamVal').innerText = teamSize;
-      const hoursSaved = teamSize * 40;
-      document.getElementById('impactResult').innerText = `~${hoursSaved} Hours Saved Every Month`;
-    }
-
-    function toggleChat() {
-      const win = document.getElementById('chatWindow');
-      win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-    }
-
-    function sendMessage() {
-      const input = document.getElementById('userInput');
-      const msg = input.value.trim();
-      if (!msg) return;
-
-      const container = document.getElementById('chatMessages');
-      
-      // User Message
-      const userMsg = document.createElement('div');
-      userMsg.className = 'msg user';
-      userMsg.innerText = msg;
-      container.appendChild(userMsg);
-
-      input.value = '';
-      container.scrollTop = container.scrollHeight;
-
-      // Simulated Bot Answer
-      setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.className = 'msg bot';
-        
-        const lower = msg.toLowerCase();
-        if (lower.includes('price') || lower.includes('cost') || lower.includes('pricing')) {
-          botMsg.innerText = "We create tailored proposals based on your scope! Book a consultation below or email us at hello@kindly.ph.";
-        } else if (lower.includes('outsource') || lower.includes('labeling') || lower.includes('data')) {
-          botMsg.innerText = "Our Outsource team handles data solutions, labeling, annotation, and QA with scalable teams from 5 to 120+!";
-        } else {
-          botMsg.innerText = "Thanks for asking! You can select a 30-minute consultation slot on this page to discuss your project directly with our team.";
-        }
-
-        container.appendChild(botMsg);
-        container.scrollTop = container.scrollHeight;
-      }, 600);
-    }
-
-    /* AI Audit Quiz Logic */
-    const auditData = {
-      bottleneck: '',
-      stack: '',
-      size: ''
-    };
-
-    function selectQuizOption(step, value) {
-      if (step === 1) {
-        auditData.bottleneck = value;
-        document.getElementById('quizStep1').classList.remove('active');
-        document.getElementById('quizStep2').classList.add('active');
-        document.getElementById('quizBar').style.width = '66%';
-      } else if (step === 2) {
-        auditData.stack = value;
-        document.getElementById('quizStep2').classList.remove('active');
-        document.getElementById('quizStep3').classList.add('active');
-        document.getElementById('quizBar').style.width = '100%';
-      } else if (step === 3) {
-        auditData.size = value;
-        document.getElementById('quizStep3').classList.remove('active');
-        generateAuditResult();
-      }
-    }
-
-    function generateAuditResult() {
-      const resultStep = document.getElementById('quizResult');
-      const recTitle = document.getElementById('auditRecommendation');
-      const recDesc = document.getElementById('auditDetails');
-
-      if (auditData.bottleneck.includes('Data Entry')) {
-        recTitle.innerText = "High Potential: Data Solutions & AI Quality Assurance";
-        recDesc.innerText = `For teams of ${auditData.size} working in ${auditData.stack}, our AI-accelerated Outsource team can automate high-volume data encoding and verification with 99%+ accuracy.`;
-      } else if (auditData.bottleneck.includes('Support')) {
-        recTitle.innerText = "High Potential: Custom Chatbot & Agent Deployment";
-        recDesc.innerText = `Automate response handling across ${auditData.stack} with tailored conversational agents, instantly scaling your support capacity without increasing headcount.`;
-      } else if (auditData.bottleneck.includes('Literacy')) {
-        recTitle.innerText = "High Potential: Team Upskilling & AI Integration";
-        recDesc.innerText = `Empower your staff of ${auditData.size} with practical AI training tailored specifically around your existing ${auditData.stack} workflows.`;
-      } else {
-        recTitle.innerText = "High Potential: Full Workflow & AI Process Audit";
-        recDesc.innerText = `We can map out your repetitive operations and build custom AI automations to save your team estimated hundreds of hours each month.`;
-      }
-
-      resultStep.classList.add('active');
-    }
-
-    function prefillBookingNote() {
-      // Smooth scroll target behavior
-    }
-  </script>
 
 </body>
 </html>
