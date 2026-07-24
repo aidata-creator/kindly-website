@@ -44,7 +44,7 @@
       top: 0; left: 0; width: 100vw; height: 100vh;
       background-image: 
         radial-gradient(circle at 50% -10%, rgba(216, 131, 94, 0.25) 0%, transparent 50%),
-        radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.05) 0%, transparent 40%),
         linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
@@ -87,17 +87,6 @@
     }
 
     .logo span { color: var(--accent); }
-
-    .logo-badge {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      padding: 2px 6px;
-      background: rgba(216, 131, 94, 0.15);
-      border: 1px solid rgba(216, 131, 94, 0.4);
-      color: var(--accent);
-      border-radius: 4px;
-      margin-left: 8px;
-    }
 
     .live-status {
       display: inline-flex;
@@ -203,16 +192,6 @@
       margin-bottom: 3.5rem;
     }
 
-    .section-title .tech-tag {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--cyan-glow);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
     .section-title h2 { 
       font-family: var(--font-heading);
       font-size: 2.3rem; 
@@ -259,9 +238,6 @@
       font-size: 1.5rem;
       color: var(--accent);
       margin-bottom: 0.75rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
 
     .card p {
@@ -285,8 +261,8 @@
     }
 
     .card ul li::before {
-      content: "◈";
-      color: var(--cyan-glow);
+      content: "✦";
+      color: var(--accent);
       position: absolute;
       left: 0;
       font-size: 0.8rem;
@@ -450,8 +426,8 @@
     }
 
     .badge:hover {
-      border-color: var(--cyan-glow);
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(216, 131, 94, 0.2);
       color: #fff;
     }
 
@@ -543,7 +519,6 @@
     <header>
       <div class="logo">
         kindly<span>.</span>
-        <span class="logo-badge">AI v2.6</span>
       </div>
       <a href="#book" class="btn">Book a Call</a>
     </header>
@@ -561,7 +536,6 @@
     <!-- Why Kindly Pillars -->
     <section>
       <div class="section-title">
-        <span class="tech-tag">// OUR CORE PHILOSOPHY</span>
         <h2>Why Kindly</h2>
         <p>Not just another AI company.</p>
       </div>
@@ -584,14 +558,13 @@
     <!-- Services -->
     <section>
       <div class="section-title">
-        <span class="tech-tag">// ARCHITECTURE & CAPABILITIES</span>
         <h2>Our Services</h2>
         <p>Work smarter. Grow faster.</p>
       </div>
 
       <div class="services">
         <div class="card">
-          <h3>01 Upskill</h3>
+          <h3>Upskill</h3>
           <p>AI training for your people. Practical, hands-on AI literacy for employees at every level—from frontliners to managers.</p>
           <ul>
             <li>Customized curriculum</li>
@@ -601,7 +574,7 @@
         </div>
 
         <div class="card">
-          <h3>02 Outsource</h3>
+          <h3>Outsource</h3>
           <p>Need work done? We handle end-to-end data solutions, quality control, and execution managed by AI-accelerated teams.</p>
           <ul>
             <li>Data solutions & encoding</li>
@@ -611,7 +584,7 @@
         </div>
 
         <div class="card">
-          <h3>03 Automate</h3>
+          <h3>Automate</h3>
           <p>AI systems that boost productivity. We build tailored workflows, automated processes, and custom conversational agents.</p>
           <ul>
             <li>AI Workflow & Automation Audit</li>
@@ -625,7 +598,6 @@
     <!-- Quick AI Audit Section -->
     <section id="quiz" class="quiz-section">
       <div class="section-title">
-        <span class="tech-tag">// DIAGNOSTIC MODULE</span>
         <h2>Quick Automation Audit</h2>
         <p>Answer 3 quick questions to discover your highest-impact AI potential.</p>
       </div>
@@ -682,7 +654,6 @@
     <!-- Industries Served -->
     <section class="industries-section">
       <div class="section-title" style="margin-bottom: 0;">
-        <span class="tech-tag">// DOMAIN EXPERTISE</span>
         <h2>Industries We Serve</h2>
         <p>Wherever accurate data and AI create competitive advantage.</p>
       </div>
@@ -701,7 +672,6 @@
     <!-- Speed / Timeline Section -->
     <section class="timeline-section">
       <div class="section-title" style="margin-bottom: 0;">
-        <span class="tech-tag">// DEPLOYMENT VELOCITY</span>
         <h2>AI Acceleration, Human at Heart</h2>
       </div>
       <div class="timeline-grid">
@@ -723,7 +693,6 @@
     <!-- Booking Section -->
     <section id="book" class="booking-section">
       <div class="section-title">
-        <span class="tech-tag">// DISCOVERY SCHEDULE</span>
         <h2>Ready to get started?</h2>
         <p>Select an available slot below.</p>
       </div>
