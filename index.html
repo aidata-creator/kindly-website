@@ -62,7 +62,7 @@
       z-index: -1;
     }
 
-    /* Static Top Cyber Accent Line (No Motion, Soft Ambient Glow) */
+    /* Static Top Cyber Accent Line */
     body::after {
       content: "";
       position: fixed;
@@ -391,7 +391,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 6rem;
+      margin-bottom: 3rem;
     }
 
     .pillar-card {
@@ -559,7 +559,7 @@
     </section>
 
     <!-- Why Kindly Pillars -->
-    <section>
+    <section style="margin-bottom: 2rem;">
       <div class="section-title">
         <h2>Why Kindly</h2>
         <p>// NOT JUST ANOTHER AI COMPANY</p>
@@ -576,6 +576,27 @@
         <div class="pillar-card">
           <h4>📊 Quality You Can Measure</h4>
           <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLAs you can count on.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speed / Timeline Section -->
+    <section class="timeline-section" id="timeline-section">
+      <div class="section-title" style="margin-bottom: 0;">
+        <h2>AI Acceleration, Human at Heart</h2>
+      </div>
+      <div class="timeline-grid">
+        <div class="timeline-item">
+          <div class="time"><span class="counter" data-target="24">0</span>h</div>
+          <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="time"><span class="counter" data-target="48">0</span>h</div>
+          <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="time"><span class="counter" data-target="2">0</span>wk</div>
+          <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
         </div>
       </div>
     </section>
@@ -694,27 +715,6 @@
       </div>
     </section>
 
-    <!-- Speed / Timeline Section with Counting Animation -->
-    <section class="timeline-section" id="timeline-section">
-      <div class="section-title" style="margin-bottom: 0;">
-        <h2>AI Acceleration, Human at Heart</h2>
-      </div>
-      <div class="timeline-grid">
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="24">0</span>h</div>
-          <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="48">0</span>h</div>
-          <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="2">0</span>wk</div>
-          <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Booking Section -->
     <section id="book" class="booking-section">
       <div class="section-title">
@@ -801,7 +801,7 @@
           animated = true;
           counters.forEach(counter => {
             const target = +counter.getAttribute('data-target');
-            const duration = 1500; // Animation duration in ms
+            const duration = 1500;
             const stepTime = 30;
             const steps = duration / stepTime;
             const increment = target / steps;
