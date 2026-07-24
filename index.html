@@ -7,21 +7,23 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-color: #0b0f19;
-      --card-bg: rgba(22, 27, 46, 0.65);
+      --bg-color: #060913;
+      --card-bg: rgba(13, 18, 36, 0.6);
       --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover-border: rgba(216, 131, 94, 0.4);
+      --card-hover-border: rgba(216, 131, 94, 0.6);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --accent: #d8835e;
-      --accent-glow: rgba(216, 131, 94, 0.25);
+      --accent-glow: rgba(216, 131, 94, 0.35);
       --accent-hover: #e0926f;
+      --cyan-glow: #00f2fe;
       --font-heading: 'Space Grotesk', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,12 +33,33 @@
       color: var(--text-main);
       font-family: var(--font-body);
       line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Futuristic Background Grid & Ambient Glows */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(216, 131, 94, 0.15) 0%, transparent 45%),
-        radial-gradient(circle at 80% 60%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        radial-gradient(circle at 50% -10%, rgba(216, 131, 94, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
+      z-index: -2;
+    }
+
+    /* Animated Cyber Line at the Top */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan-glow), var(--accent), transparent);
+      z-index: 100;
+      animation: scanline 8s infinite linear;
     }
 
     .container {
@@ -58,9 +81,23 @@
       font-weight: 700;
       letter-spacing: -0.03em;
       color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
     }
 
     .logo span { color: var(--accent); }
+
+    .logo-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      background: rgba(216, 131, 94, 0.15);
+      border: 1px solid rgba(216, 131, 94, 0.4);
+      color: var(--accent);
+      border-radius: 4px;
+      margin-left: 8px;
+    }
 
     .live-status {
       display: inline-flex;
@@ -70,11 +107,13 @@
       color: #34d399;
       padding: 0.4rem 1.1rem;
       border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.825rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.02em;
       margin-bottom: 1.5rem;
-      border: 1px solid rgba(52, 211, 153, 0.2);
-      backdrop-filter: blur(8px);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 15px rgba(52, 211, 153, 0.1);
     }
 
     .pulse-dot {
@@ -94,60 +133,89 @@
 
     .hero {
       text-align: center;
-      padding: 3rem 0 4rem;
-      max-width: 850px;
+      padding: 4rem 0 5rem;
+      max-width: 880px;
       margin: 0 auto;
+      position: relative;
     }
 
     .hero h1 {
       font-family: var(--font-heading);
-      font-size: 3.4rem;
+      font-size: 3.6rem;
       font-weight: 700;
       line-height: 1.15;
       margin-bottom: 1.5rem;
       letter-spacing: -0.03em;
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.6) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     .hero p {
       font-size: 1.2rem;
       color: var(--text-muted);
-      margin-bottom: 2.25rem;
+      margin-bottom: 2.5rem;
       max-width: 720px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .btn {
-      display: inline-block;
-      background-color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--accent) 0%, #b8603b 100%);
       color: #ffffff;
-      padding: 0.9rem 2rem;
+      padding: 0.95rem 2.2rem;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.25s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 20px var(--accent-glow);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 25px var(--accent-glow);
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
     }
 
     .btn:hover { 
-      background-color: var(--accent-hover); 
       transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(216, 131, 94, 0.4);
+      box-shadow: 0 0 35px rgba(216, 131, 94, 0.6);
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title .tech-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--cyan-glow);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
     }
 
     .section-title h2 { 
       font-family: var(--font-heading);
-      font-size: 2.2rem; 
+      font-size: 2.3rem; 
       margin-bottom: 0.5rem; 
       letter-spacing: -0.02em;
     }
@@ -164,17 +232,26 @@
 
     .card {
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
       padding: 2.5rem;
       border-radius: 16px;
       border: 1px solid var(--card-border);
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--card-border), transparent);
     }
 
     .card:hover {
       border-color: var(--card-hover-border);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(216, 131, 94, 0.15);
     }
 
     .card h3 {
@@ -182,6 +259,9 @@
       font-size: 1.5rem;
       color: var(--accent);
       margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .card p {
@@ -205,8 +285,8 @@
     }
 
     .card ul li::before {
-      content: "✦";
-      color: var(--accent);
+      content: "◈";
+      color: var(--cyan-glow);
       position: absolute;
       left: 0;
       font-size: 0.8rem;
@@ -214,16 +294,17 @@
 
     /* Quick AI Audit Section */
     .quiz-section {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
+      background: rgba(13, 18, 36, 0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(216, 131, 94, 0.3);
       border-radius: 20px;
-      padding: 3rem 2rem;
+      padding: 3.5rem 2rem;
       margin-bottom: 6rem;
-      max-width: 800px;
+      max-width: 850px;
       margin-left: auto;
       margin-right: auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(216, 131, 94, 0.05);
+      position: relative;
     }
 
     .quiz-container {
@@ -241,10 +322,10 @@
 
     .quiz-progress-bar {
       height: 100%;
-      background: var(--accent);
+      background: linear-gradient(90deg, var(--accent), var(--cyan-glow));
       width: 33%;
-      transition: width 0.3s ease;
-      box-shadow: 0 0 10px var(--accent-glow);
+      transition: width 0.4s ease;
+      box-shadow: 0 0 12px var(--cyan-glow);
     }
 
     .quiz-step {
@@ -275,7 +356,7 @@
     }
 
     .quiz-option-btn {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--card-border);
       color: var(--text-main);
       padding: 1.2rem;
@@ -290,8 +371,9 @@
 
     .quiz-option-btn:hover {
       border-color: var(--accent);
-      background: rgba(216, 131, 94, 0.1);
+      background: rgba(216, 131, 94, 0.12);
       transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(216, 131, 94, 0.2);
     }
 
     .quiz-result-card {
@@ -358,12 +440,19 @@
     }
 
     .badge {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--card-border);
       padding: 0.6rem 1.2rem;
       border-radius: 30px;
       font-size: 0.85rem;
       color: var(--text-main);
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      border-color: var(--cyan-glow);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+      color: #fff;
     }
 
     /* Timeline Section */
@@ -390,7 +479,7 @@
       font-weight: 700;
       color: var(--accent);
       margin-bottom: 0.25rem;
-      text-shadow: 0 0 15px var(--accent-glow);
+      text-shadow: 0 0 20px var(--accent-glow);
     }
 
     .timeline-item p {
@@ -410,7 +499,7 @@
       overflow: hidden;
       margin-top: 2rem;
       border: 1px solid var(--card-border);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     }
 
     footer {
@@ -419,6 +508,7 @@
       color: var(--text-muted);
       font-size: 0.875rem;
       border-top: 1px solid var(--card-border);
+      font-family: var(--font-mono);
     }
 
     footer a { color: var(--accent); text-decoration: none; }
@@ -451,14 +541,17 @@
   <div class="container">
     <!-- Header -->
     <header>
-      <div class="logo">kindly<span>.</span></div>
+      <div class="logo">
+        kindly<span>.</span>
+        <span class="logo-badge">AI v2.6</span>
+      </div>
       <a href="#book" class="btn">Book a Call</a>
     </header>
 
     <!-- Hero -->
     <section class="hero">
       <div class="live-status">
-        <span class="pulse-dot"></span> Manila, Philippines · Serving clients worldwide
+        <span class="pulse-dot"></span> MANILA, PH · SERVING CLIENTS WORLDWIDE
       </div>
       <h1>We make AI work for people — not the other way around.</h1>
       <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces.</p>
@@ -468,6 +561,7 @@
     <!-- Why Kindly Pillars -->
     <section>
       <div class="section-title">
+        <span class="tech-tag">// OUR CORE PHILOSOPHY</span>
         <h2>Why Kindly</h2>
         <p>Not just another AI company.</p>
       </div>
@@ -490,6 +584,7 @@
     <!-- Services -->
     <section>
       <div class="section-title">
+        <span class="tech-tag">// ARCHITECTURE & CAPABILITIES</span>
         <h2>Our Services</h2>
         <p>Work smarter. Grow faster.</p>
       </div>
@@ -530,6 +625,7 @@
     <!-- Quick AI Audit Section -->
     <section id="quiz" class="quiz-section">
       <div class="section-title">
+        <span class="tech-tag">// DIAGNOSTIC MODULE</span>
         <h2>Quick Automation Audit</h2>
         <p>Answer 3 quick questions to discover your highest-impact AI potential.</p>
       </div>
@@ -586,6 +682,7 @@
     <!-- Industries Served -->
     <section class="industries-section">
       <div class="section-title" style="margin-bottom: 0;">
+        <span class="tech-tag">// DOMAIN EXPERTISE</span>
         <h2>Industries We Serve</h2>
         <p>Wherever accurate data and AI create competitive advantage.</p>
       </div>
@@ -604,6 +701,7 @@
     <!-- Speed / Timeline Section -->
     <section class="timeline-section">
       <div class="section-title" style="margin-bottom: 0;">
+        <span class="tech-tag">// DEPLOYMENT VELOCITY</span>
         <h2>AI Acceleration, Human at Heart</h2>
       </div>
       <div class="timeline-grid">
@@ -625,10 +723,11 @@
     <!-- Booking Section -->
     <section id="book" class="booking-section">
       <div class="section-title">
+        <span class="tech-tag">// DISCOVERY SCHEDULE</span>
         <h2>Ready to get started?</h2>
         <p>Select an available slot below.</p>
       </div>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0b0f19&text_color=f8fafc&primary_color=d8835e"></div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=060913&text_color=f8fafc&primary_color=d8835e"></div>
     </section>
 
     <!-- Footer -->
