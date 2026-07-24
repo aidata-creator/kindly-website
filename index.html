@@ -329,14 +329,21 @@
   <!-- Calendly Script -->
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-  <!-- Crisp Live Chat Script -->
+  <!-- Voiceflow Chat Widget Script -->
   <script type="text/javascript">
-    window.$crisp=[];window.CRISP_WEBSITE_ID="YOUR_CRISP_WEBSITE_ID";
-    (function(){
-      d=document;s=d.createElement("script");
-      s.src="https://client.crisp.chat/l.js";
-      s.async=1;d.getElementsByTagName("head")[0].appendChild(s);
-    })();
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: 'YOUR_VOICEFLOW_PROJECT_ID' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production'
+          });
+        };
+        v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; 
+        v.type = "text/javascript"; 
+        s.parentNode.insertBefore(v, s);
+    })(document, 'script');
   </script>
 </head>
 <body>
@@ -412,9 +419,9 @@
           <h3>03 Automate</h3>
           <p>AI systems that boost productivity. We build tailored workflows, automated processes, and custom conversational agents.</p>
           <ul>
+            <li>AI Workflow & Automation Audit</li>
             <li>Custom Chatbot Development</li>
-            <li>Workflow & AI Audit</li>
-            <li>Full Automation Setup & Maintenance</li>
+            <li>Full Setup & Maintenance</li>
           </ul>
         </div>
       </div>
