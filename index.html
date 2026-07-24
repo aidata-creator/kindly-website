@@ -94,7 +94,7 @@
 
     .hero {
       text-align: center;
-      padding: 3rem 0 3rem;
+      padding: 3rem 0 4rem;
       max-width: 850px;
       margin: 0 auto;
     }
@@ -138,33 +138,6 @@
       background-color: var(--accent-hover); 
       transform: translateY(-2px);
       box-shadow: 0 0 30px rgba(216, 131, 94, 0.4);
-    }
-
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 6rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 2rem;
-      border-radius: 16px;
-      backdrop-filter: blur(12px);
-      text-align: center;
-    }
-
-    .stat-item h3 {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      color: var(--accent);
-      margin-bottom: 0.2rem;
-    }
-
-    .stat-item p {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
     .section-title {
@@ -353,7 +326,18 @@
     footer a { color: var(--accent); text-decoration: none; }
   </style>
 
+  <!-- Calendly Script -->
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <!-- Crisp Live Chat Script -->
+  <script type="text/javascript">
+    window.$crisp=[];window.CRISP_WEBSITE_ID="YOUR_CRISP_WEBSITE_ID";
+    (function(){
+      d=document;s=d.createElement("script");
+      s.src="https://client.crisp.chat/l.js";
+      s.async=1;d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+  </script>
 </head>
 <body>
 
@@ -373,26 +357,6 @@
       <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces.</p>
       <a href="#book" class="btn">Schedule Consultation</a>
     </section>
-
-    <!-- Stats Bar -->
-    <div class="stats-bar">
-      <div class="stat-item">
-        <h3>5 to 120+</h3>
-        <p>Scalable Team Capacity</p>
-      </div>
-      <div class="stat-item">
-        <h3>86%</h3>
-        <p>AI-Savvy Talent Pool</p>
-      </div>
-      <div class="stat-item">
-        <h3>20+ Yrs</h3>
-        <p>Operator Leadership</p>
-      </div>
-      <div class="stat-item">
-        <h3>2–3 Wks</h3>
-        <p>Fast Deployment</p>
-      </div>
-    </div>
 
     <!-- Why Kindly Pillars -->
     <section>
@@ -450,7 +414,7 @@
           <ul>
             <li>Custom Chatbot Development</li>
             <li>Workflow & AI Audit</li>
-            <li>Full Setup & Maintenance</li>
+            <li>Full Automation Setup & Maintenance</li>
           </ul>
         </div>
       </div>
