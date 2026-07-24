@@ -240,7 +240,6 @@
       overflow: hidden;
     }
 
-    /* Cyber Corner Decorators */
     .card::after {
       content: '';
       position: absolute;
@@ -453,7 +452,7 @@
       color: #fff;
     }
 
-    /* Timeline Section */
+    /* Timeline Section & Animated Numbers */
     .timeline-section {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -473,11 +472,14 @@
 
     .timeline-item .time {
       font-family: var(--font-heading);
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 700;
       color: var(--cyan-neon);
       margin-bottom: 0.25rem;
       text-shadow: 0 0 25px var(--cyan-glow);
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
     }
 
     .timeline-item p {
@@ -694,22 +696,22 @@
       </div>
     </section>
 
-    <!-- Speed / Timeline Section -->
-    <section class="timeline-section">
+    <!-- Speed / Timeline Section with Counting Animation -->
+    <section class="timeline-section" id="timeline-section">
       <div class="section-title" style="margin-bottom: 0;">
         <h2>AI Acceleration, Human at Heart</h2>
       </div>
       <div class="timeline-grid">
         <div class="timeline-item">
-          <div class="time">24h</div>
+          <div class="time"><span class="counter" data-target="24">0</span>h</div>
           <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
         </div>
         <div class="timeline-item">
-          <div class="time">48h</div>
+          <div class="time"><span class="counter" data-target="48">0</span>h</div>
           <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
         </div>
         <div class="timeline-item">
-          <div class="time">2wk</div>
+          <div class="time"><span class="counter" data-target="2">0</span>wk</div>
           <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
         </div>
       </div>
@@ -789,6 +791,39 @@
       requestAnimationFrame(animateNeuralNetwork);
     }
     animateNeuralNetwork();
+
+    /* Number Counter Animation Observer */
+    let animated = false;
+    const timelineSection = document.getElementById('timeline-section');
+    const counters = document.querySelectorAll('.counter');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 1500; // Animation duration in ms
+            const stepTime = 30;
+            const steps = duration / stepTime;
+            const increment = target / steps;
+            let current = 0;
+
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                counter.innerText = target;
+                clearInterval(timer);
+              } else {
+                counter.innerText = Math.ceil(current);
+              }
+            }, stepTime);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    observer.observe(timelineSection);
 
     /* Quiz State Logic */
     const auditData = { bottleneck: '', stack: '', size: '' };
