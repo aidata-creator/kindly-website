@@ -212,6 +212,125 @@
       font-size: 0.8rem;
     }
 
+    /* Quiz Widget Section */
+    .quiz-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin-bottom: 6rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .quiz-progress {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .progress-bar {
+      height: 4px;
+      flex: 1;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    .progress-bar.active {
+      background: var(--accent);
+    }
+
+    .quiz-step {
+      display: none;
+    }
+
+    .quiz-step.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .quiz-step h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .quiz-option-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      padding: 1.2rem;
+      border-radius: 12px;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .quiz-option-btn:hover {
+      background: rgba(216, 131, 94, 0.1);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .quiz-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      outline: none;
+    }
+
+    .quiz-input:focus {
+      border-color: var(--accent);
+    }
+
+    .quiz-results {
+      text-align: center;
+    }
+
+    .quiz-results h4 {
+      font-size: 0.9rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-results h3 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-results p {
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+    }
+
     /* Why Kindly Columns */
     .pillars-grid {
       display: grid;
@@ -352,7 +471,7 @@
     <!-- Header -->
     <header>
       <div class="logo">kindly<span>.</span></div>
-      <a href="#book" class="btn">Book a Call</a>
+      <a href="#quiz" class="btn">Check Readiness</a>
     </header>
 
     <!-- Hero -->
@@ -362,7 +481,7 @@
       </div>
       <h1>We make AI work for people — not the other way around.</h1>
       <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces.</p>
-      <a href="#book" class="btn">Schedule Consultation</a>
+      <a href="#quiz" class="btn">Take 30-Sec Automation Audit</a>
     </section>
 
     <!-- Why Kindly Pillars -->
@@ -427,6 +546,54 @@
       </div>
     </section>
 
+    <!-- Quick AI Audit / Automation Readiness Quiz -->
+    <section id="quiz" class="quiz-section">
+      <div class="quiz-progress">
+        <div class="progress-bar active" id="p1"></div>
+        <div class="progress-bar" id="p2"></div>
+        <div class="progress-bar" id="p3"></div>
+      </div>
+
+      <!-- Question 1 -->
+      <div class="quiz-step active" id="step1">
+        <h3>What consumes most of your team's time?</h3>
+        <div class="quiz-options">
+          <button class="quiz-option-btn" onclick="selectQ1('Data Entry', 1)">Data Entry & Encoding</button>
+          <button class="quiz-option-btn" onclick="selectQ1('Customer Support', 1)">Customer Support</button>
+          <button class="quiz-option-btn" onclick="selectQ1('Content Creation', 1)">Content & Annotations</button>
+          <button class="quiz-option-btn" onclick="selectQ1('Lead Qualification', 1)">Lead Qualification</button>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="quiz-step" id="step2">
+        <h3>What CRM, Database, or Stack do you use?</h3>
+        <input type="text" id="crmInput" class="quiz-input" placeholder="e.g. HubSpot, Salesforce, Airtable, Sheets..." />
+        <button class="btn" style="width: 100%;" onclick="nextStep(2)">Continue ➔</button>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="quiz-step" id="step3">
+        <h3>How large is your operational team?</h3>
+        <div class="quiz-options">
+          <button class="quiz-option-btn" onclick="finishQuiz('1 - 5 staff')">1 – 5 staff</button>
+          <button class="quiz-option-btn" onclick="finishQuiz('5 - 20 staff')">5 – 20 staff</button>
+          <button class="quiz-option-btn" onclick="finishQuiz('20 - 50 staff')">20 – 50 staff</button>
+          <button class="quiz-option-btn" onclick="finishQuiz('50+ staff')">50+ staff</button>
+        </div>
+      </div>
+
+      <!-- Result Screen -->
+      <div class="quiz-step" id="stepResult">
+        <div class="quiz-results">
+          <h4>⚡ Immediate Feedback Recommendation</h4>
+          <h3 id="recommendationText">High Impact Area: Custom Support Chatbot + Automated Data Encoding</h3>
+          <p id="recommendationSub">Based on your stack and team size, deploying AI-accelerated workflows can save up to 40% of manual effort in week 1.</p>
+          <a href="#book" class="btn">Book Discovery Call for Your Custom Audit ➔</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Industries Served -->
     <section class="industries-section">
       <div class="section-title" style="margin-bottom: 0;">
@@ -481,6 +648,49 @@
       <p style="margin-top: 0.5rem; opacity: 0.7;">A business under Atindata · Atin Group &copy; 2026 Kindly. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    let quizData = { timeSink: '', crm: '', teamSize: '' };
+
+    function selectQ1(value, currentStep) {
+      quizData.timeSink = value;
+      nextStep(currentStep);
+    }
+
+    function nextStep(currentStep) {
+      if(currentStep === 2) {
+        quizData.crm = document.getElementById('crmInput').value || 'Standard CRM';
+      }
+      
+      document.getElementById('step' + currentStep).classList.remove('active');
+      document.getElementById('p' + currentStep).classList.remove('active');
+      
+      let next = currentStep + 1;
+      document.getElementById('step' + next).classList.add('active');
+      document.getElementById('p' + next).classList.add('active');
+    }
+
+    function finishQuiz(teamSize) {
+      quizData.teamSize = teamSize;
+      
+      document.getElementById('step3').classList.remove('active');
+      document.getElementById('stepResult').classList.add('active');
+
+      let recTitle = "";
+      if (quizData.timeSink === 'Data Entry') {
+        recTitle = "High Impact Area: AI Data Processing & Human QA Pipeline";
+      } else if (quizData.timeSink === 'Customer Support') {
+        recTitle = "High Impact Area: Voiceflow Conversational Agent + Tier 1 Escalation";
+      } else if (quizData.timeSink === 'Lead Qualification') {
+        recTitle = "High Impact Area: Automated Lead Enrichment & Outsource Screening";
+      } else {
+        recTitle = "High Impact Area: Workflow & AI Process Audit";
+      }
+
+      document.getElementById('recommendationText').innerText = recTitle;
+      document.getElementById('recommendationSub').innerText = `Tailored for a team using ${quizData.crm} with ${quizData.teamSize}.`;
+    }
+  </script>
 
 </body>
 </html>
