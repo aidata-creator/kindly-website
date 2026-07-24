@@ -21,7 +21,6 @@
       --accent: #d8835e;
       --accent-glow: rgba(216, 131, 94, 0.25);
       --accent-hover: #e0926f;
-      --cyan-glow: rgba(56, 189, 248, 0.15);
       --font-heading: 'Space Grotesk', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
     }
@@ -35,8 +34,8 @@
       line-height: 1.6;
       /* AI Grid Canvas Background Pattern */
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(216, 131, 94, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 50% 0%, rgba(216, 131, 94, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 80% 60%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
         linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
@@ -98,7 +97,7 @@
 
     .hero {
       text-align: center;
-      padding: 3rem 0 5rem;
+      padding: 3rem 0 3rem;
       max-width: 850px;
       margin: 0 auto;
     }
@@ -132,7 +131,7 @@
       border-radius: 10px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.25 ease;
+      transition: all 0.25s ease;
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 0 20px var(--accent-glow);
       cursor: pointer;
@@ -142,6 +141,92 @@
       background-color: var(--accent-hover); 
       transform: translateY(-2px);
       box-shadow: 0 0 30px rgba(216, 131, 94, 0.4);
+    }
+
+    /* Hero AI Visual Dashboard Preview */
+    .hero-mockup {
+      margin: 3.5rem auto 5rem;
+      background: rgba(15, 20, 35, 0.8);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(216, 131, 94, 0.1);
+      backdrop-filter: blur(16px);
+      text-align: left;
+    }
+
+    .mockup-header {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1.25rem;
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .mockup-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .mockup-card label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .mockup-card .val {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .mockup-card .status {
+      color: #34d399;
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Metrics Bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 6rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-item p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .section-title {
@@ -175,7 +260,6 @@
       border: 1px solid var(--card-border);
       transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
     }
 
     .card:hover {
@@ -217,6 +301,34 @@
       position: absolute;
       left: 0;
       font-size: 0.8rem;
+    }
+
+    /* Integration / Tech Stack Badges Section */
+    .tech-stack-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      margin-bottom: 6rem;
+      text-align: center;
+    }
+
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      padding: 0.6rem 1.25rem;
+      border-radius: 30px;
+      font-size: 0.875rem;
+      color: var(--text-main);
     }
 
     /* Timeline Section */
@@ -552,7 +664,53 @@
       <h1>We make AI work for people — not the other way around.</h1>
       <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces. Fast to deploy. Built for the future.</p>
       <a href="#book" class="btn">Schedule Consultation</a>
+
+      <!-- Hero Visual Dashboard Mockup -->
+      <div class="hero-mockup">
+        <div class="mockup-header">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div class="mockup-grid">
+          <div class="mockup-card">
+            <label>Active Workflows</label>
+            <div class="val">14 Processes</div>
+            <div class="status">● Automated</div>
+          </div>
+          <div class="mockup-card">
+            <label>Human QA Accuracy</label>
+            <div class="val">99.8%</div>
+            <div class="status">● Verified</div>
+          </div>
+          <div class="mockup-card">
+            <label>Response Velocity</label>
+            <div class="val">&lt; 1.2 mins</div>
+            <div class="status">● Optimized</div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- Metrics Bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <h3>99.4%</h3>
+        <p>Human QA Accuracy</p>
+      </div>
+      <div class="stat-item">
+        <h3>3x</h3>
+        <p>Execution Speed</p>
+      </div>
+      <div class="stat-item">
+        <h3>10,000+</h3>
+        <p>Monthly Hours Saved</p>
+      </div>
+      <div class="stat-item">
+        <h3>2–3 Wks</h3>
+        <p>Average Deployment</p>
+      </div>
+    </div>
 
     <!-- Services -->
     <section>
@@ -591,6 +749,22 @@
             <li>Full Setup & Maintenance</li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack / Compatibility Section -->
+    <section class="tech-stack-section">
+      <div class="section-title" style="margin-bottom: 0;">
+        <h2>Seamless Stack Integration</h2>
+        <p>We work directly inside your existing operational tools.</p>
+      </div>
+      <div class="tech-badges">
+        <span class="badge">⚡ OpenAI / GPT-4</span>
+        <span class="badge">🤖 Claude AI</span>
+        <span class="badge">📊 Google Workspace</span>
+        <span class="badge">🎧 Zendesk & HubSpot</span>
+        <span class="badge">💼 Notion & Airtable</span>
+        <span class="badge">🔗 Make / Zapier</span>
       </div>
     </section>
 
