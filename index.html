@@ -212,7 +212,7 @@
       font-size: 0.8rem;
     }
 
-    /* Quiz Widget Section */
+    /* Quick AI Audit Section */
     .quiz-section {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -226,22 +226,25 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
+    .quiz-container {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
     .quiz-progress {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 2rem;
-    }
-
-    .progress-bar {
       height: 4px;
-      flex: 1;
-      background: rgba(255,255,255,0.1);
-      border-radius: 4px;
-      transition: background 0.3s ease;
+      background: var(--card-border);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      overflow: hidden;
     }
 
-    .progress-bar.active {
+    .quiz-progress-bar {
+      height: 100%;
       background: var(--accent);
+      width: 33%;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px var(--accent-glow);
     }
 
     .quiz-step {
@@ -258,77 +261,53 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .quiz-step h3 {
+    .quiz-step h4 {
       font-family: var(--font-heading);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 1.5rem;
       text-align: center;
     }
 
     .quiz-options {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1rem;
     }
 
     .quiz-option-btn {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--card-border);
+      color: var(--text-main);
       padding: 1.2rem;
       border-radius: 12px;
-      color: var(--text-main);
+      cursor: pointer;
+      text-align: left;
       font-family: var(--font-body);
       font-size: 0.95rem;
       font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: center;
+      transition: all 0.25s ease;
     }
 
     .quiz-option-btn:hover {
-      background: rgba(216, 131, 94, 0.1);
       border-color: var(--accent);
+      background: rgba(216, 131, 94, 0.1);
       transform: translateY(-2px);
     }
 
-    .quiz-input {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--card-border);
-      padding: 1rem 1.2rem;
-      border-radius: 12px;
-      color: var(--text-main);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      margin-bottom: 1.2rem;
-      outline: none;
-    }
-
-    .quiz-input:focus {
-      border-color: var(--accent);
-    }
-
-    .quiz-results {
+    .quiz-result-card {
       text-align: center;
     }
 
-    .quiz-results h4 {
-      font-size: 0.9rem;
+    .quiz-result-card h4 {
       color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
     }
 
-    .quiz-results h3 {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .quiz-results p {
+    .quiz-result-card p {
       color: var(--text-muted);
       margin-bottom: 1.8rem;
+      font-size: 1rem;
     }
 
     /* Why Kindly Columns */
@@ -546,50 +525,58 @@
       </div>
     </section>
 
-    <!-- Quick AI Audit / Automation Readiness Quiz -->
+    <!-- Quick AI Audit Section -->
     <section id="quiz" class="quiz-section">
-      <div class="quiz-progress">
-        <div class="progress-bar active" id="p1"></div>
-        <div class="progress-bar" id="p2"></div>
-        <div class="progress-bar" id="p3"></div>
+      <div class="section-title">
+        <h2>Quick Automation Audit</h2>
+        <p>Answer 3 quick questions to discover your highest-impact AI potential.</p>
       </div>
 
-      <!-- Question 1 -->
-      <div class="quiz-step active" id="step1">
-        <h3>What consumes most of your team's time?</h3>
-        <div class="quiz-options">
-          <button class="quiz-option-btn" onclick="selectQ1('Data Entry', 1)">Data Entry & Encoding</button>
-          <button class="quiz-option-btn" onclick="selectQ1('Customer Support', 1)">Customer Support</button>
-          <button class="quiz-option-btn" onclick="selectQ1('Content Creation', 1)">Content & Annotations</button>
-          <button class="quiz-option-btn" onclick="selectQ1('Lead Qualification', 1)">Lead Qualification</button>
+      <div class="quiz-container">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar" id="quizBar"></div>
         </div>
-      </div>
 
-      <!-- Question 2 -->
-      <div class="quiz-step" id="step2">
-        <h3>What CRM, Database, or Stack do you use?</h3>
-        <input type="text" id="crmInput" class="quiz-input" placeholder="e.g. HubSpot, Salesforce, Airtable, Sheets..." />
-        <button class="btn" style="width: 100%;" onclick="nextStep(2)">Continue ➔</button>
-      </div>
-
-      <!-- Question 3 -->
-      <div class="quiz-step" id="step3">
-        <h3>How large is your operational team?</h3>
-        <div class="quiz-options">
-          <button class="quiz-option-btn" onclick="finishQuiz('1 - 5 staff')">1 – 5 staff</button>
-          <button class="quiz-option-btn" onclick="finishQuiz('5 - 20 staff')">5 – 20 staff</button>
-          <button class="quiz-option-btn" onclick="finishQuiz('20 - 50 staff')">20 – 50 staff</button>
-          <button class="quiz-option-btn" onclick="finishQuiz('50+ staff')">50+ staff</button>
+        <!-- Question 1 -->
+        <div class="quiz-step active" id="quizStep1">
+          <h4>1. Where does your operational bottleneck lie?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Data Entry & Processing')">📥 Manual Data Entry & Processing</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Customer Support Responses')">💬 Customer Support & Inquiries</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Repetitive Internal Workflows')">⚙️ Repetitive Internal Workflows</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Team AI Adoption & Literacy')">🎓 Low AI Literacy Across Staff</button>
+          </div>
         </div>
-      </div>
 
-      <!-- Result Screen -->
-      <div class="quiz-step" id="stepResult">
-        <div class="quiz-results">
-          <h4>⚡ Immediate Feedback Recommendation</h4>
-          <h3 id="recommendationText">High Impact Area: Custom Support Chatbot + Automated Data Encoding</h3>
-          <p id="recommendationSub">Based on your stack and team size, deploying AI-accelerated workflows can save up to 40% of manual effort in week 1.</p>
-          <a href="#book" class="btn">Book Discovery Call for Your Custom Audit ➔</a>
+        <!-- Question 2 -->
+        <div class="quiz-step" id="quizStep2">
+          <h4>2. What is your primary tool stack environment?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Google Workspace & Spreadsheets')">📊 Spreadsheets & Google Workspace</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'CRMs & Helpdesks')">🎧 CRMs / Helpdesks (HubSpot, Zendesk, etc.)</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Custom Databases & APIs')">💻 Custom Databases & Internal Software</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Mostly Manual / Unstructured')">📝 Unstructured Emails & Docs</button>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-step" id="quizStep3">
+          <h4>3. How large is the team handling this workload?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '1 - 5 staff members')">👥 1 – 5 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '6 - 20 staff members')">👥 6 – 20 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '21 - 50 staff members')">🏢 21 – 50 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '50+ staff members')">🚀 50+ enterprise staff</button>
+          </div>
+        </div>
+
+        <!-- Result Card -->
+        <div class="quiz-step" id="quizResult">
+          <div class="quiz-result-card">
+            <h4 id="auditRecommendation">Recommended: Custom Workflow Automation</h4>
+            <p id="auditDetails">Based on your selections, implementing AI-assisted agents and structured data workflows can reduce manual tasks by up to 60-80% within 3 weeks.</p>
+            <a href="#book" class="btn">Schedule Discovery Call for This Solution</a>
+          </div>
         </div>
       </div>
     </section>
@@ -650,45 +637,50 @@
   </div>
 
   <script>
-    let quizData = { timeSink: '', crm: '', teamSize: '' };
+    const auditData = {
+      bottleneck: '',
+      stack: '',
+      size: ''
+    };
 
-    function selectQ1(value, currentStep) {
-      quizData.timeSink = value;
-      nextStep(currentStep);
-    }
-
-    function nextStep(currentStep) {
-      if(currentStep === 2) {
-        quizData.crm = document.getElementById('crmInput').value || 'Standard CRM';
+    function selectQuizOption(step, value) {
+      if (step === 1) {
+        auditData.bottleneck = value;
+        document.getElementById('quizStep1').classList.remove('active');
+        document.getElementById('quizStep2').classList.add('active');
+        document.getElementById('quizBar').style.width = '66%';
+      } else if (step === 2) {
+        auditData.stack = value;
+        document.getElementById('quizStep2').classList.remove('active');
+        document.getElementById('quizStep3').classList.add('active');
+        document.getElementById('quizBar').style.width = '100%';
+      } else if (step === 3) {
+        auditData.size = value;
+        document.getElementById('quizStep3').classList.remove('active');
+        generateAuditResult();
       }
-      
-      document.getElementById('step' + currentStep).classList.remove('active');
-      document.getElementById('p' + currentStep).classList.remove('active');
-      
-      let next = currentStep + 1;
-      document.getElementById('step' + next).classList.add('active');
-      document.getElementById('p' + next).classList.add('active');
     }
 
-    function finishQuiz(teamSize) {
-      quizData.teamSize = teamSize;
-      
-      document.getElementById('step3').classList.remove('active');
-      document.getElementById('stepResult').classList.add('active');
+    function generateAuditResult() {
+      const resultStep = document.getElementById('quizResult');
+      const recTitle = document.getElementById('auditRecommendation');
+      const recDesc = document.getElementById('auditDetails');
 
-      let recTitle = "";
-      if (quizData.timeSink === 'Data Entry') {
-        recTitle = "High Impact Area: AI Data Processing & Human QA Pipeline";
-      } else if (quizData.timeSink === 'Customer Support') {
-        recTitle = "High Impact Area: Voiceflow Conversational Agent + Tier 1 Escalation";
-      } else if (quizData.timeSink === 'Lead Qualification') {
-        recTitle = "High Impact Area: Automated Lead Enrichment & Outsource Screening";
+      if (auditData.bottleneck.includes('Data Entry')) {
+        recTitle.innerText = "High Potential: Data Solutions & AI Quality Assurance";
+        recDesc.innerText = `For teams of ${auditData.size} working in ${auditData.stack}, our AI-accelerated Outsource team can automate high-volume data encoding and verification with 99%+ accuracy.`;
+      } else if (auditData.bottleneck.includes('Support')) {
+        recTitle.innerText = "High Potential: Custom Chatbot & Agent Deployment";
+        recDesc.innerText = `Automate response handling across ${auditData.stack} with tailored conversational agents, instantly scaling your support capacity without increasing headcount.`;
+      } else if (auditData.bottleneck.includes('Literacy')) {
+        recTitle.innerText = "High Potential: Team Upskilling & AI Integration";
+        recDesc.innerText = `Empower your staff of ${auditData.size} with practical AI training tailored specifically around your existing ${auditData.stack} workflows.`;
       } else {
-        recTitle = "High Impact Area: Workflow & AI Process Audit";
+        recTitle.innerText = "High Potential: Full Workflow & AI Process Audit";
+        recDesc.innerText = `We can map out your repetitive operations and build custom AI automations to save your team estimated hundreds of hours each month.`;
       }
 
-      document.getElementById('recommendationText').innerText = recTitle;
-      document.getElementById('recommendationSub').innerText = `Tailored for a team using ${quizData.crm} with ${quizData.teamSize}.`;
+      resultStep.classList.add('active');
     }
   </script>
 
