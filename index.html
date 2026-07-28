@@ -334,6 +334,7 @@
       box-shadow: 0 0 10px var(--accent);
     }
 
+    /* All avatar circles share the orange border accent */
     .hitl-card .avatar-box {
       width: 85px;
       height: 85px;
@@ -341,7 +342,8 @@
       position: relative;
       border-radius: 50%;
       padding: 3px;
-      background: linear-gradient(135deg, var(--card-border), transparent);
+      background: linear-gradient(135deg, var(--accent), transparent);
+      box-shadow: 0 0 12px var(--accent-glow);
     }
 
     .hitl-card img {
@@ -363,11 +365,6 @@
       transform: translateY(-6px);
       border-color: var(--accent);
       box-shadow: 0 12px 30px rgba(216, 131, 94, 0.25);
-    }
-
-    .hitl-card.featured-founder {
-      border-color: rgba(216, 131, 94, 0.5);
-      background: rgba(216, 131, 94, 0.05);
     }
 
     @media (max-width: 900px) {
@@ -723,7 +720,7 @@
           </div>
         </div>
 
-        <!-- 10 Team Members Grid (Direct file references) -->
+        <!-- 10 Team Members Grid (All boxes consistent, all circles orange) -->
         <div class="hitl-team-row">
           
           <div class="hitl-card">
@@ -761,8 +758,8 @@
             <div class="name">Grace</div>
           </div>
 
-          <div class="hitl-card featured-founder">
-            <div class="avatar-box" style="background: linear-gradient(135deg, var(--accent), transparent);">
+          <div class="hitl-card">
+            <div class="avatar-box">
               <img src="jeh.jpg" alt="Jeh">
             </div>
             <div class="name">Jeh</div>
