@@ -219,6 +219,191 @@
       font-size: 0.9rem;
     }
 
+    /* Pillars */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .pillar-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+    }
+
+    .pillar-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Human-in-the-Loop Network Styling */
+    .hitl-network-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .hitl-core-node {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .hitl-core-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid var(--cyan-neon);
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--cyan-neon);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.25);
+      position: relative;
+      z-index: 3;
+    }
+
+    .hitl-core-node::after {
+      content: '';
+      position: absolute;
+      bottom: -3.5rem;
+      left: 50%;
+      width: 2px;
+      height: 3.5rem;
+      background: linear-gradient(to bottom, var(--cyan-neon), var(--card-border));
+      z-index: 1;
+    }
+
+    .hitl-team-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hitl-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.25rem 0.75rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hitl-card::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--card-border);
+      border-radius: 50%;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hitl-card:hover::before {
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .hitl-card .avatar-box {
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 1rem;
+      position: relative;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--card-border), transparent);
+    }
+
+    .hitl-card img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hitl-card .name {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .hitl-card .role {
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      color: var(--cyan-neon);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hitl-card .verification-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hitl-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(216, 131, 94, 0.25);
+    }
+
+    .hitl-card.featured-founder {
+      border-color: rgba(216, 131, 94, 0.5);
+      background: rgba(216, 131, 94, 0.05);
+    }
+
+    .hitl-card.featured-founder .role {
+      color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      .hitl-team-row {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+      .hitl-core-node::after {
+        display: none;
+      }
+    }
+
     /* AI Card Design */
     .services {
       display: grid;
@@ -386,34 +571,6 @@
       font-size: 1rem;
     }
 
-    /* Pillars */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .pillar-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 2rem;
-      border-radius: 12px;
-      backdrop-filter: blur(12px);
-    }
-
-    .pillar-card h4 {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .pillar-card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
     /* Industry Badges */
     .industries-section {
       background: var(--card-bg);
@@ -572,6 +729,78 @@
         <div class="pillar-card">
           <h4>📊 Quality You Can Measure</h4>
           <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLAs you can count on.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Human-in-the-Loop Network (Meet the Team) -->
+    <section style="margin-bottom: 6rem; position: relative;">
+      <div class="section-title">
+        <h2>Human-in-the-Loop Network</h2>
+        <p>// REAL HUMANS OVERSIGHTING & GUARANTEEING EVERY WORKFLOW</p>
+      </div>
+
+      <div class="hitl-network-wrapper">
+        <!-- Central AI Core Node -->
+        <div class="hitl-core-node">
+          <div class="hitl-core-badge">
+            <span class="pulse-dot"></span> AI Engines + Multi-Layer Human Verification
+          </div>
+        </div>
+
+        <!-- 5 Team Members Grid -->
+        <div class="hitl-team-row">
+          
+          <!-- Person 1: Micc -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="images/micc.jpg" alt="Micc">
+            </div>
+            <div class="name">Micc</div>
+            <div class="role">Operations Lead</div>
+            <span class="verification-tag">⚙️ Workflow Execution</span>
+          </div>
+
+          <!-- Person 2 -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="images/member2.jpg" alt="Data QA Specialist">
+            </div>
+            <div class="name">Member Name</div>
+            <div class="role">Data QA Lead</div>
+            <span class="verification-tag">🔍 Accuracy Audit</span>
+          </div>
+
+          <!-- Person 3: Jeh (Center Anchor) -->
+          <div class="hitl-card featured-founder">
+            <div class="avatar-box" style="background: linear-gradient(135deg, var(--accent), transparent);">
+              <img src="images/jeh.jpg" alt="Jeh">
+            </div>
+            <div class="name">Jeh</div>
+            <div class="role">Founder & Lead</div>
+            <span class="verification-tag" style="color: var(--accent); border-color: rgba(216, 131, 94, 0.3);">🎯 Strategy & QA</span>
+          </div>
+
+          <!-- Person 4 -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="images/member4.jpg" alt="AI Specialist">
+            </div>
+            <div class="name">Member Name</div>
+            <div class="role">AI Specialist</div>
+            <span class="verification-tag">🤖 Prompt Engineering</span>
+          </div>
+
+          <!-- Person 5 -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="images/member5.jpg" alt="Training Lead">
+            </div>
+            <div class="name">Member Name</div>
+            <div class="role">Training Lead</div>
+            <span class="verification-tag">🎓 Upskilling</span>
+          </div>
+
         </div>
       </div>
     </section>
