@@ -310,7 +310,7 @@
       backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 1.25rem 0.75rem;
+      padding: 1.5rem 0.75rem;
       text-align: center;
       position: relative;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -337,7 +337,7 @@
     .hitl-card .avatar-box {
       width: 85px;
       height: 85px;
-      margin: 0 auto 1rem;
+      margin: 0 auto 0.8rem;
       position: relative;
       border-radius: 50%;
       padding: 3px;
@@ -357,27 +357,6 @@
       font-size: 1rem;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 0.2rem;
-    }
-
-    .hitl-card .role {
-      font-family: var(--font-mono);
-      font-size: 0.725rem;
-      color: var(--cyan-neon);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.6rem;
-    }
-
-    .hitl-card .verification-tag {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.03);
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .hitl-card:hover {
@@ -391,13 +370,9 @@
       background: rgba(216, 131, 94, 0.05);
     }
 
-    .hitl-card.featured-founder .role {
-      color: var(--accent);
-    }
-
     @media (max-width: 900px) {
       .hitl-team-row {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       }
       .hitl-core-node::after {
         display: none;
@@ -757,18 +732,14 @@
               <img src="images/micc.jpg" alt="Micc">
             </div>
             <div class="name">Micc</div>
-            <div class="role">Operations Lead</div>
-            <span class="verification-tag">⚙️ Workflow Execution</span>
           </div>
 
           <!-- Person 2 -->
           <div class="hitl-card">
             <div class="avatar-box">
-              <img src="images/member2.jpg" alt="Data QA Specialist">
+              <img src="images/member2.jpg" alt="Member Name">
             </div>
             <div class="name">Member Name</div>
-            <div class="role">Data QA Lead</div>
-            <span class="verification-tag">🔍 Accuracy Audit</span>
           </div>
 
           <!-- Person 3: Jeh (Center Anchor) -->
@@ -777,28 +748,22 @@
               <img src="images/jeh.jpg" alt="Jeh">
             </div>
             <div class="name">Jeh</div>
-            <div class="role">Founder & Lead</div>
-            <span class="verification-tag" style="color: var(--accent); border-color: rgba(216, 131, 94, 0.3);">🎯 Strategy & QA</span>
           </div>
 
           <!-- Person 4 -->
           <div class="hitl-card">
             <div class="avatar-box">
-              <img src="images/member4.jpg" alt="AI Specialist">
+              <img src="images/member4.jpg" alt="Member Name">
             </div>
             <div class="name">Member Name</div>
-            <div class="role">AI Specialist</div>
-            <span class="verification-tag">🤖 Prompt Engineering</span>
           </div>
 
           <!-- Person 5 -->
           <div class="hitl-card">
             <div class="avatar-box">
-              <img src="images/member5.jpg" alt="Training Lead">
+              <img src="images/member5.jpg" alt="Member Name">
             </div>
             <div class="name">Member Name</div>
-            <div class="role">Training Lead</div>
-            <span class="verification-tag">🎓 Upskilling</span>
           </div>
 
         </div>
