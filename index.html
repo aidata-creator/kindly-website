@@ -334,7 +334,6 @@
       box-shadow: 0 0 10px var(--accent);
     }
 
-    /* All avatar circles share the orange border accent */
     .hitl-card .avatar-box {
       width: 85px;
       height: 85px;
@@ -448,6 +447,71 @@
       position: absolute;
       left: 0;
       font-weight: bold;
+    }
+
+    /* Testimonials / Leadership Section */
+    .testimonials-section {
+      margin-bottom: 6rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 2.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(216, 131, 94, 0.2);
+    }
+
+    .testimonial-card p {
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.25rem;
+    }
+
+    .testimonial-author .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      object-fit: cover;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .testimonial-author .author-info h5 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+
+    .testimonial-author .author-info span {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--cyan-neon);
     }
 
     /* AI Audit Interactive Section */
@@ -720,9 +784,8 @@
           </div>
         </div>
 
-        <!-- 10 Team Members Grid (All boxes consistent, all circles orange) -->
+        <!-- 10 Team Members Grid -->
         <div class="hitl-team-row">
-          
           <div class="hitl-card">
             <div class="avatar-box">
               <img src="aira.jpg" alt="Aira">
@@ -792,7 +855,6 @@
             </div>
             <div class="name">Tin</div>
           </div>
-
         </div>
       </div>
     </section>
@@ -854,6 +916,37 @@
             <li>Custom Chatbot Development</li>
             <li>Full Setup & Maintenance</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founders & Leadership Section -->
+    <section class="testimonials-section">
+      <div class="section-title">
+        <h2>Leadership Note</h2>
+        <p>// FROM OUR FOUNDERS</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>"We built Kindly to prove that artificial intelligence shouldn't replace human capability—it should elevate it. Our goal is to ensure every organization we work with builds a sustainable, human-guided AI advantage."</p>
+          <div class="testimonial-author">
+            <img src="mark.jpg" alt="Sir Mark" class="author-avatar">
+            <div class="author-info">
+              <h5>Sir Mark</h5>
+              <span>Co-Founder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"Technology moves fast, but quality and trust remain deeply human. By combining cutting-edge AI acceleration with rigorous human oversight, we help teams scale efficiently without compromising on execution."</p>
+          <div class="testimonial-author">
+            <img src="reese.jpg" alt="Ms. Reese" class="author-avatar">
+            <div class="author-info">
+              <h5>Ms. Reese</h5>
+              <span>Co-Founder</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
