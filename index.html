@@ -131,7 +131,7 @@
 
     .hero {
       text-align: center;
-      padding: 4rem 0 5rem;
+      padding: 4rem 0 3rem;
       max-width: 900px;
       margin: 0 auto;
       position: relative;
@@ -196,6 +196,43 @@
     .btn:hover { 
       transform: translateY(-2px);
       box-shadow: 0 0 35px rgba(216, 131, 94, 0.7);
+    }
+
+    /* Fueling Innovation / Logo Section */
+    .trusted-section {
+      text-align: center;
+      margin-bottom: 5rem;
+      padding-top: 1rem;
+    }
+
+    .trusted-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+    }
+
+    .trusted-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2.5rem 3.5rem;
+    }
+
+    .logo-item img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1) opacity(0.85);
+      transition: all 0.3s ease;
+    }
+
+    .logo-item img:hover {
+      filter: brightness(0) invert(1) opacity(1);
+      transform: translateY(-2px);
     }
 
     .section-title {
@@ -808,6 +845,21 @@
       <a href="#quiz" class="btn">Take 30-Sec Automation Audit</a>
     </section>
 
+    <!-- Logo Banner Section -->
+    <section class="trusted-section">
+      <div class="trusted-title">// FUELING INNOVATION FOR</div>
+      <div class="trusted-logos">
+        <!-- ActivAsia Logo -->
+        <div class="logo-item">
+          <img src="assets/activasia-logo.png" alt="ActivAsia">
+        </div>
+        <!-- Hapinoy Logo -->
+        <div class="logo-item">
+          <img src="assets/hapinoy-logo.png" alt="Hapinoy">
+        </div>
+      </div>
+    </section>
+
     <!-- Why Kindly Pillars -->
     <section style="margin-bottom: 2rem;">
       <div class="section-title">
@@ -848,7 +900,7 @@
           <div class="hierarchy-level level-head">
             <div class="hitl-card highlight-card">
               <div class="avatar-box">
-                <img src="macar.jpg" alt="Macar">
+                <img src="assets/macar.jpg" alt="Macar">
               </div>
               <div class="name">Macar</div>
               <div class="title">Head of Operations</div>
@@ -860,7 +912,7 @@
           <div class="hierarchy-level level-manager">
             <div class="hitl-card highlight-card">
               <div class="avatar-box">
-                <img src="jeh.jpg" alt="Jeh">
+                <img src="assets/jeh.jpg" alt="Jeh">
               </div>
               <div class="name">Jeh</div>
               <div class="title">Operations Manager</div>
@@ -872,7 +924,7 @@
           <div class="hierarchy-level level-leads">
             <div class="hitl-card">
               <div class="avatar-box">
-                <img src="mico.jpg" alt="Mico">
+                <img src="assets/mico.jpg" alt="Mico">
               </div>
               <div class="name">Mico</div>
               <div class="title">Data Operations Lead</div>
@@ -881,7 +933,7 @@
 
             <div class="hitl-card">
               <div class="avatar-box">
-                <img src="fred.jpg" alt="Fred">
+                <img src="assets/fred.jpg" alt="Fred">
               </div>
               <div class="name">Fred</div>
               <div class="title">Systems Development Officer</div>
@@ -890,7 +942,7 @@
 
             <div class="hitl-card">
               <div class="avatar-box">
-                <img src="allan.jpg" alt="Allan">
+                <img src="assets/allan.jpg" alt="Allan">
               </div>
               <div class="name">Allan</div>
               <div class="title">Database & Admin Officer</div>
@@ -899,7 +951,7 @@
 
             <div class="hitl-card">
               <div class="avatar-box">
-                <img src="riza.jpg" alt="Riza">
+                <img src="assets/riza.jpg" alt="Riza">
               </div>
               <div class="name">Riza</div>
               <div class="title">Team Leader</div>
@@ -911,7 +963,7 @@
           <div class="hierarchy-level level-staff">
             <div class="hitl-card">
               <div class="avatar-box">
-                <img src="aira.jpg" alt="Aira">
+                <img src="assets/aira.jpg" alt="Aira">
               </div>
               <div class="name">Aira</div>
               <div class="title">Data Auditor</div>
@@ -920,7 +972,7 @@
 
             <div class="hitl-card">
               <div class="avatar-box">
-                <img src="tin.jpg" alt="Tin">
+                <img src="assets/tin.jpg" alt="Tin">
               </div>
               <div class="name">Tin</div>
               <div class="title">Systems & Data Associate</div>
@@ -929,7 +981,7 @@
 
             <div class="hitl-card">
               <div class="avatar-box">
-                <img src="grace.jpg" alt="Grace">
+                <img src="assets/grace.jpg" alt="Grace">
               </div>
               <div class="name">Grace</div>
               <div class="title">Leadgen & Onboarding Assistant</div>
@@ -938,7 +990,7 @@
 
             <div class="hitl-card">
               <div class="avatar-box">
-                <img src="chris.jpg" alt="Chris">
+                <img src="assets/chris.jpg" alt="Chris">
               </div>
               <div class="name">Chris</div>
               <div class="title">Data Admin</div>
@@ -1021,7 +1073,7 @@
         <div class="testimonial-card">
           <p>"We built Kindly to prove that artificial intelligence shouldn't replace human capability—it should elevate it. Our goal is to ensure every organization we work with builds a sustainable, human-guided AI advantage."</p>
           <div class="testimonial-author">
-            <img src="mark.jpg" alt="Mark Ruiz" class="author-avatar">
+            <img src="assets/mark.jpg" alt="Mark Ruiz" class="author-avatar">
             <div class="author-info">
               <h5>Mark Ruiz</h5>
               <span>Co-Founder</span>
@@ -1032,7 +1084,7 @@
         <div class="testimonial-card">
           <p>"Technology moves fast, but quality and trust remain deeply human. By combining cutting-edge AI acceleration with rigorous human oversight, we help teams scale efficiently without compromising on execution."</p>
           <div class="testimonial-author">
-            <img src="reese.jpg" alt="Reese Fernandez-Ruiz" class="author-avatar">
+            <img src="assets/reese.jpg" alt="Reese Fernandez-Ruiz" class="author-avatar">
             <div class="author-info">
               <h5>Reese Fernandez-Ruiz</h5>
               <span>Co-Founder</span>
