@@ -310,7 +310,7 @@
       backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 1.5rem 0.75rem;
+      padding: 1.5rem 0.75rem 1.25rem;
       text-align: center;
       position: relative;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -337,10 +337,39 @@
       box-shadow: 0 0 10px var(--accent);
     }
 
+    .hitl-card .service-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .tag-outsource {
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--cyan-neon);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+    }
+
+    .tag-automate {
+      background: rgba(216, 131, 94, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(216, 131, 94, 0.35);
+    }
+
+    .tag-all {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
     .hitl-card .avatar-box {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 0.75rem;
+      width: 75px;
+      height: 75px;
+      margin: 0 auto 0.65rem;
       position: relative;
       border-radius: 50%;
       padding: 3px;
@@ -368,16 +397,26 @@
       font-family: var(--font-mono);
       font-size: 0.75rem;
       color: var(--cyan-neon);
-      margin-top: 0.25rem;
+      margin-top: 0.2rem;
       margin-bottom: 0.5rem;
       font-weight: 500;
       line-height: 1.2;
     }
 
     .hitl-card .desc {
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       color: var(--text-muted);
       line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+
+    .hitl-card .tools-bar {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(248, 250, 252, 0.5);
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      padding-top: 0.5rem;
+      width: 100%;
       margin-top: auto;
     }
 
@@ -805,97 +844,117 @@
           </div>
         </div>
 
-        <!-- 10 Team Members Grid (Alphabetical Order) -->
+        <!-- 10 Team Members Grid (Alphabetical Order + Service Badges & Tools) -->
         <div class="hitl-team-row">
 
           <div class="hitl-card">
+            <span class="service-tag tag-outsource">Outsource</span>
             <div class="avatar-box">
               <img src="aira.jpg" alt="Aira">
             </div>
             <div class="name">Aira</div>
             <div class="title">Data Auditor</div>
             <div class="desc">Executing database audits and validating performance reports for Outsource and AI QA pipelines.</div>
+            <div class="tools-bar">QA • Database Audits</div>
           </div>
 
           <div class="hitl-card">
+            <span class="service-tag tag-outsource">Outsource</span>
             <div class="avatar-box">
               <img src="allan.jpg" alt="Allan">
             </div>
             <div class="name">Allan</div>
             <div class="title">Database & Admin Officer</div>
             <div class="desc">Managing core Data solutions, reporting, and automated administration pipelines.</div>
+            <div class="tools-bar">SQL • Data Pipelines</div>
           </div>
 
           <div class="hitl-card">
+            <span class="service-tag tag-outsource">Outsource</span>
             <div class="avatar-box">
               <img src="chris.jpg" alt="Chris">
             </div>
             <div class="name">Chris</div>
             <div class="title">Data Admin</div>
             <div class="desc">Managing precise Data solutions & encoding, report verification, and AI-assisted customer support.</div>
+            <div class="tools-bar">Data Encoding • AI Support</div>
           </div>
 
           <div class="hitl-card">
+            <span class="service-tag tag-automate">Automate</span>
             <div class="avatar-box">
               <img src="fred.jpg" alt="Fred">
             </div>
             <div class="name">Fred</div>
             <div class="title">Systems Development Officer</div>
             <div class="desc">Executing Custom Chatbot Development, integration testing, and targeted Automate workflows.</div>
+            <div class="tools-bar">Chatbots • Integrations</div>
           </div>
 
           <div class="hitl-card">
+            <span class="service-tag tag-automate">Automate</span>
             <div class="avatar-box">
               <img src="grace.jpg" alt="Grace">
             </div>
             <div class="name">Grace</div>
             <div class="title">Leadgen & Onboarding Assistant</div>
             <div class="desc">Managing Lead generation and accurate onboarding data across client service deployments.</div>
+            <div class="tools-bar">Lead Gen • Onboarding</div>
           </div>
 
           <div class="hitl-card">
+            <span class="service-tag tag-all">All Pillars</span>
             <div class="avatar-box">
               <img src="jeh.jpg" alt="Jeh">
             </div>
             <div class="name">Jeh</div>
             <div class="title">Operations Manager</div>
             <div class="desc">Overseeing daily operations, project delivery, and quality control to maintain strict SLAs across all services.</div>
+            <div class="tools-bar">SLA Oversight • Delivery</div>
           </div>
 
           <div class="hitl-card">
+            <span class="service-tag tag-all">All Pillars</span>
             <div class="avatar-box">
               <img src="macar.jpg" alt="Macar">
             </div>
             <div class="name">Macar</div>
             <div class="title">Head of Operations</div>
             <div class="desc">Directing overall operations and strategic alignment to ensure operational excellence across Upskill, Outsource, and Automate.</div>
+            <div class="tools-bar">Ops Strategy • Alignment</div>
           </div>
 
           <div class="hitl-card">
+            <span class="service-tag tag-automate">Automate</span>
             <div class="avatar-box">
               <img src="mico.jpg" alt="Mico">
             </div>
             <div class="name">Mico</div>
             <div class="title">Data Operations Lead</div>
             <div class="desc">Leading system innovation and Automate workflows, guaranteeing data integrity in human-in-the-loop systems.</div>
+            <div class="tools-bar">Workflows • Data Integrity</div>
           </div>
 
           <div class="hitl-card">
+            <span class="service-tag tag-outsource">Outsource</span>
             <div class="avatar-box">
               <img src="riza.jpg" alt="Riza">
             </div>
             <div class="name">Riza</div>
             <div class="title">Team Leader</div>
             <div class="desc">Leading data operations and overseeing encoder audits and AI response review & QA pipelines.</div>
+            <div class="tools-bar">Encoder QA • AI Review</div>
           </div>
 
           <div class="hitl-card">
+            <span class="service-tag tag-automate">Automate</span>
             <div class="avatar-box">
               <img src="tin.jpg" alt="Tin">
             </div>
             <div class="name">Tin</div>
             <div class="title">Systems & Data Associate</div>
             <div class="desc">Developing conversational agent workflows, automating message pipelines, and conducting data audits.</div>
+            <div class="tools-bar">AI Agents • Automation</div>
           </div>
 
         </div>
