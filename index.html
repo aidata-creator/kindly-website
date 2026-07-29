@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kindly — Human-delivered, AI-accelerated</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
-      background-image: 
+      background-image:
         radial-gradient(circle at 50% 0%, rgba(216, 131, 94, 0.18) 0%, transparent 60%),
         radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.1) 0%, transparent 50%),
         linear-gradient(to right, rgba(0, 242, 254, 0.03) 1px, transparent 1px),
@@ -193,7 +193,7 @@
 
     .btn:hover::before { left: 100%; }
 
-    .btn:hover { 
+    .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 0 35px rgba(216, 131, 94, 0.7);
     }
@@ -203,18 +203,18 @@
       margin-bottom: 3.5rem;
     }
 
-    .section-title h2 { 
+    .section-title h2 {
       font-family: var(--font-heading);
-      font-size: 2.4rem; 
-      margin-bottom: 0.5rem; 
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
       letter-spacing: -0.02em;
       background: linear-gradient(135deg, #fff 0%, var(--cyan-neon) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    
-    .section-title p { 
-      color: var(--text-muted); 
+
+    .section-title p {
+      color: var(--text-muted);
       font-family: var(--font-mono);
       font-size: 0.9rem;
     }
@@ -245,29 +245,6 @@
     .pillar-card p {
       color: var(--text-muted);
       font-size: 0.9rem;
-    }
-
-    /* Logo Card Hover Effect */
-    .logo-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 2rem 2.5rem;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 220px;
-      flex: 1;
-      max-width: 320px;
-      backdrop-filter: blur(12px);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-    }
-
-    .logo-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 15px 35px rgba(216, 131, 94, 0.25);
     }
 
     /* Human-in-the-Loop Network Styling */
@@ -687,9 +664,40 @@
       font-size: 1rem;
     }
 
-    /* Industry Badges Section */
+    /* Industry Badges */
     .industries-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 3rem 2rem;
       margin-bottom: 6rem;
+      text-align: center;
+    }
+
+    .industry-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 1.75rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--text-main);
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+      color: #fff;
     }
 
     /* Timeline Section & Animated Numbers */
@@ -770,8 +778,8 @@
             }
           });
         }
-        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
-        v.type = "text/javascript"; 
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+        v.type = "text/javascript";
         s.parentNode.insertBefore(v, s);
     })(document, 'script');
   </script>
@@ -808,32 +816,12 @@
       </div>
       <div class="pillars-grid">
         <div class="pillar-card">
-          <h4>⚡ AI-Enabled, Not Replaced</h4>
+          <h4>:zap: AI-Enabled, Not Replaced</h4>
           <p>We use AI to accelerate workflows and catch errors—while skilled humans do the nuanced work machines can't.</p>
         </div>
         <div class="pillar-card">
-          <h4>📊 Quality You Can Measure</h4>
+          <h4>:bar_chart: Quality You Can Measure</h4>
           <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLAs you can count on.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Fueling Innovation Section with Hover Effect -->
-    <section class="industries-section">
-      <div class="section-title">
-        <h2>Fueling Innovation Across Forward-Thinking Teams</h2>
-        <p>// TRUSTED PARTNERS & INDUSTRY LEADERS</p>
-      </div>
-
-      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.75rem;">
-        <div class="logo-card">
-          <img src="assets/activasia-logo.png" alt="ActivAsia" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
-        </div>
-        <div class="logo-card">
-          <img src="assets/gethapi-logo.png" alt="GetHapi" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
-        </div>
-        <div class="logo-card">
-          <img src="assets/hapinoy-logo.png" alt="Hapinoy" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
         </div>
       </div>
     </section>
@@ -969,15 +957,15 @@
       </div>
       <div class="timeline-grid">
         <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="24">24</span>h</div>
+          <div class="time"><span class="counter" data-target="24">0</span>h</div>
           <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
         </div>
         <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="48">48</span>h</div>
+          <div class="time"><span class="counter" data-target="48">0</span>h</div>
           <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
         </div>
         <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="2">2</span>wk</div>
+          <div class="time"><span class="counter" data-target="2">0</span>wk</div>
           <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
         </div>
       </div>
@@ -1070,10 +1058,10 @@
         <div class="quiz-step active" id="quizStep1">
           <h4>1. Where does your operational bottleneck lie?</h4>
           <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Data Entry & Processing')">📥 Manual Data Entry & Processing</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Customer Support Responses')">💬 Customer Support & Inquiries</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Repetitive Internal Workflows')">⚙️ Repetitive Internal Workflows</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Team AI Adoption & Literacy')">🎓 Low AI Literacy Across Staff</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Data Entry & Processing')">:inbox_tray: Manual Data Entry & Processing</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Customer Support Responses')">:speech_balloon: Customer Support & Inquiries</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Repetitive Internal Workflows')">:gear: Repetitive Internal Workflows</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Team AI Adoption & Literacy')">:mortar_board: Low AI Literacy Across Staff</button>
           </div>
         </div>
 
@@ -1081,10 +1069,10 @@
         <div class="quiz-step" id="quizStep2">
           <h4>2. What is your primary tool stack environment?</h4>
           <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Google Workspace & Spreadsheets')">📊 Spreadsheets & Google Workspace</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'CRMs & Helpdesks')">🎧 CRMs / Helpdesks (HubSpot, Zendesk, etc.)</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Custom Databases & APIs')">💻 Custom Databases & Internal Software</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Mostly Manual / Unstructured')">📝 Unstructured Emails & Docs</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Google Workspace & Spreadsheets')">:bar_chart: Spreadsheets & Google Workspace</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'CRMs & Helpdesks')">:headphones: CRMs / Helpdesks (HubSpot, Zendesk, etc.)</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Custom Databases & APIs')">:computer: Custom Databases & Internal Software</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Mostly Manual / Unstructured')">:memo: Unstructured Emails & Docs</button>
           </div>
         </div>
 
@@ -1092,64 +1080,218 @@
         <div class="quiz-step" id="quizStep3">
           <h4>3. How large is the team handling this workload?</h4>
           <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '1 - 5 staff members')">👥 1 – 5 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '6 - 20 staff members')">👥 6 – 20 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '21+ staff members')">👥 21+ team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '1 - 5 staff members')">:busts_in_silhouette: 1 – 5 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '6 - 20 staff members')">:busts_in_silhouette: 6 – 20 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '21 - 50 staff members')">:office: 21 – 50 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '50+ staff members')">:rocket: 50+ enterprise staff</button>
           </div>
         </div>
 
         <!-- Result Card -->
         <div class="quiz-step" id="quizResult">
           <div class="quiz-result-card">
-            <h4>Audit Complete!</h4>
-            <p id="quizSummaryText">Based on your inputs, we've identified key efficiency gains for your workflow.</p>
-            <a href="#book" class="btn">Book a Strategy Call</a>
+            <h4 id="auditRecommendation">Recommended: Custom Workflow Automation</h4>
+            <p id="auditDetails">Based on your selections, implementing AI-assisted agents and structured data workflows can reduce manual tasks by up to 60-80% within 3 weeks.</p>
+            <a href="#book" class="btn">Schedule Discovery Call for This Solution</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Booking Section -->
-    <section class="booking-section" id="book">
-      <div class="section-title">
-        <h2>Schedule Your Strategy Session</h2>
-        <p>// LET'S BUILD YOUR HUMAN-IN-THE-LOOP ADVANTAGE</p>
+    <!-- Industries Served -->
+    <section class="industries-section">
+      <div class="section-title" style="margin-bottom: 0;">
+        <h2>Industries We Serve</h2>
+        <p>// WHERE ACCURATE DATA & AI CREATE COMPETITIVE ADVANTAGE</p>
       </div>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/mark-kindly/30min"></div>
+      <div class="industry-badges">
+        <span class="badge">:package: Shipping & Logistics</span>
+        <span class="badge">:credit_card: Fintech & KYC</span>
+        <span class="badge">:hospital: Healthcare</span>
+        <span class="badge">:shopping_bags: E-commerce</span>
+        <span class="badge">:chart_with_upwards_trend: Market Research</span>
+        <span class="badge">:airplane: Aviation</span>
+        <span class="badge">:building_construction: Warehousing</span>
+        <span class="badge">:robot_face: AI & Machine Learning</span>
+      </div>
+    </section>
+
+ <!-- Fueling Innovation Section -->
+<section class="industries-section">
+  <div class="section-title">
+    <h2>Fueling Innovation Across Forward-Thinking Teams</h2>
+    <p>// TRUSTED PARTNERS & INDUSTRY LEADERS</p>
+  </div>
+
+  <!-- Logos Container -->
+  <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.75rem;">
+    <!-- Logo 1 -->
+    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+      <img src="assets/activasia-logo.png" alt="ActivAsia" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+    </div>
+    <!-- Logo 2 -->
+    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+      <img src="assets/gethapi-logo.png" alt="GetHapi" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+    </div>
+    <!-- Logo 3 -->
+    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+      <img src="assets/hapinoy-logo.png" alt="Hapinoy" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+    </div>
+  </div>
+</section>
+
+
+    <!-- Booking Section -->
+    <section id="book" class="booking-section">
+      <div class="section-title">
+        <h2>Ready to get started?</h2>
+        <p>// SELECT AN AVAILABLE SLOT BELOW</p>
+      </div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=030712&text_color=f8fafc&primary_color=00f2fe"></div>
     </section>
 
     <!-- Footer -->
     <footer>
-      <p>&copy; Kindly. All rights reserved. Built with human care and AI precision.</p>
+      <p><a href="mailto:hello@kindly.ph">hello@kindly.ph</a> | Manila, Philippines · Serving clients worldwide</p>
+      <p style="margin-top: 0.5rem; opacity: 0.7;">A business under Atindata · Atin Group &copy; 2026 Kindly. All rights reserved.</p>
     </footer>
   </div>
 
-  <!-- Interactive Quiz Logic -->
+  <!-- Neural Canvas Background Script -->
   <script>
-    let quizAnswers = {};
+    const canvas = document.getElementById('neural-canvas');
+    const ctx = canvas.getContext('2d');
 
-    function selectQuizOption(step, answer) {
-      quizAnswers[`step${step}`] = answer;
-      
-      const currentStepEl = document.getElementById(`quizStep${step}`);
-      currentStepEl.classList.remove('active');
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-      const nextStepNum = step + 1;
-      const progressBar = document.getElementById('quizBar');
+    const nodes = [];
+    const nodeCount = 55;
 
-      if (nextStepNum <= 3) {
-        const nextStepEl = document.getElementById(`quizStep${nextStepNum}`);
-        nextStepEl.classList.add('active');
-        progressBar.style.width = `${(nextStepNum / 3) * 100}%`;
-      } else {
-        const resultEl = document.getElementById('quizResult');
-        resultEl.classList.add('active');
-        progressBar.style.width = '100%';
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 1.8 + 1
+      });
+    }
 
-        const summaryText = document.getElementById('quizSummaryText');
-        summaryText.innerText = `Recommended Strategy: Tailored ${quizAnswers.step1 || 'automation'} pipeline integrated into ${quizAnswers.step2 || 'your stack'} for a team of ${quizAnswers.step3 || 'your size'}.`;
+    function animateNeuralNetwork() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < nodeCount; i++) {
+        let node = nodes[i];
+        node.x += node.vx;
+        node.y += node.vy;
+
+        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+        ctx.fill();
+
+        for (let j = i + 1; j < nodeCount; j++) {
+          let nodeB = nodes[j];
+          let dist = Math.hypot(node.x - nodeB.x, node.y - nodeB.y);
+
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(node.x, node.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.strokeStyle = `rgba(0, 242, 254, ${0.15 * (1 - dist / 130)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateNeuralNetwork);
+    }
+    animateNeuralNetwork();
+
+    /* Number Counter Animation Observer */
+    let animated = false;
+    const timelineSection = document.getElementById('timeline-section');
+    const counters = document.querySelectorAll('.counter');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 1500;
+            const stepTime = 30;
+            const steps = duration / stepTime;
+            const increment = target / steps;
+            let current = 0;
+
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                counter.innerText = target;
+                clearInterval(timer);
+              } else {
+                counter.innerText = Math.ceil(current);
+              }
+            }, stepTime);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    observer.observe(timelineSection);
+
+    /* Quiz State Logic */
+    const auditData = { bottleneck: '', stack: '', size: '' };
+
+    function selectQuizOption(step, value) {
+      if (step === 1) {
+        auditData.bottleneck = value;
+        document.getElementById('quizStep1').classList.remove('active');
+        document.getElementById('quizStep2').classList.add('active');
+        document.getElementById('quizBar').style.width = '66%';
+      } else if (step === 2) {
+        auditData.stack = value;
+        document.getElementById('quizStep2').classList.remove('active');
+        document.getElementById('quizStep3').classList.add('active');
+        document.getElementById('quizBar').style.width = '100%';
+      } else if (step === 3) {
+        auditData.size = value;
+        document.getElementById('quizStep3').classList.remove('active');
+        generateAuditResult();
       }
     }
+
+    function generateAuditResult() {
+      const resultStep = document.getElementById('quizResult');
+      const recTitle = document.getElementById('auditRecommendation');
+      const recDesc = document.getElementById('auditDetails');
+
+      if (auditData.bottleneck.includes('Data Entry')) {
+        recTitle.innerText = "High Potential: Data Solutions & AI Quality Assurance";
+        recDesc.innerText = `For teams of ${auditData.size} working in ${auditData.stack}, our AI-accelerated Outsource team can automate high-volume data encoding and verification with 99%+ accuracy.`;
+      } else if (auditData.bottleneck.includes('Support')) {
+        recTitle.innerText = "High Potential: Custom Chatbot & Agent Deployment";
+        recDesc.innerText = `Automate response handling across ${auditData.stack} with tailored conversational agents, instantly scaling your support capacity without increasing headcount.`;
+      } else if (auditData.bottleneck.includes('Literacy')) {
+        recTitle.innerText = "High Potential: Team Upskilling & AI Integration";
+        recDesc.innerText = `Empower your staff of ${auditData.size} with practical AI training tailored specifically around your existing ${auditData.stack} workflows.`;
+      } else {
+        recTitle.innerText = "High Potential: Full Workflow & AI Process Audit";
+        recDesc.innerText = `We can map out your repetitive operations and build custom AI automations to save your team estimated hundreds of hours each month.`;
+      }
+
+      resultStep.classList.add('active');
+    }
   </script>
+
 </body>
 </html>
