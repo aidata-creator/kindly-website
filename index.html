@@ -249,7 +249,7 @@
 
     /* Human-in-the-Loop Network Styling */
     .hitl-network-wrapper {
-      max-width: 1000px;
+      max-width: 1050px;
       margin: 0 auto;
       padding: 2.5rem 1.5rem;
       background: rgba(15, 23, 42, 0.4);
@@ -314,6 +314,9 @@
       text-align: center;
       position: relative;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hitl-card::before {
@@ -335,8 +338,8 @@
     }
 
     .hitl-card .avatar-box {
-      width: 85px;
-      height: 85px;
+      width: 80px;
+      height: 80px;
       margin: 0 auto 0.75rem;
       position: relative;
       border-radius: 50%;
@@ -355,9 +358,27 @@
 
     .hitl-card .name {
       font-family: var(--font-heading);
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .hitl-card .title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--cyan-neon);
+      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .hitl-card .desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-top: auto;
     }
 
     .hitl-card:hover {
@@ -368,7 +389,7 @@
 
     @media (max-width: 900px) {
       .hitl-team-row {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       }
       .hitl-core-node::after {
         display: none;
@@ -786,39 +807,14 @@
 
         <!-- 10 Team Members Grid -->
         <div class="hitl-team-row">
-          <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="aira.jpg" alt="Aira">
-            </div>
-            <div class="name">Aira</div>
-          </div>
 
           <div class="hitl-card">
             <div class="avatar-box">
-              <img src="allan.jpg" alt="Allan">
+              <img src="macar.jpg" alt="Macar">
             </div>
-            <div class="name">Allan</div>
-          </div>
-
-          <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="chris.jpg" alt="Chris">
-            </div>
-            <div class="name">Chris</div>
-          </div>
-
-          <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="fred.jpg" alt="Fred">
-            </div>
-            <div class="name">Fred</div>
-          </div>
-
-          <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="grace.jpg" alt="Grace">
-            </div>
-            <div class="name">Grace</div>
+            <div class="name">Macar</div>
+            <div class="title">Head of Operations</div>
+            <div class="desc">Directs ops, strategic alignment, & team excellence.</div>
           </div>
 
           <div class="hitl-card">
@@ -826,13 +822,8 @@
               <img src="jeh.jpg" alt="Jeh">
             </div>
             <div class="name">Jeh</div>
-          </div>
-
-          <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="macar.jpg" alt="Macar">
-            </div>
-            <div class="name">Macar</div>
+            <div class="title">Operations Manager</div>
+            <div class="desc">Oversees daily ops, delivery, QA, & workforce planning.</div>
           </div>
 
           <div class="hitl-card">
@@ -840,6 +831,8 @@
               <img src="mico.jpg" alt="Mico">
             </div>
             <div class="name">Mico</div>
+            <div class="title">Data Operations Lead</div>
+            <div class="desc">Leads automation, system innovation, & data integrity.</div>
           </div>
 
           <div class="hitl-card">
@@ -847,6 +840,26 @@
               <img src="riza.jpg" alt="Riza">
             </div>
             <div class="name">Riza</div>
+            <div class="title">Team Leader</div>
+            <div class="desc">Leads data ops, encoder audits, & data accuracy.</div>
+          </div>
+
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="fred.jpg" alt="Fred">
+            </div>
+            <div class="name">Fred</div>
+            <div class="title">Systems Dev Officer</div>
+            <div class="desc">Develops chatbots, tests integrations, & manages workflows.</div>
+          </div>
+
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="allan.jpg" alt="Allan">
+            </div>
+            <div class="name">Allan</div>
+            <div class="title">Database & Admin Officer</div>
+            <div class="desc">Manages core data reporting, verification, & admin pipelines.</div>
           </div>
 
           <div class="hitl-card">
@@ -854,7 +867,37 @@
               <img src="tin.jpg" alt="Tin">
             </div>
             <div class="name">Tin</div>
+            <div class="title">Systems & Data Associate</div>
+            <div class="desc">Builds chatbot workflows, automates messaging, & audits data.</div>
           </div>
+
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="grace.jpg" alt="Grace">
+            </div>
+            <div class="name">Grace</div>
+            <div class="title">Leadgen & Onboarding</div>
+            <div class="desc">Manages lead generation, onboarding data, & client inquiries.</div>
+          </div>
+
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="aira.jpg" alt="Aira">
+            </div>
+            <div class="name">Aira</div>
+            <div class="title">Data Auditor</div>
+            <div class="desc">Executes DB audits, validates DARs, & consolidates project data.</div>
+          </div>
+
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="chris.jpg" alt="Chris">
+            </div>
+            <div class="name">Chris</div>
+            <div class="title">Data Admin</div>
+            <div class="desc">Handles encoding, client reporting, & chatbot support.</div>
+          </div>
+
         </div>
       </div>
     </section>
