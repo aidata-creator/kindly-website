@@ -1,1190 +1,1085 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kindly — Human-delivered, AI-accelerated</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg-color: #030712;
-      --card-bg: rgba(15, 23, 42, 0.65);
-      --card-border: rgba(0, 242, 254, 0.15);
-      --card-hover-border: rgba(0, 242, 254, 0.6);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent: #d8835e;
-      --accent-glow: rgba(216, 131, 94, 0.4);
-      --cyan-neon: #00f2fe;
-      --cyan-glow: rgba(0, 242, 254, 0.35);
-      --font-heading: 'Space Grotesk', sans-serif;
-      --font-body: 'Plus Jakarta Sans', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: var(--font-body);
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Interactive Neural Network Background Canvas */
-    #neural-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -2;
-      pointer-events: none;
-    }
-
-    /* Futuristic Cyber Grid Overlay */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(216, 131, 94, 0.18) 0%, transparent 60%),
-        radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.1) 0%, transparent 50%),
-        linear-gradient(to right, rgba(0, 242, 254, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-      z-index: -1;
-    }
-
-    /* Static Top Cyber Accent Line */
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent 0%, var(--cyan-neon) 40%, var(--accent) 70%, transparent 100%);
-      z-index: 100;
-      box-shadow: 0 0 12px var(--cyan-glow);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      padding: 2.5rem 0 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: var(--font-heading);
-      font-size: 1.7rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-    }
-
-    .live-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: rgba(0, 242, 254, 0.05);
-      color: var(--cyan-neon);
-      padding: 0.4rem 1.1rem;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      font-family: var(--font-mono);
-      letter-spacing: 0.05em;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(0, 242, 254, 0.3);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--cyan-neon);
-      border-radius: 50%;
-      box-shadow: 0 0 12px var(--cyan-neon);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(0, 242, 254, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
-    }
-
-    .hero {
-      text-align: center;
-      padding: 4rem 0 5rem;
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .hero h1 {
-      font-family: var(--font-heading);
-      font-size: 3.8rem;
-      font-weight: 700;
-      line-height: 1.12;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.03em;
-      background: linear-gradient(180deg, #ffffff 20%, rgba(255, 255, 255, 0.65) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 40px rgba(0, 242, 254, 0.2);
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      background: linear-gradient(135deg, var(--accent) 0%, #b8603b 100%);
-      color: #ffffff;
-      padding: 1rem 2.4rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 25px var(--accent-glow);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: 0.5s;
-    }
-
-    .btn:hover::before { left: 100%; }
-
-    .btn:hover { 
-      transform: translateY(-2px);
-      box-shadow: 0 0 35px rgba(216, 131, 94, 0.7);
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-title h2 { 
-      font-family: var(--font-heading);
-      font-size: 2.4rem; 
-      margin-bottom: 0.5rem; 
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 0%, var(--cyan-neon) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .section-title p { 
-      color: var(--text-muted); 
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-    }
-
-    /* Pillars */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .pillar-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 2rem;
-      border-radius: 12px;
-      backdrop-filter: blur(12px);
-    }
-
-    .pillar-card h4 {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .pillar-card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* Human-in-the-Loop Network Styling */
-    .hitl-network-wrapper {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-      background: rgba(15, 23, 42, 0.4);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
-      position: relative;
-    }
-
-    .hitl-core-node {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 3.5rem;
-      position: relative;
-    }
-
-    .hitl-core-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: rgba(0, 242, 254, 0.08);
-      border: 1px solid var(--cyan-neon);
-      padding: 0.8rem 1.8rem;
-      border-radius: 50px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--cyan-neon);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      box-shadow: 0 0 25px rgba(0, 242, 254, 0.25);
-      position: relative;
-      z-index: 3;
-    }
-
-    .hitl-core-node::after {
-      content: '';
-      position: absolute;
-      bottom: -3.5rem;
-      left: 50%;
-      width: 2px;
-      height: 3.5rem;
-      background: linear-gradient(to bottom, var(--cyan-neon), var(--card-border));
-      z-index: 1;
-    }
-
-    /* Top-to-Bottom Hierarchy Styles */
-    .hierarchy-layout {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hierarchy-level {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      width: 100%;
-      flex-wrap: wrap;
-    }
-
-    /* Card widths per level */
-    .level-head .hitl-card,
-    .level-manager .hitl-card {
-      width: 240px;
-    }
-
-    .level-leads .hitl-card {
-      width: 210px;
-    }
-
-    .level-staff .hitl-card {
-      width: 200px;
-    }
-
-    .hitl-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1.5rem 0.75rem 1.25rem;
-      text-align: center;
-      position: relative;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .hitl-card.highlight-card {
-      border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(216, 131, 94, 0.2);
-    }
-
-    .hitl-card::before {
-      content: '';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 8px;
-      height: 8px;
-      background: var(--card-border);
-      border-radius: 50%;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .hitl-card:hover::before {
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-    }
-
-    .hitl-card .avatar-box {
-      width: 75px;
-      height: 75px;
-      margin: 0 auto 0.65rem;
-      position: relative;
-      border-radius: 50%;
-      padding: 3px;
-      background: linear-gradient(135deg, var(--accent), transparent);
-      box-shadow: 0 0 12px var(--accent-glow);
-    }
-
-    .hitl-card img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hitl-card .name {
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.2;
-    }
-
-    .hitl-card .title {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--cyan-neon);
-      margin-top: 0.2rem;
-      margin-bottom: 0.75rem;
-      font-weight: 500;
-      line-height: 1.2;
-    }
-
-    .hitl-card .tools-bar {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: rgba(248, 250, 252, 0.5);
-      border-top: 1px dashed rgba(255, 255, 255, 0.1);
-      padding-top: 0.5rem;
-      width: 100%;
-      margin-top: auto;
-    }
-
-    .hitl-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 30px rgba(216, 131, 94, 0.25);
-    }
-
-    @media (max-width: 900px) {
-      .level-head .hitl-card,
-      .level-manager .hitl-card,
-      .level-leads .hitl-card,
-      .level-staff .hitl-card {
-        width: 100%;
-        max-width: 240px;
-      }
-      .hitl-core-node::after {
-        display: none;
-      }
-    }
-
-    /* AI Card Design */
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 6rem;
-    }
-
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      padding: 2.5rem;
-      border-radius: 12px;
-      border: 1px solid var(--card-border);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 15px; height: 15px;
-      border-top: 2px solid var(--cyan-neon);
-      border-right: 2px solid var(--cyan-neon);
-      opacity: 0.5;
-      transition: opacity 0.3s ease;
-    }
-
-    .card:hover::after { opacity: 1; }
-
-    .card:hover {
-      border-color: var(--card-hover-border);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0.2);
-    }
-
-    .card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.6rem;
-      color: var(--cyan-neon);
-      margin-bottom: 0.75rem;
-    }
-
-    .card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .card ul {
-      list-style: none;
-      border-top: 1px solid var(--card-border);
-      padding-top: 1.25rem;
-    }
-
-    .card ul li {
-      color: var(--text-main);
-      font-size: 0.9rem;
-      margin-bottom: 0.6rem;
-      position: relative;
-      padding-left: 1.4rem;
-      font-family: var(--font-mono);
-    }
-
-    .card ul li::before {
-      content: ">";
-      color: var(--accent);
-      position: absolute;
-      left: 0;
-      font-weight: bold;
-    }
-
-    /* Testimonials / Leadership Section */
-    .testimonials-section {
-      margin-bottom: 6rem;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-top: 2.5rem;
-    }
-
-    .testimonial-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 2.5rem;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-
-    .testimonial-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 15px 35px rgba(216, 131, 94, 0.2);
-    }
-
-    .testimonial-card p {
-      color: var(--text-main);
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      border-top: 1px solid var(--card-border);
-      padding-top: 1.25rem;
-    }
-
-    .testimonial-author .author-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      object-fit: cover;
-      box-shadow: 0 0 10px var(--accent-glow);
-    }
-
-    .testimonial-author .author-info h5 {
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      color: var(--text-main);
-    }
-
-    .testimonial-author .author-info span {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--cyan-neon);
-    }
-
-    /* AI Audit Interactive Section */
-    .quiz-section {
-      background: rgba(10, 16, 31, 0.85);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--cyan-neon);
-      border-radius: 16px;
-      padding: 3.5rem 2rem;
-      margin-bottom: 6rem;
-      max-width: 850px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 0 50px rgba(0, 242, 254, 0.15), inset 0 0 30px rgba(0, 242, 254, 0.05);
-      position: relative;
-    }
-
-    .quiz-container {
-      max-width: 650px;
-      margin: 0 auto;
-    }
-
-    .quiz-progress {
-      height: 4px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 2px;
-      margin-bottom: 2rem;
-      overflow: hidden;
-    }
-
-    .quiz-progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--cyan-neon));
-      width: 33%;
-      transition: width 0.4s ease;
-      box-shadow: 0 0 12px var(--cyan-neon);
-    }
-
-    .quiz-step { display: none; }
-    .quiz-step.active {
-      display: block;
-      animation: fadeIn 0.4s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .quiz-step h4 {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .quiz-options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-    }
-
-    .quiz-option-btn {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: left;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: all 0.25s ease;
-    }
-
-    .quiz-option-btn:hover {
-      border-color: var(--cyan-neon);
-      background: rgba(0, 242, 254, 0.08);
-      transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
-    }
-
-    .quiz-result-card { text-align: center; }
-    .quiz-result-card h4 {
-      color: var(--cyan-neon);
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .quiz-result-card p {
-      color: var(--text-muted);
-      margin-bottom: 1.8rem;
-      font-size: 1rem;
-    }
-
-    /* Timeline Section & Animated Numbers */
-    .timeline-section {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 3.5rem 2rem;
-      margin-bottom: 6rem;
-      text-align: center;
-    }
-
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 2.5rem;
-    }
-
-    .timeline-item .time {
-      font-family: var(--font-heading);
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--cyan-neon);
-      margin-bottom: 0.25rem;
-      text-shadow: 0 0 25px var(--cyan-glow);
-      display: flex;
-      justify-content: center;
-      align-items: baseline;
-    }
-
-    .timeline-item p {
-      color: var(--text-muted);
-      font-size: 0.925rem;
-    }
-
-    .booking-section {
-      text-align: center;
-      margin-bottom: 6rem;
-    }
-
-    .calendly-inline-widget {
-      min-width: 320px;
-      height: 720px;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 2rem;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    footer {
-      text-align: center;
-      padding: 3.5rem 0;
-      color: var(--text-muted);
-      font-size: 0.875rem;
-      border-top: 1px solid var(--card-border);
-      font-family: var(--font-mono);
-    }
-
-    footer a { color: var(--cyan-neon); text-decoration: none; }
-  </style>
-
-  <!-- Calendly Script -->
-  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-  <!-- Voiceflow Chat Widget Script -->
-  <script type="text/javascript">
-    (function(d, t) {
-        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        v.onload = function() {
-          window.voiceflow.chat.load({
-            verify: { projectID: '6a62117cbd80ee072db5efa6' },
-            url: 'https://general-runtime.voiceflow.com',
-            voice: {
-              url: "https://runtime-api.voiceflow.com"
-            }
-          });
-        }
-        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
-        v.type = "text/javascript"; 
-        s.parentNode.insertBefore(v, s);
-    })(document, 'script');
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kindly — Human-delivered, AI-accelerated</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #030712;
+      --card-bg: rgba(15, 23, 42, 0.65);
+      --card-border: rgba(0, 242, 254, 0.15);
+      --card-hover-border: rgba(0, 242, 254, 0.6);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #d8835e;
+      --accent-glow: rgba(216, 131, 94, 0.4);
+      --cyan-neon: #00f2fe;
+      --cyan-glow: rgba(0, 242, 254, 0.35);
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Interactive Neural Network Background Canvas */
+    #neural-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* Futuristic Cyber Grid Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(216, 131, 94, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.1) 0%, transparent 50%),
+        linear-gradient(to right, rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      z-index: -1;
+    }
+
+    /* Static Top Cyber Accent Line */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--cyan-neon) 40%, var(--accent) 70%, transparent 100%);
+      z-index: 100;
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      padding: 2.5rem 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(0, 242, 254, 0.05);
+      color: var(--cyan-neon);
+      padding: 0.4rem 1.1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--cyan-neon);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--cyan-neon);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 242, 254, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 0 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: 3.8rem;
+      font-weight: 700;
+      line-height: 1.12;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #ffffff 20%, rgba(255, 255, 255, 0.65) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px rgba(0, 242, 254, 0.2);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, var(--accent) 0%, #b8603b 100%);
+      color: #ffffff;
+      padding: 1rem 2.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 25px var(--accent-glow);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before { left: 100%; }
+
+    .btn:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(216, 131, 94, 0.7);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 { 
+      font-family: var(--font-heading);
+      font-size: 2.4rem; 
+      margin-bottom: 0.5rem; 
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 0%, var(--cyan-neon) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .section-title p { 
+      color: var(--text-muted); 
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+
+    /* Pillars */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .pillar-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+    }
+
+    .pillar-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Human-in-the-Loop Network Styling */
+    .hitl-network-wrapper {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .hitl-core-node {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .hitl-core-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid var(--cyan-neon);
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--cyan-neon);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.25);
+      position: relative;
+      z-index: 3;
+    }
+
+    .hitl-core-node::after {
+      content: '';
+      position: absolute;
+      bottom: -3.5rem;
+      left: 50%;
+      width: 2px;
+      height: 3.5rem;
+      background: linear-gradient(to bottom, var(--cyan-neon), var(--card-border));
+      z-index: 1;
+    }
+
+    /* Top-to-Bottom Hierarchy Styles */
+    .hierarchy-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hierarchy-level {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    /* Card widths per level */
+    .level-head .hitl-card,
+    .level-manager .hitl-card {
+      width: 240px;
+    }
+
+    .level-leads .hitl-card {
+      width: 210px;
+    }
+
+    .level-staff .hitl-card {
+      width: 200px;
+    }
+
+    .hitl-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem 0.75rem 1.25rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hitl-card.highlight-card {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(216, 131, 94, 0.2);
+    }
+
+    .hitl-card::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--card-border);
+      border-radius: 50%;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hitl-card:hover::before {
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .hitl-card .avatar-box {
+      width: 75px;
+      height: 75px;
+      margin: 0 auto 0.65rem;
+      position: relative;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--accent), transparent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .hitl-card img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hitl-card .name {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .hitl-card .title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--cyan-neon);
+      margin-top: 0.2rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .hitl-card .tools-bar {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(248, 250, 252, 0.5);
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      padding-top: 0.5rem;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .hitl-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(216, 131, 94, 0.25);
+    }
+
+    @media (max-width: 900px) {
+      .level-head .hitl-card,
+      .level-manager .hitl-card,
+      .level-leads .hitl-card,
+      .level-staff .hitl-card {
+        width: 100%;
+        max-width: 240px;
+      }
+      .hitl-core-node::after {
+        display: none;
+      }
+    }
+
+    /* AI Card Design */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 6rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 15px; height: 15px;
+      border-top: 2px solid var(--cyan-neon);
+      border-right: 2px solid var(--cyan-neon);
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::after { opacity: 1; }
+
+    .card:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0.2);
+    }
+
+    .card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--cyan-neon);
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card ul {
+      list-style: none;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.25rem;
+    }
+
+    .card ul li {
+      color: var(--text-main);
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      position: relative;
+      padding-left: 1.4rem;
+      font-family: var(--font-mono);
+    }
+
+    .card ul li::before {
+      content: ">";
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    /* Testimonials / Leadership Section */
+    .testimonials-section {
+      margin-bottom: 6rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 2.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(216, 131, 94, 0.2);
+    }
+
+    .testimonial-card p {
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.25rem;
+    }
+
+    .testimonial-author .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      object-fit: cover;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .testimonial-author .author-info h5 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+
+    .testimonial-author .author-info span {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--cyan-neon);
+    }
+
+    /* AI Audit Interactive Section */
+    .quiz-section {
+      background: rgba(10, 16, 31, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--cyan-neon);
+      border-radius: 16px;
+      padding: 3.5rem 2rem;
+      margin-bottom: 6rem;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 50px rgba(0, 242, 254, 0.15), inset 0 0 30px rgba(0, 242, 254, 0.05);
+      position: relative;
+    }
+
+    .quiz-container {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .quiz-progress {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .quiz-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--cyan-neon));
+      width: 33%;
+      transition: width 0.4s ease;
+      box-shadow: 0 0 12px var(--cyan-neon);
+    }
+
+    .quiz-step { display: none; }
+    .quiz-step.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .quiz-step h4 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .quiz-option-btn {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
+    }
+
+    .quiz-option-btn:hover {
+      border-color: var(--cyan-neon);
+      background: rgba(0, 242, 254, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+    }
+
+    .quiz-result-card { text-align: center; }
+    .quiz-result-card h4 {
+      color: var(--cyan-neon);
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .quiz-result-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+      font-size: 1rem;
+    }
+
+    /* Industry Badges */
+    .industries-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      margin-bottom: 6rem;
+      text-align: center;
+    }
+
+    .industry-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 1.75rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--text-main);
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+      color: #fff;
+    }
+
+    /* Timeline Section & Animated Numbers */
+    .timeline-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 3.5rem 2rem;
+      margin-bottom: 6rem;
+      text-align: center;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .timeline-item .time {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--cyan-neon);
+      margin-bottom: 0.25rem;
+      text-shadow: 0 0 25px var(--cyan-glow);
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+    }
+
+    .timeline-item p {
+      color: var(--text-muted);
+      font-size: 0.925rem;
+    }
+
+    .booking-section {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .calendly-inline-widget {
+      min-width: 320px;
+      height: 720px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 2rem;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border-top: 1px solid var(--card-border);
+      font-family: var(--font-mono);
+    }
+
+    footer a { color: var(--cyan-neon); text-decoration: none; }
+  </style>
+
+  <!-- Calendly Script -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <!-- Voiceflow Chat Widget Script -->
+  <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '6a62117cbd80ee072db5efa6' },
+            url: 'https://general-runtime.voiceflow.com',
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            }
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+        v.type = "text/javascript"; 
+        s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
 </head>
 <body>
 
-  <!-- Neural Network Canvas background -->
-  <canvas id="neural-canvas"></canvas>
+  <!-- Neural Network Canvas background -->
+  <canvas id="neural-canvas"></canvas>
 
-  <div class="container">
-    <!-- Header -->
-    <header>
-      <div class="logo">
-        kindly
-      </div>
-      <a href="#book" class="btn">Book a Call</a>
-    </header>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        kindly
+      </div>
+      <a href="#book" class="btn">Book a Call</a>
+    </header>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="live-status">
-        <span class="pulse-dot"></span> MANILA, PH · SERVING CLIENTS WORLDWIDE
-      </div>
-      <h1>We make AI work for people — not the other way around.</h1>
-      <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces.</p>
-      <a href="#quiz" class="btn">Take 30-Sec Automation Audit</a>
-    </section>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="live-status">
+        <span class="pulse-dot"></span> MANILA, PH · SERVING CLIENTS WORLDWIDE
+      </div>
+      <h1>We make AI work for people — not the other way around.</h1>
+      <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces.</p>
+      <a href="#quiz" class="btn">Take 30-Sec Automation Audit</a>
+    </section>
 
-    <!-- Why Kindly Pillars -->
-    <section style="margin-bottom: 2rem;">
-      <div class="section-title">
-        <h2>Why Kindly</h2>
-        <p>// WE ARE NOT JUST ANOTHER AI COMPANY</p>
-      </div>
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <h4>⚡ AI-Enabled, Not Replaced</h4>
-          <p>We use AI to accelerate workflows and catch errors—while skilled humans do the nuanced work machines can't.</p>
-        </div>
-        <div class="pillar-card">
-          <h4>📊 Quality You Can Measure</h4>
-          <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLAs you can count on.</p>
-        </div>
-      </div>
-    </section>
+    <!-- Why Kindly Pillars -->
+    <section style="margin-bottom: 2rem;">
+      <div class="section-title">
+        <h2>Why Kindly</h2>
+        <p>// WE ARE NOT JUST ANOTHER AI COMPANY</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h4>⚡ AI-Enabled, Not Replaced</h4>
+          <p>We use AI to accelerate workflows and catch errors—while skilled humans do the nuanced work machines can't.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>📊 Quality You Can Measure</h4>
+          <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLAs you can count on.</p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Human-in-the-Loop Network -->
-    <section style="margin-bottom: 6rem; position: relative;">
-      <div class="section-title">
-        <h2>Human-in-the-Loop Network</h2>
-        <p>// REAL HUMANS OVERSIGHTING & GUARANTEEING EVERY WORKFLOW</p>
-      </div>
+    <!-- Human-in-the-Loop Network -->
+    <section style="margin-bottom: 6rem; position: relative;">
+      <div class="section-title">
+        <h2>Human-in-the-Loop Network</h2>
+        <p>// REAL HUMANS OVERSIGHTING & GUARANTEEING EVERY WORKFLOW</p>
+      </div>
 
-      <div class="hitl-network-wrapper">
-        <!-- Central AI Core Node -->
-        <div class="hitl-core-node">
-          <div class="hitl-core-badge">
-            <span class="pulse-dot"></span> AI Engines + Multi-Layer Human Verification
-          </div>
-        </div>
+      <div class="hitl-network-wrapper">
+        <!-- Central AI Core Node -->
+        <div class="hitl-core-node">
+          <div class="hitl-core-badge">
+            <span class="pulse-dot"></span> AI Engines + Multi-Layer Human Verification
+          </div>
+        </div>
 
-        <!-- Hierarchical Human-in-the-Loop Team Network -->
-        <div class="hitl-team-row hierarchy-layout">
+        <!-- Hierarchical Human-in-the-Loop Team Network -->
+        <div class="hitl-team-row hierarchy-layout">
 
-          <!-- Level 1: Macar -->
-          <div class="hierarchy-level level-head">
-            <div class="hitl-card highlight-card">
-              <div class="avatar-box">
-                <img src="macar.jpg" alt="Macar">
-              </div>
-              <div class="name">Macar</div>
-              <div class="title">Head of Operations</div>
-              <div class="tools-bar">Ops Strategy • Alignment</div>
-            </div>
-          </div>
+          <!-- Level 1: Macar -->
+          <div class="hierarchy-level level-head">
+            <div class="hitl-card highlight-card">
+              <div class="avatar-box">
+                <img src="macar.jpg" alt="Macar">
+              </div>
+              <div class="name">Macar</div>
+              <div class="title">Head of Operations</div>
+              <div class="tools-bar">Ops Strategy • Alignment</div>
+            </div>
+          </div>
 
-          <!-- Level 2: Jeh -->
-          <div class="hierarchy-level level-manager">
-            <div class="hitl-card highlight-card">
-              <div class="avatar-box">
-                <img src="jeh.jpg" alt="Jeh">
-              </div>
-              <div class="name">Jeh</div>
-              <div class="title">Operations Manager</div>
-              <div class="tools-bar">SLA Oversight • Delivery</div>
-            </div>
-          </div>
+          <!-- Level 2: Jeh -->
+          <div class="hierarchy-level level-manager">
+            <div class="hitl-card highlight-card">
+              <div class="avatar-box">
+                <img src="jeh.jpg" alt="Jeh">
+              </div>
+              <div class="name">Jeh</div>
+              <div class="title">Operations Manager</div>
+              <div class="tools-bar">SLA Oversight • Delivery</div>
+            </div>
+          </div>
 
-          <!-- Level 3: Mico, Fred, Allan, Riza -->
-          <div class="hierarchy-level level-leads">
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="mico.jpg" alt="Mico">
-              </div>
-              <div class="name">Mico</div>
-              <div class="title">Data Operations Lead</div>
-              <div class="tools-bar">Workflows • Data Integrity</div>
-            </div>
+          <!-- Level 3: Mico, Fred, Allan, Riza -->
+          <div class="hierarchy-level level-leads">
+            <div class="hitl-card">
+              <div class="avatar-box">
+                <img src="mico.jpg" alt="Mico">
+              </div>
+              <div class="name">Mico</div>
+              <div class="title">Data Operations Lead</div>
+              <div class="tools-bar">Workflows • Data Integrity</div>
+            </div>
 
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="fred.jpg" alt="Fred">
-              </div>
-              <div class="name">Fred</div>
-              <div class="title">Systems Development Officer</div>
-              <div class="tools-bar">Chatbots • Integrations</div>
-            </div>
+            <div class="hitl-card">
+              <div class="avatar-box">
+                <img src="fred.jpg" alt="Fred">
+              </div>
+              <div class="name">Fred</div>
+              <div class="title">Systems Development Officer</div>
+              <div class="tools-bar">Chatbots • Integrations</div>
+            </div>
 
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="allan.jpg" alt="Allan">
-              </div>
-              <div class="name">Allan</div>
-              <div class="title">Database & Admin Officer</div>
-              <div class="tools-bar">SQL • Data Pipelines</div>
-            </div>
+            <div class="hitl-card">
+              <div class="avatar-box">
+                <img src="allan.jpg" alt="Allan">
+              </div>
+              <div class="name">Allan</div>
+              <div class="title">Database & Admin Officer</div>
+              <div class="tools-bar">SQL • Data Pipelines</div>
+            </div>
 
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="riza.jpg" alt="Riza">
-              </div>
-              <div class="name">Riza</div>
-              <div class="title">Team Leader</div>
-              <div class="tools-bar">Encoder QA • AI Review</div>
-            </div>
-          </div>
+            <div class="hitl-card">
+              <div class="avatar-box">
+                <img src="riza.jpg" alt="Riza">
+              </div>
+              <div class="name">Riza</div>
+              <div class="title">Team Leader</div>
+              <div class="tools-bar">Encoder QA • AI Review</div>
+            </div>
+          </div>
 
-          <!-- Level 4: Aira, Tin, Grace, Chris -->
-          <div class="hierarchy-level level-staff">
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="aira.jpg" alt="Aira">
-              </div>
-              <div class="name">Aira</div>
-              <div class="title">Data Auditor</div>
-              <div class="tools-bar">QA • Database Audits</div>
-            </div>
+          <!-- Level 4: Aira, Tin, Grace, Chris -->
+          <div class="hierarchy-level level-staff">
+            <div class="hitl-card">
+              <div class="avatar-box">
+                <img src="aira.jpg" alt="Aira">
+              </div>
+              <div class="name">Aira</div>
+              <div class="title">Data Auditor</div>
+              <div class="tools-bar">QA • Database Audits</div>
+            </div>
 
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="tin.jpg" alt="Tin">
-              </div>
-              <div class="name">Tin</div>
-              <div class="title">Systems & Data Associate</div>
-              <div class="tools-bar">AI Agents • Automation</div>
-            </div>
+            <div class="hitl-card">
+              <div class="avatar-box">
+                <img src="tin.jpg" alt="Tin">
+              </div>
+              <div class="name">Tin</div>
+              <div class="title">Systems & Data Associate</div>
+              <div class="tools-bar">AI Agents • Automation</div>
+            </div>
 
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="grace.jpg" alt="Grace">
-              </div>
-              <div class="name">Grace</div>
-              <div class="title">Leadgen & Onboarding Assistant</div>
-              <div class="tools-bar">Lead Gen • Onboarding</div>
-            </div>
+            <div class="hitl-card">
+              <div class="avatar-box">
+                <img src="grace.jpg" alt="Grace">
+              </div>
+              <div class="name">Grace</div>
+              <div class="title">Leadgen & Onboarding Assistant</div>
+              <div class="tools-bar">Lead Gen • Onboarding</div>
+            </div>
 
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="chris.jpg" alt="Chris">
-              </div>
-              <div class="name">Chris</div>
-              <div class="title">Data Admin</div>
-              <div class="tools-bar">Data Encoding • AI Support</div>
-            </div>
-          </div>
+            <div class="hitl-card">
+              <div class="avatar-box">
+                <img src="chris.jpg" alt="Chris">
+              </div>
+              <div class="name">Chris</div>
+              <div class="title">Data Admin</div>
+              <div class="tools-bar">Data Encoding • AI Support</div>
+            </div>
+          </div>
 
-        </div>
-      </div>
-    </section>
+        </div>
+      </div>
+    </section>
 
-    <!-- Speed / Timeline Section -->
-    <section class="timeline-section" id="timeline-section">
-      <div class="section-title" style="margin-bottom: 0;">
-        <h2>AI Acceleration, Human at Heart</h2>
-      </div>
-      <div class="timeline-grid">
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="24">0</span>h</div>
-          <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="48">0</span>h</div>
-          <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="2">0</span>wk</div>
-          <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
-        </div>
-      </div>
-    </section>
+    <!-- Speed / Timeline Section -->
+    <section class="timeline-section" id="timeline-section">
+      <div class="section-title" style="margin-bottom: 0;">
+        <h2>AI Acceleration, Human at Heart</h2>
+      </div>
+      <div class="timeline-grid">
+        <div class="timeline-item">
+          <div class="time"><span class="counter" data-target="24">0</span>h</div>
+          <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="time"><span class="counter" data-target="48">0</span>h</div>
+          <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="time"><span class="counter" data-target="2">0</span>wk</div>
+          <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Services -->
-    <section>
-      <div class="section-title">
-        <h2>Our Services</h2>
-        <p>// WORK SMARTER. GROW FASTER.</p>
-      </div>
+    <!-- Services -->
+    <section>
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>// WORK SMARTER. GROW FASTER.</p>
+      </div>
 
-      <div class="services">
-        <div class="card">
-          <h3>Upskill</h3>
-          <p>AI training for your people. Practical, hands-on AI literacy for employees at every level—from frontliners to managers.</p>
-          <ul>
-            <li>Customized curriculum</li>
-            <li>In-person & online</li>
-            <li>Certification included</li>
-          </ul>
-        </div>
+      <div class="services">
+        <div class="card">
+          <h3>Upskill</h3>
+          <p>AI training for your people. Practical, hands-on AI literacy for employees at every level—from frontliners to managers.</p>
+          <ul>
+            <li>Customized curriculum</li>
+            <li>In-person & online</li>
+            <li>Certification included</li>
+          </ul>
+        </div>
 
-        <div class="card">
-          <h3>Outsource</h3>
-          <p>Need work done? We handle end-to-end data solutions, quality control, and execution managed by AI-accelerated teams.</p>
-          <ul>
-            <li>Data solutions & encoding</li>
-            <li>Data labeling & annotation</li>
-            <li>AI response review & QA</li>
-          </ul>
-        </div>
+        <div class="card">
+          <h3>Outsource</h3>
+          <p>Need work done? We handle end-to-end data solutions, quality control, and execution managed by AI-accelerated teams.</p>
+          <ul>
+            <li>Data solutions & encoding</li>
+            <li>Data labeling & annotation</li>
+            <li>AI response review & QA</li>
+          </ul>
+        </div>
 
-        <div class="card">
-          <h3>Automate</h3>
-          <p>AI systems that boost productivity. We build tailored workflows, automated processes, and custom conversational agents.</p>
-          <ul>
-            <li>AI Workflow & Automation Audit</li>
-            <li>Custom Chatbot Development</li>
-            <li>Full Setup & Maintenance</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        <div class="card">
+          <h3>Automate</h3>
+          <p>AI systems that boost productivity. We build tailored workflows, automated processes, and custom conversational agents.</p>
+          <ul>
+            <li>AI Workflow & Automation Audit</li>
+            <li>Custom Chatbot Development</li>
+            <li>Full Setup & Maintenance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <!-- Founders & Leadership Section -->
-    <section class="testimonials-section">
-      <div class="section-title">
-        <h2>Leadership Note</h2>
-        <p>// FROM OUR FOUNDERS</p>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <p>"We built Kindly to prove that artificial intelligence shouldn't replace human capability—it should elevate it. Our goal is to ensure every organization we work with builds a sustainable, human-guided AI advantage."</p>
-          <div class="testimonial-author">
-            <img src="mark.jpg" alt="Mark Ruiz" class="author-avatar">
-            <div class="author-info">
-              <h5>Mark Ruiz</h5>
-              <span>Co-Founder</span>
-            </div>
-          </div>
-        </div>
+    <!-- Founders & Leadership Section -->
+    <section class="testimonials-section">
+      <div class="section-title">
+        <h2>Leadership Note</h2>
+        <p>// FROM OUR FOUNDERS</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>"We built Kindly to prove that artificial intelligence shouldn't replace human capability—it should elevate it. Our goal is to ensure every organization we work with builds a sustainable, human-guided AI advantage."</p>
+          <div class="testimonial-author">
+            <img src="mark.jpg" alt="Mark Ruiz" class="author-avatar">
+            <div class="author-info">
+              <h5>Mark Ruiz</h5>
+              <span>Co-Founder</span>
+            </div>
+          </div>
+        </div>
 
-        <div class="testimonial-card">
-          <p>"Technology moves fast, but quality and trust remain deeply human. By combining cutting-edge AI acceleration with rigorous human oversight, we help teams scale efficiently without compromising on execution."</p>
-          <div class="testimonial-author">
-            <img src="reese.jpg" alt="Reese Fernandez-Ruiz" class="author-avatar">
-            <div class="author-info">
-              <h5>Reese Fernandez-Ruiz</h5>
-              <span>Co-Founder</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="testimonial-card">
+          <p>"Technology moves fast, but quality and trust remain deeply human. By combining cutting-edge AI acceleration with rigorous human oversight, we help teams scale efficiently without compromising on execution."</p>
+          <div class="testimonial-author">
+            <img src="reese.jpg" alt="Reese Fernandez-Ruiz" class="author-avatar">
+            <div class="author-info">
+              <h5>Reese Fernandez-Ruiz</h5>
+              <span>Co-Founder</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Quick AI Audit Section -->
-    <section id="quiz" class="quiz-section">
-      <div class="section-title">
-        <h2>Quick Automation Audit</h2>
-        <p>// DIAGNOSE YOUR HIGHEST-IMPACT AUTOMATION PATH</p>
-      </div>
+    <!-- Quick AI Audit Section -->
+    <section id="quiz" class="quiz-section">
+      <div class="section-title">
+        <h2>Quick Automation Audit</h2>
+        <p>// DIAGNOSE YOUR HIGHEST-IMPACT AUTOMATION PATH</p>
+      </div>
 
-      <div class="quiz-container">
-        <div class="quiz-progress">
-          <div class="quiz-progress-bar" id="quizBar"></div>
-        </div>
+      <div class="quiz-container">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar" id="quizBar"></div>
+        </div>
 
-        <!-- Question 1 -->
-        <div class="quiz-step active" id="quizStep1">
-          <h4>1. Where does your operational bottleneck lie?</h4>
-          <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Data Entry & Processing')">📥 Manual Data Entry & Processing</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Customer Support Responses')">💬 Customer Support & Inquiries</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Repetitive Internal Workflows')">⚙️ Repetitive Internal Workflows</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Team AI Adoption & Literacy')">🎓 Low AI Literacy Across Staff</button>
-          </div>
-        </div>
+        <!-- Question 1 -->
+        <div class="quiz-step active" id="quizStep1">
+          <h4>1. Where does your operational bottleneck lie?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Data Entry & Processing')">📥 Manual Data Entry & Processing</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Customer Support Responses')">💬 Customer Support & Inquiries</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Repetitive Internal Workflows')">⚙️ Repetitive Internal Workflows</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Team AI Adoption & Literacy')">🎓 Low AI Literacy Across Staff</button>
+          </div>
+        </div>
 
-        <!-- Question 2 -->
-        <div class="quiz-step" id="quizStep2">
-          <h4>2. What is your primary tool stack environment?</h4>
-          <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Google Workspace & Spreadsheets')">📊 Spreadsheets & Google Workspace</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'CRMs & Helpdesks')">🎧 CRMs / Helpdesks (HubSpot, Zendesk, etc.)</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Custom Databases & APIs')">💻 Custom Databases & Internal Software</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Mostly Manual / Unstructured')">📝 Unstructured Emails & Docs</button>
-          </div>
-        </div>
+        <!-- Question 2 -->
+        <div class="quiz-step" id="quizStep2">
+          <h4>2. What is your primary tool stack environment?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Google Workspace & Spreadsheets')">📊 Spreadsheets & Google Workspace</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'CRMs & Helpdesks')">🎧 CRMs / Helpdesks (HubSpot, Zendesk, etc.)</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Custom Databases & APIs')">💻 Custom Databases & Internal Software</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Mostly Manual / Unstructured')">📝 Unstructured Emails & Docs</button>
+          </div>
+        </div>
 
-        <!-- Question 3 -->
-        <div class="quiz-step" id="quizStep3">
-          <h4>3. How large is the team handling this workload?</h4>
-          <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '1 - 5 staff members')">👥 1 – 5 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '6 - 20 staff members')">👥 6 – 20 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '21 - 50 staff members')">👥 21 – 50 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '50+ staff members')">👥 50+ team members</button>
-          </div>
-        </div>
-
-        <!-- Results Step -->
-        <div class="quiz-step" id="quizStepResult">
-          <div class="quiz-result-card">
-            <h4>Audit Diagnostic Complete</h4>
-            <p id="quizRecommendationText">Based on your selections, your organization has a prime opportunity for AI Acceleration paired with Human Verification.</p>
-            <a href="#book" class="btn">Schedule Strategy Call</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section class="booking-section" id="book">
-      <div class="section-title">
-        <h2>Book a Call</h2>
-        <p>// LET'S BUILD YOUR HUMAN-IN-THE-LOOP AI WORKFLOW</p>
-      </div>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/mark-kindly/30min?hide_landing_page_details=1&hide_gdpr_banner=1"></div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>© 2026 Kindly AI. All rights reserved. | Manila, Philippines</p>
-    </footer>
-  </div>
-
-  <!-- Interactive Scripts -->
-  <script>
-    /* Neural Network Canvas Animation */
-    const canvas = document.getElementById('neural-canvas');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    const nodes = Array.from({ length: 45 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      radius: Math.random() * 1.8 + 1
-    }));
-
-    function drawNeuralNetwork() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      nodes.forEach((node, i) => {
-        node.x += node.vx;
-        node.y += node.vy;
-
-        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
-        ctx.fill();
-
-        for (let j = i + 1; j < nodes.length; j++) {
-          const other = nodes[j];
-          const dist = Math.hypot(node.x - other.x, node.y - other.y);
-
-          if (dist < 130) {
-            ctx.beginPath();
-            ctx.moveTo(node.x, node.y);
-            ctx.lineTo(other.x, other.y);
-            ctx.strokeStyle = `rgba(0, 242, 254, ${0.15 * (1 - dist / 130)})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-      });
-
-      requestAnimationFrame(drawNeuralNetwork);
-    }
-    drawNeuralNetwork();
-
-    /* Interactive Audit Quiz Script */
-    const quizAnswers = {};
-
-    function selectQuizOption(step, answer) {
-      quizAnswers[`step${step}`] = answer;
-      const bar = document.getElementById('quizBar');
-
-      if (step === 1) {
-        document.getElementById('quizStep1').classList.remove('active');
-        document.getElementById('quizStep2').classList.add('active');
-        bar.style.width = '66%';
-      } else if (step === 2) {
-        document.getElementById('quizStep2').classList.remove('active');
-        document.getElementById('quizStep3').classList.add('active');
-        bar.style.width = '100%';
-      } else if (step === 3) {
-        document.getElementById('quizStep3').classList.remove('active');
-        document.getElementById('quizStepResult').classList.add('active');
-        
-        const recText = document.getElementById('quizRecommendationText');
-        recText.textContent = `Targeting "${quizAnswers.step1}" across a ${quizAnswers.step3} team setup using ${quizAnswers.step2}. We can deploy a dedicated Human-in-the-Loop system for your setup within 2-3 weeks.`;
-      }
-    }
-
-    /* Counter Animation on Scroll */
-    let animated = false;
-    window.addEventListener('scroll', () => {
-      const timelineSec = document.getElementById('timeline-section');
-      if (!timelineSec) return;
-      
-      const pos = timelineSec.getBoundingClientRect().top;
-      const winHeight = window.innerHeight;
-
-      if (pos < winHeight - 100 && !animated) {
-        animated = true;
-        document.querySelectorAll('.counter').forEach(counter => {
-          const target = +counter.getAttribute('data-target');
-          let count = 0;
-          const speed = target / 20;
-
-          const updateCount = () => {
-            count += speed;
-            if (count < target) {
-              counter.innerText = Math.ceil(count);
-              setTimeout(updateCount, 40);
-            } else {
-              counter.innerText = target;
-            }
-          };
-          updateCount();
-        });
-      }
-    });
-  </script>
-</body>
-</html>
+        <!-- Question 3 -->
+        <div class="quiz-step" id="quizStep3">
+          <h4>3. How large is the team handling this workload?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '1 - 5 staff members')">👥 1 – 5 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '6 - 20 staff members')">👥 6 – 20 team members</button>
+            <button cla
