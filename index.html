@@ -506,67 +506,6 @@
       font-weight: bold;
     }
 
-    /* NEW SECTION: OUR STORY STYLING */
-    .our-story-section {
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 3.5rem 2.5rem;
-      margin-bottom: 6rem;
-      position: relative;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .story-card {
-      background: rgba(3, 7, 18, 0.6);
-      border: 1px solid var(--card-border);
-      padding: 2rem;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .story-card:hover {
-      border-color: var(--cyan-neon);
-      transform: translateY(-4px);
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
-    }
-
-    .story-card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      color: var(--cyan-neon);
-      margin-bottom: 0.8rem;
-    }
-
-    .story-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .story-quote {
-      margin-top: 2.5rem;
-      text-align: center;
-      padding: 1.5rem;
-      background: rgba(0, 242, 254, 0.03);
-      border: 1px dashed var(--cyan-neon);
-      border-radius: 8px;
-    }
-
-    .story-quote p {
-      font-family: var(--font-mono);
-      color: var(--text-main);
-      font-size: 1rem;
-    }
-
     /* Testimonials / Leadership Section */
     .testimonials-section {
       margin-bottom: 6rem;
@@ -1072,35 +1011,6 @@
       </div>
     </section>
 
-    <!-- OUR STORY SECTION -->
-    <section class="our-story-section">
-      <div class="section-title">
-        <h2>Our Story</h2>
-        <p>// ROOTED IN IMPACT. DRIVEN BY INNOVATION.</p>
-      </div>
-      
-      <div class="story-grid">
-        <div class="story-card">
-          <h3>Established Legacy</h3>
-          <p>Our roots run deep in local empowerment through <strong>Atindahan and Hapinoy</strong>. We bring years of proven experience in driving community impact, economic development, and sustainable systems to the digital and AI landscape.</p>
-        </div>
-        
-        <div class="story-card">
-          <h3>Bridging Human & AI</h3>
-          <p>We believe technology shouldn't displace people—it should unleash their potential. We combine smart automation with a skilled, dedicated workforce to handle high-stakes data workflows, AI QA, and custom implementations.</p>
-        </div>
-
-        <div class="story-card">
-          <h3>Dignified Digital Work</h3>
-          <p>Through our hybrid model—combining core in-house specialists with scalable output-based talent—we deliver precision to businesses while providing dignified, high-value opportunities to our communities.</p>
-        </div>
-      </div>
-
-      <div class="story-quote">
-        <p>"Combining deep-rooted community impact with enterprise-grade digital execution."</p>
-      </div>
-    </section>
-
     <!-- Founders & Leadership Section -->
     <section class="testimonials-section">
       <div class="section-title">
@@ -1172,16 +1082,25 @@
           <div class="quiz-options">
             <button class="quiz-option-btn" onclick="selectQuizOption(3, '1 - 5 staff members')">👥 1 – 5 team members</button>
             <button class="quiz-option-btn" onclick="selectQuizOption(3, '6 - 20 staff members')">👥 6 – 20 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '21+ staff members')">👥 21+ team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '21 - 50 staff members')">🏢 21 – 50 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '50+ staff members')">🚀 50+ enterprise staff</button>
           </div>
         </div>
 
+        <!-- Result Card -->
+        <div class="quiz-step" id="quizResult">
+          <div class="quiz-result-card">
+            <h4 id="auditRecommendation">Recommended: Custom Workflow Automation</h4>
+            <p id="auditDetails">Based on your selections, implementing AI-assisted agents and structured data workflows can reduce manual tasks by up to 60-80% within 3 weeks.</p>
+            <a href="#book" class="btn">Schedule Discovery Call for This Solution</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Industries Section -->
+    <!-- Industries Served -->
     <section class="industries-section">
-      <div class="section-title">
+      <div class="section-title" style="margin-bottom: 0;">
         <h2>Industries We Serve</h2>
         <p>// WHERE ACCURATE DATA & AI CREATE COMPETITIVE ADVANTAGE</p>
       </div>
@@ -1197,20 +1116,182 @@
       </div>
     </section>
 
+ <!-- Fueling Innovation Section -->
+<section class="industries-section">
+  <div class="section-title">
+    <h2>Fueling Innovation Across Forward-Thinking Teams</h2>
+    <p>// TRUSTED PARTNERS & INDUSTRY LEADERS</p>
+  </div>
+
+  <!-- Logos Container -->
+  <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.75rem;">
+    <!-- Logo 1 -->
+    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+      <img src="assets/activasia-logo.png" alt="ActivAsia" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+    </div>
+    <!-- Logo 2 -->
+    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+      <img src="assets/gethapi-logo.png" alt="GetHapi" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+    </div>
+    <!-- Logo 3 -->
+    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+      <img src="assets/hapinoy-logo.png" alt="Hapinoy" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+    </div>
+  </div>
+</section>
+    
+
     <!-- Booking Section -->
-    <section class="booking-section" id="book">
+    <section id="book" class="booking-section">
       <div class="section-title">
         <h2>Ready to get started?</h2>
         <p>// SELECT AN AVAILABLE SLOT BELOW</p>
       </div>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/mark-ruiz/30min"></div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=030712&text_color=f8fafc&primary_color=00f2fe"></div>
     </section>
 
+    <!-- Footer -->
     <footer>
       <p><a href="mailto:hello@kindly.ph">hello@kindly.ph</a> | Manila, Philippines · Serving clients worldwide</p>
-      <p>A business under Atindata · Atin Group © 2026 Kindly. All rights reserved.</p>
+      <p style="margin-top: 0.5rem; opacity: 0.7;">A business under Atindata · Atin Group &copy; 2026 Kindly. All rights reserved.</p>
     </footer>
   </div>
+
+  <!-- Neural Canvas Background Script -->
+  <script>
+    const canvas = document.getElementById('neural-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const nodes = [];
+    const nodeCount = 55;
+
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 1.8 + 1
+      });
+    }
+
+    function animateNeuralNetwork() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < nodeCount; i++) {
+        let node = nodes[i];
+        node.x += node.vx;
+        node.y += node.vy;
+
+        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+        ctx.fill();
+
+        for (let j = i + 1; j < nodeCount; j++) {
+          let nodeB = nodes[j];
+          let dist = Math.hypot(node.x - nodeB.x, node.y - nodeB.y);
+
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(node.x, node.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.strokeStyle = `rgba(0, 242, 254, ${0.15 * (1 - dist / 130)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateNeuralNetwork);
+    }
+    animateNeuralNetwork();
+
+    /* Number Counter Animation Observer */
+    let animated = false;
+    const timelineSection = document.getElementById('timeline-section');
+    const counters = document.querySelectorAll('.counter');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 1500;
+            const stepTime = 30;
+            const steps = duration / stepTime;
+            const increment = target / steps;
+            let current = 0;
+
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                counter.innerText = target;
+                clearInterval(timer);
+              } else {
+                counter.innerText = Math.ceil(current);
+              }
+            }, stepTime);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    observer.observe(timelineSection);
+
+    /* Quiz State Logic */
+    const auditData = { bottleneck: '', stack: '', size: '' };
+
+    function selectQuizOption(step, value) {
+      if (step === 1) {
+        auditData.bottleneck = value;
+        document.getElementById('quizStep1').classList.remove('active');
+        document.getElementById('quizStep2').classList.add('active');
+        document.getElementById('quizBar').style.width = '66%';
+      } else if (step === 2) {
+        auditData.stack = value;
+        document.getElementById('quizStep2').classList.remove('active');
+        document.getElementById('quizStep3').classList.add('active');
+        document.getElementById('quizBar').style.width = '100%';
+      } else if (step === 3) {
+        auditData.size = value;
+        document.getElementById('quizStep3').classList.remove('active');
+        generateAuditResult();
+      }
+    }
+
+    function generateAuditResult() {
+      const resultStep = document.getElementById('quizResult');
+      const recTitle = document.getElementById('auditRecommendation');
+      const recDesc = document.getElementById('auditDetails');
+
+      if (auditData.bottleneck.includes('Data Entry')) {
+        recTitle.innerText = "High Potential: Data Solutions & AI Quality Assurance";
+        recDesc.innerText = `For teams of ${auditData.size} working in ${auditData.stack}, our AI-accelerated Outsource team can automate high-volume data encoding and verification with 99%+ accuracy.`;
+      } else if (auditData.bottleneck.includes('Support')) {
+        recTitle.innerText = "High Potential: Custom Chatbot & Agent Deployment";
+        recDesc.innerText = `Automate response handling across ${auditData.stack} with tailored conversational agents, instantly scaling your support capacity without increasing headcount.`;
+      } else if (auditData.bottleneck.includes('Literacy')) {
+        recTitle.innerText = "High Potential: Team Upskilling & AI Integration";
+        recDesc.innerText = `Empower your staff of ${auditData.size} with practical AI training tailored specifically around your existing ${auditData.stack} workflows.`;
+      } else {
+        recTitle.innerText = "High Potential: Full Workflow & AI Process Audit";
+        recDesc.innerText = `We can map out your repetitive operations and build custom AI automations to save your team estimated hundreds of hours each month.`;
+      }
+
+      resultStep.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
