@@ -7,20 +7,20 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:ital,wght@0,500;0,600;0,700;1,500;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:ital,wght@0,500;0,600;0,700;1,500;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-color: #0b0f19;
-      --card-bg: rgba(18, 26, 43, 0.75);
+      --bg-color: #030712;
+      --card-bg: rgba(15, 23, 42, 0.7);
       --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover-border: rgba(235, 94, 61, 0.5);
+      --card-hover-border: rgba(0, 242, 254, 0.5);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --accent: #eb5e3d;
-      --accent-glow: rgba(235, 94, 61, 0.3);
+      --accent: #d8835e;
+      --accent-glow: rgba(216, 131, 94, 0.4);
       --cyan-neon: #00f2fe;
-      --cyan-glow: rgba(0, 242, 254, 0.25);
+      --cyan-glow: rgba(0, 242, 254, 0.35);
       --font-heading: 'Space Grotesk', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -28,7 +28,9 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background-color: var(--bg-color);
@@ -39,52 +41,59 @@
       position: relative;
     }
 
+    /* Interactive Neural Network Background Canvas */
     #neural-canvas {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       z-index: -2;
       pointer-events: none;
     }
 
+    /* Futuristic Cyber Grid Overlay */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(235, 94, 61, 0.12) 0%, transparent 65%),
-        radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.05) 0%, transparent 50%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        radial-gradient(circle at 50% 0%, rgba(216, 131, 94, 0.15) 0%, transparent 65%),
+        radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.08) 0%, transparent 50%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
       z-index: -1;
     }
 
+    /* Top Accent Line */
     body::after {
       content: "";
       position: fixed;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, var(--cyan-neon) 80%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, var(--cyan-neon) 40%, var(--accent) 70%, transparent 100%);
       z-index: 1000;
+      box-shadow: 0 0 12px var(--cyan-glow);
     }
 
     .container {
-      max-width: 1240px;
+      max-width: 1140px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
-    /* Header Navigation */
+    /* Glassmorphism Navigation Bar */
     header {
       position: sticky;
       top: 0;
       z-index: 900;
       padding: 1.25rem 0;
-      background: rgba(11, 15, 25, 0.85);
+      background: rgba(3, 7, 18, 0.75);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
     }
 
     .nav-wrapper {
@@ -99,10 +108,14 @@
       font-weight: 700;
       letter-spacing: -0.03em;
       color: var(--text-main);
+      display: flex;
+      align-items: center;
       text-decoration: none;
     }
 
-    .logo span { color: var(--accent); }
+    .logo span {
+      color: var(--cyan-neon);
+    }
 
     .nav-links {
       display: flex;
@@ -119,94 +132,72 @@
       transition: color 0.3s ease;
     }
 
-    .nav-links a:hover { color: var(--accent); }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent);
-      color: #ffffff;
-      padding: 0.75rem 1.75rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 15px var(--accent-glow);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(235, 94, 61, 0.5);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      box-shadow: none;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding: 5rem 0 5rem;
-      max-width: 900px;
-      margin: 0 auto;
+    .nav-links a:hover {
+      color: var(--cyan-neon);
     }
 
     .live-status {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      background: rgba(235, 94, 61, 0.08);
-      color: var(--accent);
+      background: rgba(0, 242, 254, 0.05);
+      color: var(--cyan-neon);
       padding: 0.4rem 1.1rem;
       border-radius: 30px;
       font-size: 0.8rem;
       font-family: var(--font-mono);
       letter-spacing: 0.05em;
       margin-bottom: 1.75rem;
-      border: 1px solid rgba(235, 94, 61, 0.2);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
     }
 
     .pulse-dot {
-      width: 8px; height: 8px;
-      background-color: var(--accent);
+      width: 8px;
+      height: 8px;
+      background-color: var(--cyan-neon);
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent);
+      box-shadow: 0 0 12px var(--cyan-neon);
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(235, 94, 61, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(235, 94, 61, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(235, 94, 61, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 242, 254, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 5rem 0 6rem;
+      max-width: 920px;
+      margin: 0 auto;
+      position: relative;
     }
 
     .hero h1 {
       font-family: var(--font-heading);
-      font-size: 3.75rem;
+      font-size: 4rem;
       font-weight: 700;
-      line-height: 1.15;
+      line-height: 1.1;
       margin-bottom: 1.5rem;
       letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 50px rgba(0, 242, 254, 0.15);
     }
 
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: var(--text-muted);
       margin-bottom: 2.5rem;
       max-width: 720px;
       margin-left: auto;
       margin-right: auto;
+      font-weight: 400;
     }
 
     .hero-ctas {
@@ -214,251 +205,582 @@
       gap: 1rem;
       justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Standard Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, var(--accent) 0%, #b8603b 100%);
+      color: #ffffff;
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 20px var(--accent-glow);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before { left: 100%; }
+
+    .btn:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(216, 131, 94, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      box-shadow: none;
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 242, 254, 0.08);
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
     }
 
     .section-title {
-      margin-bottom: 2.5rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
     }
 
-    .section-title h2 {
+    .section-title h2 { 
       font-family: var(--font-heading);
-      font-size: 3rem;
-      font-weight: 700;
+      font-size: 2.5rem; 
+      margin-bottom: 0.5rem; 
       letter-spacing: -0.02em;
-      color: var(--text-main);
-      line-height: 1.2;
+      background: linear-gradient(135deg, #fff 30%, var(--cyan-neon) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .section-title h2 em {
       font-style: italic;
       color: var(--accent);
-      font-weight: 400;
+      background: linear-gradient(135deg, #f0956c 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-top: 0.75rem;
-      max-width: 750px;
-    }
-
-    /* Services Grid */
-    .services-section { margin-bottom: 6rem; }
     
-    .services-grid {
+    .section-title p { 
+      color: var(--text-muted); 
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Pillars */
+    .pillars-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
+      margin-bottom: 6rem;
     }
 
-    .service-card {
+    .pillar-card {
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
       padding: 2.2rem;
       border-radius: 16px;
-      border: 1px solid var(--card-border);
+      backdrop-filter: blur(12px);
       transition: all 0.3s ease;
     }
 
-    .service-card:hover {
-      border-color: rgba(235, 94, 61, 0.4);
+    .pillar-card:hover {
+      border-color: rgba(216, 131, 94, 0.5);
       transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    .service-card h3 {
+    .pillar-card h4 {
       font-family: var(--font-heading);
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       color: var(--accent);
       margin-bottom: 0.75rem;
     }
 
-    .service-card p {
+    .pillar-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 1.5rem;
     }
 
-    .service-card ul {
+    /* AI Services Grid */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 6rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 15px; height: 15px;
+      border-top: 2px solid var(--cyan-neon);
+      border-right: 2px solid var(--cyan-neon);
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::after { opacity: 1; }
+
+    .card:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.25);
+    }
+
+    .card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--cyan-neon);
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+      flex-grow: 1;
+    }
+
+    .card ul {
       list-style: none;
       border-top: 1px solid var(--card-border);
-      padding-top: 1rem;
+      padding-top: 1.25rem;
     }
 
-    .service-card ul li {
+    .card ul li {
       color: var(--text-main);
       font-size: 0.85rem;
-      margin-bottom: 0.5rem;
-      padding-left: 1.2rem;
+      margin-bottom: 0.6rem;
       position: relative;
+      padding-left: 1.4rem;
+      font-family: var(--font-mono);
     }
 
-    .service-card ul li::before {
-      content: "•";
+    .card ul li::before {
+      content: ">";
       color: var(--accent);
       position: absolute;
       left: 0;
       font-weight: bold;
     }
 
-    /* =========================================================
-       TEAM WALL / MEET THE PEOPLE (2-LAYER 5-COLUMN GRID)
-    ========================================================= */
-    .team-section {
-      margin-bottom: 6rem;
+    /* Human-in-the-Loop Network & 2-Layer 5-Col Team Grid */
+    .hitl-network-wrapper {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      background: rgba(15, 23, 42, 0.45);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
     }
 
-    /* Strict 5-Column Grid Layout for 2 Layers */
-    .team-grid-5col {
+    .team-grid-2layer {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 1.25rem;
+      position: relative;
+      z-index: 2;
     }
 
-    .team-card {
+    .hitl-card {
       background: var(--card-bg);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1.75rem 1rem 1.5rem;
+      border-radius: 16px;
+      padding: 1.75rem 1rem 1.25rem;
       text-align: center;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(12px);
     }
 
-    .team-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    .hitl-card.highlight-card {
+      border-color: rgba(216, 131, 94, 0.6);
+      box-shadow: 0 0 25px rgba(216, 131, 94, 0.15);
     }
 
-    .team-avatar {
-      width: 64px;
-      height: 64px;
+    .hitl-card .avatar-box {
+      width: 75px;
+      height: 75px;
+      margin: 0 auto 0.75rem;
+      position: relative;
       border-radius: 50%;
-      background: rgba(30, 41, 59, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
-      overflow: hidden;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--accent), transparent);
+      box-shadow: 0 0 15px var(--accent-glow);
     }
 
-    .team-avatar img {
+    .hitl-card img {
       width: 100%;
       height: 100%;
+      border-radius: 50%;
       object-fit: cover;
+      display: block;
     }
 
-    .team-name {
+    .hitl-card .name {
       font-family: var(--font-heading);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-main);
       line-height: 1.2;
     }
 
-    .team-title {
-      font-size: 0.8rem;
-      font-weight: 600;
+    .hitl-card .title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
       color: var(--accent);
       margin-top: 0.25rem;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+      line-height: 1.2;
     }
 
-    .team-guarantee {
+    .hitl-card .guarantee-text {
       font-size: 0.825rem;
       color: var(--text-muted);
       line-height: 1.4;
-      font-weight: 400;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      padding-top: 0.75rem;
+      width: 100%;
+      margin-top: auto;
     }
 
-    /* LEADERSHIP NOTE (POSITIONED DIRECTLY BELOW TEAM WALL) */
+    .hitl-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(216, 131, 94, 0.25);
+    }
+
+    /* Leadership Note Section */
+    .leadership-section {
+      margin-top: 3.5rem;
+    }
+
     .leadership-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
     }
 
     .leadership-card {
       background: var(--card-bg);
+      backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 2.25rem;
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      backdrop-filter: blur(12px);
-      transition: all 0.3s ease;
     }
 
     .leadership-card:hover {
-      border-color: rgba(235, 94, 61, 0.4);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(216, 131, 94, 0.2);
     }
 
     .leadership-card blockquote {
-      font-size: 1.05rem;
-      font-style: italic;
-      color: #e2e8f0;
-      line-height: 1.6;
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
       margin-bottom: 2rem;
+      font-style: italic;
     }
 
-    .leadership-meta {
+    .leadership-author {
       display: flex;
       align-items: center;
       gap: 1rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.25rem;
     }
 
-    .leadership-avatar {
-      width: 48px;
-      height: 48px;
+    .leadership-author .author-avatar {
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      background: rgba(30, 41, 59, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .leadership-avatar img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
+      border: 2px solid var(--accent);
       object-fit: cover;
+      box-shadow: 0 0 12px var(--accent-glow);
     }
 
-    .leadership-info h5 {
+    .leadership-author .author-info h5 {
       font-family: var(--font-heading);
       font-size: 1rem;
-      font-weight: 700;
       color: var(--text-main);
     }
 
-    .leadership-info span {
-      font-size: 0.825rem;
-      color: var(--text-muted);
+    .leadership-author .author-info span {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--cyan-neon);
     }
 
-    /* Timeline & Stats Section */
-    .timeline-section {
+    @media (max-width: 1024px) {
+      .team-grid-2layer {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.8rem; }
+      .team-grid-2layer {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .team-grid-2layer {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* OUR STORY SECTION */
+    .our-story-section {
       background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 3.5rem 2.5rem;
+      margin-bottom: 6rem;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .story-card {
+      background: rgba(3, 7, 18, 0.6);
+      border: 1px solid var(--card-border);
+      padding: 2rem;
+      border-radius: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .story-card:hover {
+      border-color: var(--cyan-neon);
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.15);
+    }
+
+    .story-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--cyan-neon);
+      margin-bottom: 0.8rem;
+    }
+
+    .story-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .story-quote {
+      margin-top: 2.5rem;
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(0, 242, 254, 0.03);
+      border: 1px dashed var(--cyan-neon);
+      border-radius: 12px;
+    }
+
+    .story-quote p {
+      font-family: var(--font-mono);
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+
+    /* Quick AI Audit Section */
+    .quiz-section {
+      background: rgba(10, 16, 31, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      border-radius: 20px;
+      padding: 3.5rem 2rem;
+      margin-bottom: 6rem;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 50px rgba(0, 242, 254, 0.15), inset 0 0 30px rgba(0, 242, 254, 0.05);
+      position: relative;
+    }
+
+    .quiz-container {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .quiz-progress {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .quiz-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--cyan-neon));
+      width: 33%;
+      transition: width 0.4s ease;
+      box-shadow: 0 0 12px var(--cyan-neon);
+    }
+
+    .quiz-step { display: none; }
+    .quiz-step.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .quiz-step h4 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .quiz-option-btn {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
+    }
+
+    .quiz-option-btn:hover {
+      border-color: var(--cyan-neon);
+      background: rgba(0, 242, 254, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+    }
+
+    .quiz-result-card { text-align: center; }
+    .quiz-result-card h4 {
+      color: var(--cyan-neon);
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .quiz-result-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+      font-size: 1rem;
+    }
+
+    /* Industries Badges */
+    .industries-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 3rem 2rem;
+      padding: 3.5rem 2rem;
+      margin-bottom: 6rem;
+      text-align: center;
+    }
+
+    .industry-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      padding: 0.65rem 1.3rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--text-main);
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Timeline & Running Numbers Section */
+    .timeline-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 3.5rem 2rem;
       margin-bottom: 6rem;
       text-align: center;
     }
@@ -467,76 +789,60 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
+      margin-top: 2.5rem;
     }
 
     .timeline-item .time {
       font-family: var(--font-heading);
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 0.5rem;
+      color: var(--cyan-neon);
+      margin-bottom: 0.25rem;
+      text-shadow: 0 0 25px var(--cyan-glow);
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
     }
 
     .timeline-item p {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
-    /* Responsive Breakdown for Smaller Screens */
-    @media (max-width: 1024px) {
-      .team-grid-5col {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .team-grid-5col {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .leadership-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 { font-size: 2.5rem; }
-      .section-title h2 { font-size: 2.2rem; }
-      .nav-links { display: none; }
-    }
-
-    @media (max-width: 480px) {
-      .team-grid-5col {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Booking & Audit Section */
-    .quiz-section, .booking-section {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 3rem 2rem;
+    /* Booking Section */
+    .booking-section {
+      text-align: center;
       margin-bottom: 6rem;
     }
 
     .calendly-inline-widget {
       min-width: 320px;
-      height: 700px;
-      border-radius: 12px;
-      margin-top: 1.5rem;
+      height: 720px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 2rem;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     }
 
+    /* Footer */
     footer {
       text-align: center;
-      padding: 3rem 0;
+      padding: 3.5rem 0;
       color: var(--text-muted);
       font-size: 0.85rem;
       border-top: 1px solid var(--card-border);
       font-family: var(--font-mono);
     }
+
+    footer a { color: var(--cyan-neon); text-decoration: none; transition: color 0.3s; }
+    footer a:hover { color: #fff; }
   </style>
 
+  <!-- Calendly Script -->
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-  
+
+  <!-- Voiceflow Chat Widget Script -->
   <script type="text/javascript">
     (function(d, t) {
         var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
@@ -544,7 +850,9 @@
           window.voiceflow.chat.load({
             verify: { projectID: '6a62117cbd80ee072db5efa6' },
             url: 'https://general-runtime.voiceflow.com',
-            voice: { url: "https://runtime-api.voiceflow.com" }
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            }
           });
         }
         v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
@@ -555,17 +863,22 @@
 </head>
 <body>
 
+  <!-- Neural Network Canvas background -->
   <canvas id="neural-canvas"></canvas>
 
+  <!-- Navigation Bar Header -->
   <header>
     <div class="container nav-wrapper">
-      <a href="#" class="logo">kindly<span>.</span></a>
+      <a href="#" class="logo">
+        kindly<span>.</span>
+      </a>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
-        <li><a href="#team">People</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#quiz">Audit Quiz</a></li>
       </ul>
-      <a href="#book" class="btn">Book a call</a>
+      <a href="#book" class="btn">Book a Call</a>
     </div>
   </header>
 
@@ -578,20 +891,38 @@
       <h1>We make AI work for people — not the other way around.</h1>
       <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces.</p>
       <div class="hero-ctas">
-        <a href="#book" class="btn">Schedule Discovery</a>
-        <a href="#services" class="btn btn-secondary">Explore Services</a>
+        <a href="#quiz" class="btn">Take 30-Sec Automation Audit</a>
+        <a href="#book" class="btn btn-secondary">Schedule Discovery</a>
+      </div>
+    </section>
+
+    <!-- Why Kindly Pillars -->
+    <section>
+      <div class="section-title">
+        <h2>Why Kindly</h2>
+        <p>// WE ARE NOT JUST ANOTHER AI COMPANY</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h4>⚡ AI-Enabled, Not Replaced</h4>
+          <p>We use AI to accelerate workflows and catch errors—while skilled humans do the nuanced work machines can't.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>📊 Quality You Can Measure</h4>
+          <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLAs you can count on.</p>
+        </div>
       </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services-section">
+    <section id="services">
       <div class="section-title">
         <h2>Our Services</h2>
-        <p>Work smarter. Grow faster.</p>
+        <p>// WORK SMARTER. GROW FASTER.</p>
       </div>
 
-      <div class="services-grid">
-        <div class="service-card">
+      <div class="services">
+        <div class="card">
           <h3>Upskill</h3>
           <p>AI training for your people. Practical, hands-on AI literacy for employees at every level—from frontliners to managers.</p>
           <ul>
@@ -601,7 +932,7 @@
           </ul>
         </div>
 
-        <div class="service-card">
+        <div class="card">
           <h3>Outsource</h3>
           <p>Need work done? We handle end-to-end data solutions, quality control, and execution managed by AI-accelerated teams.</p>
           <ul>
@@ -611,7 +942,7 @@
           </ul>
         </div>
 
-        <div class="service-card">
+        <div class="card">
           <h3>Automate</h3>
           <p>AI systems that boost productivity. We build tailored workflows, automated processes, and custom conversational agents.</p>
           <ul>
@@ -623,127 +954,153 @@
       </div>
     </section>
 
-    <!-- Meet the People Section (2 Layers / 5 Columns + Leadership Note Below) -->
-    <section id="team" class="team-section">
+    <!-- Team Wall / Human-in-the-Loop Network & Leadership Note directly after -->
+    <section id="team" style="margin-bottom: 6rem; position: relative;">
       <div class="section-title">
         <h2>Meet the people who'd <em>run your account.</em></h2>
-        <p>Not stock photos. Not an offshore black box. These are the named people accountable for your work — and you'll talk to them, not an account manager.</p>
+        <p style="text-transform: none; max-width: 680px; margin: 0.75rem auto 0; font-family: var(--font-body); font-size: 1rem; color: var(--text-muted);">
+          Not stock photos. Not an offshore black box. These are the named people accountable for your work — and you'll talk to them, not an account manager.
+        </p>
       </div>
 
-      <!-- LAYER 1 & LAYER 2: 5 Columns Grid -->
-      <div class="team-grid-5col">
-        <!-- 1. Macar -->
-        <div class="team-card">
-          <div class="team-avatar">M</div>
-          <div class="team-name">Macar</div>
-          <div class="team-title">Head of Operations</div>
-          <div class="team-guarantee">Owns delivery against every SLA you sign.</div>
-        </div>
-
-        <!-- 2. Jeh -->
-        <div class="team-card">
-          <div class="team-avatar">J</div>
-          <div class="team-name">Jeh</div>
-          <div class="team-title">Operations Manager</div>
-          <div class="team-guarantee">Your weekly quality report comes from her desk.</div>
-        </div>
-
-        <!-- 3. Mico -->
-        <div class="team-card">
-          <div class="team-avatar">M</div>
-          <div class="team-name">Mico</div>
-          <div class="team-title">Data Operations Lead</div>
-          <div class="team-guarantee">Designs the workflow before a single record moves.</div>
-        </div>
-
-        <!-- 4. Fred -->
-        <div class="team-card">
-          <div class="team-avatar">F</div>
-          <div class="team-name">Fred</div>
-          <div class="team-title">Systems Development</div>
-          <div class="team-guarantee">Builds the integrations that connect us to your stack.</div>
-        </div>
-
-        <!-- 5. Allan -->
-        <div class="team-card">
-          <div class="team-avatar">A</div>
-          <div class="team-name">Allan</div>
-          <div class="team-title">Database & Admin</div>
-          <div class="team-guarantee">Keeps your data pipelines clean and auditable.</div>
-        </div>
-
-        <!-- 6. Riza -->
-        <div class="team-card">
-          <div class="team-avatar">R</div>
-          <div class="team-name">Riza</div>
-          <div class="team-title">Team Leader</div>
-          <div class="team-guarantee">Every batch is reviewed before it reaches you.</div>
-        </div>
-
-        <!-- 7. Aira -->
-        <div class="team-card">
-          <div class="team-avatar">A</div>
-          <div class="team-name">Aira</div>
-          <div class="team-title">Data Auditor</div>
-          <div class="team-guarantee">Runs the audits that catch what the first pass missed.</div>
-        </div>
-
-        <!-- 8. Tin -->
-        <div class="team-card">
-          <div class="team-avatar">T</div>
-          <div class="team-name">Tin</div>
-          <div class="team-title">Systems & Data</div>
-          <div class="team-guarantee">Supervises the AI agents so they don't drift.</div>
-        </div>
-
-        <!-- 9. Grace -->
-        <div class="team-card">
-          <div class="team-avatar">G</div>
-          <div class="team-name">Grace</div>
-          <div class="team-title">Onboarding</div>
-          <div class="team-guarantee">Gets your team live inside three weeks.</div>
-        </div>
-
-        <!-- 10. Chris -->
-        <div class="team-card">
-          <div class="team-avatar">C</div>
-          <div class="team-name">Chris</div>
-          <div class="team-title">Data Admin</div>
-          <div class="team-guarantee">Handles the encoding volume nobody else wants to.</div>
-        </div>
-      </div>
-
-      <!-- LEADERSHIP NOTE (POSITIONED DIRECTLY BELOW MEET THE PEOPLE) -->
-      <div class="leadership-grid">
-        <div class="leadership-card">
-          <blockquote>
-            "We built Kindly to prove that artificial intelligence shouldn't replace human capability — it should elevate it. Every organization we work with should end up with a sustainable, human-guided AI advantage."
-          </blockquote>
-          <div class="leadership-meta">
-            <div class="leadership-avatar">MR</div>
-            <div class="leadership-info">
-              <h5>Mark Ruiz</h5>
-              <span>Co-Founder · Co-founder of Hapinoy</span>
+      <!-- LAYER 1 & LAYER 2: 5-COLUMNS GRID -->
+      <div class="hitl-network-wrapper">
+        <div class="team-grid-2layer">
+          <!-- 1. Macar -->
+          <div class="hitl-card highlight-card">
+            <div class="avatar-box">
+              <img src="macar.jpg" alt="Macar">
             </div>
+            <div class="name">Macar</div>
+            <div class="title">Head of Operations</div>
+            <div class="guarantee-text">Owns delivery against every SLA you sign.</div>
+          </div>
+
+          <!-- 2. Jeh -->
+          <div class="hitl-card highlight-card">
+            <div class="avatar-box">
+              <img src="jeh.jpg" alt="Jeh">
+            </div>
+            <div class="name">Jeh</div>
+            <div class="title">Operations Manager</div>
+            <div class="guarantee-text">Your weekly quality report comes from her desk.</div>
+          </div>
+
+          <!-- 3. Mico -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="mico.jpg" alt="Mico">
+            </div>
+            <div class="name">Mico</div>
+            <div class="title">Data Operations Lead</div>
+            <div class="guarantee-text">Designs the workflow before a single record moves.</div>
+          </div>
+
+          <!-- 4. Fred -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="fred.jpg" alt="Fred">
+            </div>
+            <div class="name">Fred</div>
+            <div class="title">Systems Development</div>
+            <div class="guarantee-text">Builds the integrations that connect us to your stack.</div>
+          </div>
+
+          <!-- 5. Allan -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="allan.jpg" alt="Allan">
+            </div>
+            <div class="name">Allan</div>
+            <div class="title">Database & Admin</div>
+            <div class="guarantee-text">Keeps your data pipelines clean and auditable.</div>
+          </div>
+
+          <!-- 6. Riza -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="riza.jpg" alt="Riza">
+            </div>
+            <div class="name">Riza</div>
+            <div class="title">Team Leader</div>
+            <div class="guarantee-text">Every batch is reviewed before it reaches you.</div>
+          </div>
+
+          <!-- 7. Aira -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="aira.jpg" alt="Aira">
+            </div>
+            <div class="name">Aira</div>
+            <div class="title">Data Auditor</div>
+            <div class="guarantee-text">Runs the audits that catch what the first pass missed.</div>
+          </div>
+
+          <!-- 8. Tin -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="tin.jpg" alt="Tin">
+            </div>
+            <div class="name">Tin</div>
+            <div class="title">Systems & Data</div>
+            <div class="guarantee-text">Supervises the AI agents so they don't drift.</div>
+          </div>
+
+          <!-- 9. Grace -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="grace.jpg" alt="Grace">
+            </div>
+            <div class="name">Grace</div>
+            <div class="title">Onboarding</div>
+            <div class="guarantee-text">Gets your team live inside three weeks.</div>
+          </div>
+
+          <!-- 10. Chris -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="chris.jpg" alt="Chris">
+            </div>
+            <div class="name">Chris</div>
+            <div class="title">Data Admin</div>
+            <div class="guarantee-text">Handles the encoding volume nobody else wants to.</div>
           </div>
         </div>
+      </div>
 
-        <div class="leadership-card">
-          <blockquote>
-            "Technology moves fast, but quality and trust remain deeply human. Combining AI acceleration with rigorous human oversight lets teams scale without compromising execution."
-          </blockquote>
-          <div class="leadership-meta">
-            <div class="leadership-avatar">RF</div>
-            <div class="leadership-info">
-              <h5>Reese Fernandez-Ruiz</h5>
-              <span>Co-Founder · Founder of Rags2Riches</span>
+      <!-- LEADERSHIP NOTE (PLACED DIRECTLY AFTER MEET THE PEOPLE) -->
+      <div class="leadership-section">
+        <div class="section-title">
+          <h2>Leadership Note</h2>
+          <p>// FROM OUR FOUNDERS</p>
+        </div>
+        <div class="leadership-grid">
+          <div class="leadership-card">
+            <blockquote>"We built Kindly to prove that artificial intelligence shouldn't replace human capability—it should elevate it. Every organization we work with should end up with a sustainable, human-guided AI advantage."</blockquote>
+            <div class="leadership-author">
+              <img src="mark.jpg" alt="Mark Ruiz" class="author-avatar">
+              <div class="author-info">
+                <h5>Mark Ruiz</h5>
+                <span>Co-Founder · Co-founder of Hapinoy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="leadership-card">
+            <blockquote>"Technology moves fast, but quality and trust remain deeply human. Combining AI acceleration with rigorous human oversight lets teams scale without compromising execution."</blockquote>
+            <div class="leadership-author">
+              <img src="reese.jpg" alt="Reese Fernandez-Ruiz" class="author-avatar">
+              <div class="author-info">
+                <h5>Reese Fernandez-Ruiz</h5>
+                <span>Co-Founder · Founder of Rags2Riches</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Timeline & Numbers Section -->
+    <!-- Speed / Timeline Section -->
     <section class="timeline-section" id="timeline-section">
       <div class="section-title" style="margin-bottom: 0;">
         <h2>AI Acceleration, Human at Heart</h2>
@@ -764,23 +1121,147 @@
       </div>
     </section>
 
+    <!-- OUR STORY SECTION -->
+    <section class="our-story-section" id="story">
+      <div class="section-title">
+        <h2>Our Story</h2>
+        <p>// ROOTED IN IMPACT. DRIVEN BY INNOVATION.</p>
+      </div>
+      
+      <div class="story-grid">
+        <div class="story-card">
+          <h3>Established Legacy</h3>
+          <p>Our roots run deep in local empowerment through <strong>Hapinoy</strong>. We bring years of proven experience in driving community impact, economic development, and sustainable systems to the digital and AI landscape.</p>
+        </div>
+        
+        <div class="story-card">
+          <h3>Bridging Human & AI</h3>
+          <p>We believe technology shouldn't displace people—it should unleash their potential. We combine smart automation with a skilled, dedicated workforce to handle high-stakes data workflows, AI QA, and custom implementations.</p>
+        </div>
+
+        <div class="story-card">
+          <h3>Dignified Digital Work</h3>
+          <p>Through our hybrid model—combining core in-house specialists with scalable output-based talent—we deliver precision to businesses while providing dignified, high-value opportunities to our communities.</p>
+        </div>
+      </div>
+
+      <div class="story-quote">
+        <p>"Combining deep-rooted community impact with enterprise-grade digital execution."</p>
+      </div>
+    </section>
+
+    <!-- Quick AI Audit Interactive Section -->
+    <section id="quiz" class="quiz-section">
+      <div class="section-title">
+        <h2>Quick Automation Audit</h2>
+        <p>// DIAGNOSE YOUR HIGHEST-IMPACT AUTOMATION PATH</p>
+      </div>
+
+      <div class="quiz-container">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar" id="quizBar"></div>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="quiz-step active" id="quizStep1">
+          <h4>1. Where does your operational bottleneck lie?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Data Entry & Processing')">📥 Manual Data Entry & Processing</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Customer Support Responses')">💬 Customer Support & Inquiries</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Repetitive Internal Workflows')">⚙️ Repetitive Internal Workflows</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Team AI Adoption & Literacy')">🎓 Low AI Literacy Across Staff</button>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-step" id="quizStep2">
+          <h4>2. What is your primary tool stack environment?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Google Workspace & Spreadsheets')">📊 Spreadsheets & Google Workspace</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'CRMs & Helpdesks')">🎧 CRMs / Helpdesks (HubSpot, Zendesk, etc.)</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Custom Databases & APIs')">💻 Custom Databases & Internal Software</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Mostly Manual / Unstructured')">📝 Unstructured Emails & Docs</button>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-step" id="quizStep3">
+          <h4>3. How large is the team handling this workload?</h4>
+          <div class="quiz-options">
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '1 - 5 staff members')">👥 1 – 5 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '6 - 20 staff members')">👥 6 – 20 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '21 - 50 staff members')">🏢 21 – 50 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, '50+ staff members')">🚀 50+ enterprise staff</button>
+          </div>
+        </div>
+
+        <!-- Result Card -->
+        <div class="quiz-step" id="quizResult">
+          <div class="quiz-result-card">
+            <h4 id="auditRecommendation">Recommended: Custom Workflow Automation</h4>
+            <p id="auditDetails">Based on your selections, implementing AI-assisted agents and structured data workflows can reduce manual tasks by up to 60-80% within 3 weeks.</p>
+            <a href="#book" class="btn">Schedule Discovery Call for This Solution</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industries Served -->
+    <section class="industries-section">
+      <div class="section-title" style="margin-bottom: 0;">
+        <h2>Industries We Serve</h2>
+        <p>// WHERE ACCURATE DATA & AI CREATE COMPETITIVE ADVANTAGE</p>
+      </div>
+      <div class="industry-badges">
+        <span class="badge">📦 Shipping & Logistics</span>
+        <span class="badge">💳 Fintech & KYC</span>
+        <span class="badge">🏥 Healthcare</span>
+        <span class="badge">🛍️ E-commerce</span>
+        <span class="badge">📈 Market Research</span>
+        <span class="badge">✈️ Aviation</span>
+        <span class="badge">🏗️ Warehousing</span>
+        <span class="badge">🤖 AI & Machine Learning</span>
+      </div>
+    </section>
+
+    <!-- Fueling Innovation Section -->
+    <section class="industries-section">
+      <div class="section-title">
+        <h2>Fueling Innovation Across Forward-Thinking Teams</h2>
+        <p>// TRUSTED PARTNERS & INDUSTRY LEADERS</p>
+      </div>
+
+      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--card-border); padding: 2rem 2.5rem; border-radius: 14px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+          <img src="assets/activasia-logo.png" alt="ActivAsia" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--card-border); padding: 2rem 2.5rem; border-radius: 14px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+          <img src="assets/gethapi-logo.png" alt="GetHapi" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--card-border); padding: 2rem 2.5rem; border-radius: 14px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+          <img src="assets/hapinoy-logo.png" alt="Hapinoy" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+        </div>
+      </div>
+    </section>
+
     <!-- Booking Section -->
     <section id="book" class="booking-section">
       <div class="section-title">
         <h2>Ready to get started?</h2>
-        <p>Select an available slot below</p>
+        <p>// SELECT AN AVAILABLE SLOT BELOW</p>
       </div>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0b0f19&text_color=f8fafc&primary_color=eb5e3d"></div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=030712&text_color=f8fafc&primary_color=00f2fe"></div>
     </section>
 
+    <!-- Footer -->
     <footer>
-      <p><a href="mailto:hello@kindly.ph" style="color: var(--accent); text-decoration: none;">hello@kindly.ph</a> | Manila, Philippines · Serving clients worldwide</p>
+      <p><a href="mailto:hello@kindly.ph">hello@kindly.ph</a> | Manila, Philippines · Serving clients worldwide</p>
       <p style="margin-top: 0.5rem; opacity: 0.7;">A business under Atindata · Atin Group &copy; 2026 Kindly. All rights reserved.</p>
     </footer>
   </div>
 
+  <!-- Neural Canvas Background Script -->
   <script>
-    /* Neural Canvas Animation */
     const canvas = document.getElementById('neural-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -792,15 +1273,15 @@
     window.addEventListener('resize', resizeCanvas);
 
     const nodes = [];
-    const nodeCount = 45;
+    const nodeCount = 55;
 
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        radius: Math.random() * 1.5 + 1
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 1.8 + 1
       });
     }
 
@@ -817,18 +1298,18 @@
 
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(235, 94, 61, 0.3)';
+        ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
         ctx.fill();
 
         for (let j = i + 1; j < nodeCount; j++) {
           let nodeB = nodes[j];
           let dist = Math.hypot(node.x - nodeB.x, node.y - nodeB.y);
 
-          if (dist < 120) {
+          if (dist < 130) {
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(nodeB.x, nodeB.y);
-            ctx.strokeStyle = `rgba(235, 94, 61, ${0.12 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(0, 242, 254, ${0.15 * (1 - dist / 130)})`;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }
@@ -838,7 +1319,7 @@
     }
     animateNeuralNetwork();
 
-    /* Counter Animation Observer */
+    /* Number Counter Animation Observer */
     let animated = false;
     const timelineSection = document.getElementById('timeline-section');
     const counters = document.querySelectorAll('.counter');
@@ -870,6 +1351,49 @@
     }, { threshold: 0.4 });
 
     observer.observe(timelineSection);
+
+    /* Quiz State Logic */
+    const auditData = { bottleneck: '', stack: '', size: '' };
+
+    function selectQuizOption(step, value) {
+      if (step === 1) {
+        auditData.bottleneck = value;
+        document.getElementById('quizStep1').classList.remove('active');
+        document.getElementById('quizStep2').classList.add('active');
+        document.getElementById('quizBar').style.width = '66%';
+      } else if (step === 2) {
+        auditData.stack = value;
+        document.getElementById('quizStep2').classList.remove('active');
+        document.getElementById('quizStep3').classList.add('active');
+        document.getElementById('quizBar').style.width = '100%';
+      } else if (step === 3) {
+        auditData.size = value;
+        document.getElementById('quizStep3').classList.remove('active');
+        generateAuditResult();
+      }
+    }
+
+    function generateAuditResult() {
+      const resultStep = document.getElementById('quizResult');
+      const recTitle = document.getElementById('auditRecommendation');
+      const recDesc = document.getElementById('auditDetails');
+
+      if (auditData.bottleneck.includes('Data Entry')) {
+        recTitle.innerText = "High Potential: Data Solutions & AI Quality Assurance";
+        recDesc.innerText = `For teams of ${auditData.size} working in ${auditData.stack}, our AI-accelerated Outsource team can automate high-volume data encoding and verification with 99%+ accuracy.`;
+      } else if (auditData.bottleneck.includes('Support')) {
+        recTitle.innerText = "High Potential: Custom Chatbot & Agent Deployment";
+        recDesc.innerText = `Automate response handling across ${auditData.stack} with tailored conversational agents, instantly scaling your support capacity without increasing headcount.`;
+      } else if (auditData.bottleneck.includes('Literacy')) {
+        recTitle.innerText = "High Potential: Team Upskilling & AI Integration";
+        recDesc.innerText = `Empower your staff of ${auditData.size} with practical AI training tailored specifically around your existing ${auditData.stack} workflows.`;
+      } else {
+        recTitle.innerText = "High Potential: Full Workflow & AI Process Audit";
+        recDesc.innerText = `We can map out your repetitive operations and build custom AI automations to save your team estimated hundreds of hours each month.`;
+      }
+
+      resultStep.classList.add('active');
+    }
   </script>
 
 </body>
