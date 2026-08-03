@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:ital,wght@0,500;0,600;0,700;1,500;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -275,6 +275,14 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    .section-title h2 em {
+      font-style: italic;
+      color: var(--accent);
+      background: linear-gradient(135deg, #f0956c 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     
     .section-title p { 
       color: var(--text-muted); 
@@ -316,191 +324,6 @@
     .pillar-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
-    }
-
-    /* Human-in-the-Loop Network */
-    .hitl-network-wrapper {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-      background: rgba(15, 23, 42, 0.45);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-      position: relative;
-    }
-
-    .hitl-core-node {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 3.5rem;
-      position: relative;
-    }
-
-    .hitl-core-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: rgba(0, 242, 254, 0.08);
-      border: 1px solid var(--cyan-neon);
-      padding: 0.8rem 1.8rem;
-      border-radius: 50px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--cyan-neon);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      box-shadow: 0 0 30px rgba(0, 242, 254, 0.25);
-      position: relative;
-      z-index: 3;
-    }
-
-    .hitl-core-node::after {
-      content: '';
-      position: absolute;
-      bottom: -3.5rem;
-      left: 50%;
-      width: 2px;
-      height: 3.5rem;
-      background: linear-gradient(to bottom, var(--cyan-neon), var(--card-border));
-      z-index: 1;
-    }
-
-    .hierarchy-layout {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hierarchy-level {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      width: 100%;
-      flex-wrap: wrap;
-    }
-
-    .level-head .hitl-card,
-    .level-manager .hitl-card {
-      width: 240px;
-    }
-
-    .level-leads .hitl-card {
-      width: 210px;
-    }
-
-    .level-staff .hitl-card {
-      width: 200px;
-    }
-
-    .hitl-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.5rem 0.75rem 1.25rem;
-      text-align: center;
-      position: relative;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .hitl-card.highlight-card {
-      border-color: rgba(216, 131, 94, 0.6);
-      box-shadow: 0 0 25px rgba(216, 131, 94, 0.15);
-    }
-
-    .hitl-card::before {
-      content: '';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 8px;
-      height: 8px;
-      background: var(--card-border);
-      border-radius: 50%;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .hitl-card:hover::before {
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-    }
-
-    .hitl-card .avatar-box {
-      width: 75px;
-      height: 75px;
-      margin: 0 auto 0.75rem;
-      position: relative;
-      border-radius: 50%;
-      padding: 3px;
-      background: linear-gradient(135deg, var(--accent), transparent);
-      box-shadow: 0 0 15px var(--accent-glow);
-    }
-
-    .hitl-card img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hitl-card .name {
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.2;
-    }
-
-    .hitl-card .title {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--cyan-neon);
-      margin-top: 0.25rem;
-      margin-bottom: 0.75rem;
-      font-weight: 500;
-      line-height: 1.2;
-    }
-
-    .hitl-card .tools-bar {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: rgba(248, 250, 252, 0.5);
-      border-top: 1px dashed rgba(255, 255, 255, 0.1);
-      padding-top: 0.6rem;
-      width: 100%;
-      margin-top: auto;
-    }
-
-    .hitl-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 30px rgba(216, 131, 94, 0.25);
-    }
-
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hero h1 { font-size: 2.8rem; }
-      .level-head .hitl-card,
-      .level-manager .hitl-card,
-      .level-leads .hitl-card,
-      .level-staff .hitl-card {
-        width: 100%;
-        max-width: 260px;
-      }
-      .hitl-core-node::after {
-        display: none;
-      }
     }
 
     /* AI Services Grid */
@@ -578,6 +401,108 @@
       position: absolute;
       left: 0;
       font-weight: bold;
+    }
+
+    /* Human-in-the-Loop Network & Team Grid */
+    .hitl-network-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      background: rgba(15, 23, 42, 0.45);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.25rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hitl-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.75rem 1rem 1.25rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hitl-card.highlight-card {
+      border-color: rgba(216, 131, 94, 0.6);
+      box-shadow: 0 0 25px rgba(216, 131, 94, 0.15);
+    }
+
+    .hitl-card .avatar-box {
+      width: 75px;
+      height: 75px;
+      margin: 0 auto 0.75rem;
+      position: relative;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--accent), transparent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .hitl-card img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hitl-card .name {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .hitl-card .title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 0.25rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .hitl-card .guarantee-text {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-top: 0.25rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      padding-top: 0.75rem;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .hitl-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(216, 131, 94, 0.25);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.8rem; }
+      .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
     }
 
     /* OUR STORY SECTION */
@@ -979,151 +904,6 @@
       </div>
     </section>
 
-    <!-- Human-in-the-Loop Network -->
-    <section id="team" style="margin-bottom: 6rem; position: relative;">
-      <div class="section-title">
-        <h2>Human-in-the-Loop Network</h2>
-        <p>// REAL HUMANS OVERSIGHTING & GUARANTEEING EVERY WORKFLOW</p>
-      </div>
-
-      <div class="hitl-network-wrapper">
-        <!-- Central AI Core Node -->
-        <div class="hitl-core-node">
-          <div class="hitl-core-badge">
-            <span class="pulse-dot"></span> AI Engines + Multi-Layer Human Verification
-          </div>
-        </div>
-
-        <!-- Hierarchical Human-in-the-Loop Team Network -->
-        <div class="hitl-team-row hierarchy-layout">
-
-          <!-- Level 1: Macar -->
-          <div class="hierarchy-level level-head">
-            <div class="hitl-card highlight-card">
-              <div class="avatar-box">
-                <img src="macar.jpg" alt="Macar">
-              </div>
-              <div class="name">Macar</div>
-              <div class="title">Head of Operations</div>
-              <div class="tools-bar">Ops Strategy • Alignment</div>
-            </div>
-          </div>
-
-          <!-- Level 2: Jeh -->
-          <div class="hierarchy-level level-manager">
-            <div class="hitl-card highlight-card">
-              <div class="avatar-box">
-                <img src="jeh.jpg" alt="Jeh">
-              </div>
-              <div class="name">Jeh</div>
-              <div class="title">Operations Manager</div>
-              <div class="tools-bar">SLA Oversight • Delivery</div>
-            </div>
-          </div>
-
-          <!-- Level 3: Mico, Fred, Allan, Riza -->
-          <div class="hierarchy-level level-leads">
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="mico.jpg" alt="Mico">
-              </div>
-              <div class="name">Mico</div>
-              <div class="title">Data Operations Lead</div>
-              <div class="tools-bar">Workflows • Data Integrity</div>
-            </div>
-
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="fred.jpg" alt="Fred">
-              </div>
-              <div class="name">Fred</div>
-              <div class="title">Systems Development Officer</div>
-              <div class="tools-bar">Chatbots • Integrations</div>
-            </div>
-
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="allan.jpg" alt="Allan">
-              </div>
-              <div class="name">Allan</div>
-              <div class="title">Database & Admin Officer</div>
-              <div class="tools-bar">SQL • Data Pipelines</div>
-            </div>
-
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="riza.jpg" alt="Riza">
-              </div>
-              <div class="name">Riza</div>
-              <div class="title">Team Leader</div>
-              <div class="tools-bar">Encoder QA • AI Review</div>
-            </div>
-          </div>
-
-          <!-- Level 4: Aira, Tin, Grace, Chris -->
-          <div class="hierarchy-level level-staff">
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="aira.jpg" alt="Aira">
-              </div>
-              <div class="name">Aira</div>
-              <div class="title">Data Auditor</div>
-              <div class="tools-bar">QA • Database Audits</div>
-            </div>
-
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="tin.jpg" alt="Tin">
-              </div>
-              <div class="name">Tin</div>
-              <div class="title">Systems & Data Associate</div>
-              <div class="tools-bar">AI Agents • Automation</div>
-            </div>
-
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="grace.jpg" alt="Grace">
-              </div>
-              <div class="name">Grace</div>
-              <div class="title">Leadgen & Onboarding Assistant</div>
-              <div class="tools-bar">Lead Gen • Onboarding</div>
-            </div>
-
-            <div class="hitl-card">
-              <div class="avatar-box">
-                <img src="chris.jpg" alt="Chris">
-              </div>
-              <div class="name">Chris</div>
-              <div class="title">Data Admin</div>
-              <div class="tools-bar">Data Encoding • AI Support</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Speed / Timeline Section -->
-    <section class="timeline-section" id="timeline-section">
-      <div class="section-title" style="margin-bottom: 0;">
-        <h2>AI Acceleration, Human at Heart</h2>
-      </div>
-      <div class="timeline-grid">
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="24">0</span>h</div>
-          <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="48">0</span>h</div>
-          <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="2">0</span>wk</div>
-          <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Services Section -->
     <section id="services">
       <div class="section-title">
@@ -1160,6 +940,141 @@
             <li>Custom Chatbot Development</li>
             <li>Full Setup & Maintenance</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Wall / Human-in-the-Loop Network (POSITIONED DIRECTLY BELOW SERVICES) -->
+    <section id="team" style="margin-bottom: 6rem; position: relative;">
+      <div class="section-title">
+        <h2>Meet the people who'd <em>run your account.</em></h2>
+        <p style="text-transform: none; max-width: 680px; margin: 0.75rem auto 0; font-family: var(--font-body); font-size: 1rem; color: var(--text-muted);">
+          Not stock photos. Not an offshore black box. These are the named people accountable for your work — and you'll talk to them, not an account manager.
+        </p>
+      </div>
+
+      <div class="hitl-network-wrapper">
+        <div class="team-grid">
+          <!-- Macar -->
+          <div class="hitl-card highlight-card">
+            <div class="avatar-box">
+              <img src="macar.jpg" alt="Macar">
+            </div>
+            <div class="name">Macar</div>
+            <div class="title">Head of Operations</div>
+            <div class="guarantee-text">Owns delivery against every SLA you sign.</div>
+          </div>
+
+          <!-- Jeh -->
+          <div class="hitl-card highlight-card">
+            <div class="avatar-box">
+              <img src="jeh.jpg" alt="Jeh">
+            </div>
+            <div class="name">Jeh</div>
+            <div class="title">Operations Manager</div>
+            <div class="guarantee-text">Your weekly quality report comes from her desk.</div>
+          </div>
+
+          <!-- Mico -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="mico.jpg" alt="Mico">
+            </div>
+            <div class="name">Mico</div>
+            <div class="title">Data Operations Lead</div>
+            <div class="guarantee-text">Designs the workflow before a single record moves.</div>
+          </div>
+
+          <!-- Fred -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="fred.jpg" alt="Fred">
+            </div>
+            <div class="name">Fred</div>
+            <div class="title">Systems Development</div>
+            <div class="guarantee-text">Builds the integrations that connect us to your stack.</div>
+          </div>
+
+          <!-- Allan -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="allan.jpg" alt="Allan">
+            </div>
+            <div class="name">Allan</div>
+            <div class="title">Database & Admin</div>
+            <div class="guarantee-text">Keeps your data pipelines clean and auditable.</div>
+          </div>
+
+          <!-- Riza -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="riza.jpg" alt="Riza">
+            </div>
+            <div class="name">Riza</div>
+            <div class="title">Team Leader</div>
+            <div class="guarantee-text">Every batch is reviewed before it reaches you.</div>
+          </div>
+
+          <!-- Aira -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="aira.jpg" alt="Aira">
+            </div>
+            <div class="name">Aira</div>
+            <div class="title">Data Auditor</div>
+            <div class="guarantee-text">Runs the audits that catch what the first pass missed.</div>
+          </div>
+
+          <!-- Tin -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="tin.jpg" alt="Tin">
+            </div>
+            <div class="name">Tin</div>
+            <div class="title">Systems & Data</div>
+            <div class="guarantee-text">Supervises the AI agents so they don't drift.</div>
+          </div>
+
+          <!-- Grace -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="grace.jpg" alt="Grace">
+            </div>
+            <div class="name">Grace</div>
+            <div class="title">Onboarding</div>
+            <div class="guarantee-text">Gets your team live inside three weeks.</div>
+          </div>
+
+          <!-- Chris -->
+          <div class="hitl-card">
+            <div class="avatar-box">
+              <img src="chris.jpg" alt="Chris">
+            </div>
+            <div class="name">Chris</div>
+            <div class="title">Data Admin</div>
+            <div class="guarantee-text">Handles the encoding volume nobody else wants to.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speed / Timeline Section -->
+    <section class="timeline-section" id="timeline-section">
+      <div class="section-title" style="margin-bottom: 0;">
+        <h2>AI Acceleration, Human at Heart</h2>
+      </div>
+      <div class="timeline-grid">
+        <div class="timeline-item">
+          <div class="time"><span class="counter" data-target="24">0</span>h</div>
+          <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="time"><span class="counter" data-target="48">0</span>h</div>
+          <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="time"><span class="counter" data-target="2">0</span>wk</div>
+          <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
         </div>
       </div>
     </section>
@@ -1201,23 +1116,23 @@
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card">
-          <p>"We built Kindly to prove that artificial intelligence shouldn't replace human capability—it should elevate it. Our goal is to ensure every organization we work with builds a sustainable, human-guided AI advantage."</p>
+          <p>"We built Kindly to prove that artificial intelligence shouldn't replace human capability—it should elevate it. Every organization we work with should end up with a sustainable, human-guided AI advantage."</p>
           <div class="testimonial-author">
             <img src="mark.jpg" alt="Mark Ruiz" class="author-avatar">
             <div class="author-info">
               <h5>Mark Ruiz</h5>
-              <span>Co-Founder</span>
+              <span>Co-Founder · Co-founder of Hapinoy</span>
             </div>
           </div>
         </div>
 
         <div class="testimonial-card">
-          <p>"Technology moves fast, but quality and trust remain deeply human. By combining cutting-edge AI acceleration with rigorous human oversight, we help teams scale efficiently without compromising on execution."</p>
+          <p>"Technology moves fast, but quality and trust remain deeply human. Combining AI acceleration with rigorous human oversight lets teams scale without compromising execution."</p>
           <div class="testimonial-author">
             <img src="reese.jpg" alt="Reese Fernandez-Ruiz" class="author-avatar">
             <div class="author-info">
               <h5>Reese Fernandez-Ruiz</h5>
-              <span>Co-Founder</span>
+              <span>Co-Founder · Founder of Rags2Riches</span>
             </div>
           </div>
         </div>
