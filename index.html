@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* Updated CSS Variables based on color palette & font guidelines */
+    /* CSS Variables based on color palette & font guidelines */
     :root {
       --bg-color: #0F1226;          /* Ink */
       --bg-secondary: #141838;      /* Ink 2 */
@@ -56,7 +56,7 @@
       pointer-events: none;
     }
 
-    /* Cyber Grid Overlay updated with primary theme colors */
+    /* Cyber Grid Overlay */
     body::before {
       content: "";
       position: fixed;
@@ -736,16 +736,70 @@
       box-shadow: 0 0 20px rgba(244, 85, 47, 0.25);
     }
 
-    .quiz-result-card { text-align: center; }
+    .quiz-result-card { text-align: left; }
     .quiz-result-card h4 {
       color: var(--accent-soft);
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      text-align: center;
     }
+    
+    .audit-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .audit-stat-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .audit-stat-box .stat-val {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .audit-stat-box .stat-lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
     .quiz-result-card p {
       color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .audit-bullets {
+      list-style: none;
       margin-bottom: 1.8rem;
-      font-size: 1rem;
+    }
+
+    .audit-bullets li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .audit-bullets li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
     }
 
     /* Industries Badges */
@@ -1163,7 +1217,7 @@
       </div>
     </section>
 
-    <!-- Team Wall / Human-in-the-Loop Network & Leadership Note directly after -->
+    <!-- Team Wall / Human-in-the-Loop Network & Leadership Note -->
     <section id="team" style="margin-bottom: 6rem; position: relative;">
       <div class="section-title">
         <h2>Meet the people who'd <em>run your account.</em></h2>
@@ -1172,104 +1226,64 @@
         </p>
       </div>
 
-      <!-- LAYER 1 & LAYER 2: 5-COLUMNS GRID -->
       <div class="hitl-network-wrapper">
         <div class="team-grid-2layer">
-          <!-- 1. Macar -->
           <div class="hitl-card highlight-card">
-            <div class="avatar-box">
-              <img src="macar.jpg" alt="Macar">
-            </div>
+            <div class="avatar-box"><img src="macar.jpg" alt="Macar"></div>
             <div class="name">Macar</div>
             <div class="title">Head of Operations</div>
             <div class="guarantee-text">Owns delivery against every SLA you sign.</div>
           </div>
-
-          <!-- 2. Jeh -->
           <div class="hitl-card highlight-card">
-            <div class="avatar-box">
-              <img src="jeh.jpg" alt="Jeh">
-            </div>
+            <div class="avatar-box"><img src="jeh.jpg" alt="Jeh"></div>
             <div class="name">Jeh</div>
             <div class="title">Operations Manager</div>
             <div class="guarantee-text">Your weekly quality report comes from her desk.</div>
           </div>
-
-          <!-- 3. Mico -->
           <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="mico.jpg" alt="Mico">
-            </div>
+            <div class="avatar-box"><img src="mico.jpg" alt="Mico"></div>
             <div class="name">Mico</div>
             <div class="title">Data Operations Lead</div>
             <div class="guarantee-text">Designs the workflow before a single record moves.</div>
           </div>
-
-          <!-- 4. Fred -->
           <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="fred.jpg" alt="Fred">
-            </div>
+            <div class="avatar-box"><img src="fred.jpg" alt="Fred"></div>
             <div class="name">Fred</div>
             <div class="title">Systems Development</div>
             <div class="guarantee-text">Builds the integrations that connect us to your stack.</div>
           </div>
-
-          <!-- 5. Allan -->
           <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="allan.jpg" alt="Allan">
-            </div>
+            <div class="avatar-box"><img src="allan.jpg" alt="Allan"></div>
             <div class="name">Allan</div>
             <div class="title">Database & Admin</div>
             <div class="guarantee-text">Keeps your data pipelines clean and auditable.</div>
           </div>
-
-          <!-- 6. Riza -->
           <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="riza.jpg" alt="Riza">
-            </div>
+            <div class="avatar-box"><img src="riza.jpg" alt="Riza"></div>
             <div class="name">Riza</div>
             <div class="title">Team Leader</div>
             <div class="guarantee-text">Every batch is reviewed before it reaches you.</div>
           </div>
-
-          <!-- 7. Aira -->
           <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="aira.jpg" alt="Aira">
-            </div>
+            <div class="avatar-box"><img src="aira.jpg" alt="Aira"></div>
             <div class="name">Aira</div>
             <div class="title">Data Auditor</div>
             <div class="guarantee-text">Runs the audits that catch what the first pass missed.</div>
           </div>
-
-          <!-- 8. Tin -->
           <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="tin.jpg" alt="Tin">
-            </div>
+            <div class="avatar-box"><img src="tin.jpg" alt="Tin"></div>
             <div class="name">Tin</div>
             <div class="title">Systems & Data</div>
             <div class="guarantee-text">Supervises the AI agents so they don't drift.</div>
           </div>
-
-          <!-- 9. Grace -->
           <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="grace.jpg" alt="Grace">
-            </div>
+            <div class="avatar-box"><img src="grace.jpg" alt="Grace"></div>
             <div class="name">Grace</div>
             <div class="title">Onboarding</div>
             <div class="guarantee-text">Gets your team live inside three weeks.</div>
           </div>
-
-          <!-- 10. Chris -->
           <div class="hitl-card">
-            <div class="avatar-box">
-              <img src="chris.jpg" alt="Chris">
-            </div>
+            <div class="avatar-box"><img src="chris.jpg" alt="Chris"></div>
             <div class="name">Chris</div>
             <div class="title">Data Admin</div>
             <div class="guarantee-text">Handles the encoding volume nobody else wants to.</div>
@@ -1359,7 +1373,7 @@
       </div>
     </section>
 
-    <!-- Quick AI Audit Interactive Section -->
+    <!-- Dynamic Quick AI Audit Section -->
     <section id="quiz" class="quiz-section">
       <div class="section-title">
         <h2>Quick Automation Audit</h2>
@@ -1373,12 +1387,12 @@
 
         <!-- Question 1 -->
         <div class="quiz-step active" id="quizStep1">
-          <h4>1. Where does your operational bottleneck lie?</h4>
+          <h4>1. Where does your primary operational bottleneck lie?</h4>
           <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Data Entry & Processing')">📥 Manual Data Entry & Processing</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Customer Support Responses')">💬 Customer Support & Inquiries</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Repetitive Internal Workflows')">⚙️ Repetitive Internal Workflows</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'Team AI Adoption & Literacy')">🎓 Low AI Literacy Across Staff</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'data')">📥 Manual Data Entry & Verification</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'support')">💬 Customer Support & Ticket Inquiries</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'workflows')">⚙️ Repetitive Internal Workflows</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(1, 'literacy')">🎓 Low AI Literacy Across Staff</button>
           </div>
         </div>
 
@@ -1386,10 +1400,10 @@
         <div class="quiz-step" id="quizStep2">
           <h4>2. What is your primary tool stack environment?</h4>
           <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Google Workspace & Spreadsheets')">📊 Spreadsheets & Google Workspace</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'CRMs & Helpdesks')">🎧 CRMs / Helpdesks (HubSpot, Zendesk, etc.)</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Custom Databases & APIs')">💻 Custom Databases & Internal Software</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'Mostly Manual / Unstructured')">📝 Unstructured Emails & Docs</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'sheets')">📊 Google Workspace & Spreadsheets</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'crm')">🎧 CRMs & Helpdesks (Zendesk, HubSpot)</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'db')">💻 Custom Databases & Internal Software</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(2, 'unstructured')">📝 Unstructured Emails, Docs & PDFs</button>
           </div>
         </div>
 
@@ -1397,19 +1411,42 @@
         <div class="quiz-step" id="quizStep3">
           <h4>3. How large is the team handling this workload?</h4>
           <div class="quiz-options">
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '1 - 5 staff members')">👥 1 – 5 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '6 - 20 staff members')">👥 6 – 20 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '21 - 50 staff members')">🏢 21 – 50 team members</button>
-            <button class="quiz-option-btn" onclick="selectQuizOption(3, '50+ staff members')">🚀 50+ enterprise staff</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, 'small')">👥 1 – 5 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, 'mid')">👥 6 – 20 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, 'large')">🏢 21 – 50 team members</button>
+            <button class="quiz-option-btn" onclick="selectQuizOption(3, 'enterprise')">🚀 50+ enterprise staff</button>
           </div>
         </div>
 
-        <!-- Result Card -->
+        <!-- Dynamic Audit Result Card -->
         <div class="quiz-step" id="quizResult">
           <div class="quiz-result-card">
-            <h4 id="auditRecommendation">Recommended: Custom Workflow Automation</h4>
-            <p id="auditDetails">Based on your selections, implementing AI-assisted agents and structured data workflows can reduce manual tasks by up to 60-80% within 3 weeks.</p>
-            <a href="#book" class="btn">Schedule Discovery Call for This Solution</a>
+            <h4 id="auditRecommendation">Analyzing operational profile...</h4>
+            
+            <div class="audit-stats-grid">
+              <div class="audit-stat-box">
+                <div class="stat-val" id="statTimeSaved">--</div>
+                <div class="stat-lbl">Est. Time Saved</div>
+              </div>
+              <div class="audit-stat-box">
+                <div class="stat-val" id="statAccuracy">--</div>
+                <div class="stat-lbl">Target SLA Quality</div>
+              </div>
+              <div class="audit-stat-box">
+                <div class="stat-val" id="statTimeline">--</div>
+                <div class="stat-lbl">Deployment Speed</div>
+              </div>
+            </div>
+
+            <p id="auditDetails">Loading calculation...</p>
+
+            <ul class="audit-bullets" id="auditActionItems">
+              <!-- Dynamically populated -->
+            </ul>
+
+            <div style="text-align: center;">
+              <a href="#book" class="btn">Schedule Discovery Call for This Solution</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1456,7 +1493,6 @@
     <!-- BOOKING / DISCOVERY CALL SECTION -->
     <section id="book" class="booking-section">
       <div class="discovery-grid">
-        <!-- Left Column: Details -->
         <div class="discovery-info-col">
           <span class="discovery-subtag">The Next Step</span>
           <h2 class="discovery-title">Book your <em>discovery call.</em></h2>
@@ -1496,14 +1532,11 @@
           </div>
         </div>
 
-        <!-- Right Column: Calendly Embed + Email Option -->
         <div class="discovery-actions-col">
-          <!-- Calendly Card Container with updated palette colors -->
           <div class="calendly-embed-box">
             <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=1b1f3f&text_color=f2ede1&primary_color=f4552f"></div>
           </div>
 
-          <!-- Email Fallback Form -->
           <div class="email-fallback-card">
             <p>Prefer email first? Tell us a little and we'll reply within 24 hours.</p>
             <form onsubmit="event.preventDefault(); alert('Thank you! We will get back to you within 24 hours.');">
@@ -1529,7 +1562,7 @@
     </footer>
   </div>
 
-  <!-- Neural Canvas Background Script updated with Accent Colors -->
+  <!-- Neural Canvas Background Script -->
   <script>
     const canvas = document.getElementById('neural-canvas');
     const ctx = canvas.getContext('2d');
@@ -1621,7 +1654,7 @@
 
     observer.observe(timelineSection);
 
-    /* Quiz State Logic */
+    /* Dynamic Real Multi-Condition Quiz Logic */
     const auditData = { bottleneck: '', stack: '', size: '' };
 
     function selectQuizOption(step, value) {
@@ -1646,20 +1679,148 @@
       const resultStep = document.getElementById('quizResult');
       const recTitle = document.getElementById('auditRecommendation');
       const recDesc = document.getElementById('auditDetails');
+      const timeSavedEl = document.getElementById('statTimeSaved');
+      const accuracyEl = document.getElementById('statAccuracy');
+      const timelineEl = document.getElementById('statTimeline');
+      const actionList = document.getElementById('auditActionItems');
 
-      if (auditData.bottleneck.includes('Data Entry')) {
-        recTitle.innerText = "High Potential: Data Solutions & AI Quality Assurance";
-        recDesc.innerText = `For teams of ${auditData.size} working in ${auditData.stack}, our AI-accelerated Outsource team can automate high-volume data encoding and verification with 99%+ accuracy.`;
-      } else if (auditData.bottleneck.includes('Support')) {
-        recTitle.innerText = "High Potential: Custom Chatbot & Agent Deployment";
-        recDesc.innerText = `Automate response handling across ${auditData.stack} with tailored conversational agents, instantly scaling your support capacity without increasing headcount.`;
-      } else if (auditData.bottleneck.includes('Literacy')) {
-        recTitle.innerText = "High Potential: Team Upskilling & AI Integration";
-        recDesc.innerText = `Empower your staff of ${auditData.size} with practical AI training tailored specifically around your existing ${auditData.stack} workflows.`;
-      } else {
-        recTitle.innerText = "High Potential: Full Workflow & AI Process Audit";
-        recDesc.innerText = `We can map out your repetitive operations and build custom AI automations to save your team estimated hundreds of hours each month.`;
+      let title = "";
+      let desc = "";
+      let timeSaved = "";
+      let accuracy = "99.2%";
+      let timeline = "2-3 Wks";
+      let bullets = [];
+
+      const { bottleneck, stack, size } = auditData;
+
+      /* 1. DATA ENTRY BOTTLENECK */
+      if (bottleneck === 'data') {
+        accuracy = "99.8%";
+        if (stack === 'sheets') {
+          title = "Solution: Hybrid Automated Extraction & Human QA Verification";
+          bullets = [
+            "Deploy LLM-powered scrapers & Apps Script triggers to ingest raw spreadsheets.",
+            "Integrate Human-in-the-Loop QA analysts (Aira/Tin) for exceptions & edge cases.",
+            "Eliminate repetitive manual copy-pasting without modifying existing sheets."
+          ];
+          if (size === 'small') { timeSaved = "25+ hrs/wk"; desc = "For small teams relying heavily on spreadsheets, manual transcription slows down client turnaround. We automate sheet ingestion while keeping a dedicated human reviewer for edge cases."; }
+          else if (size === 'mid') { timeSaved = "70+ hrs/wk"; desc = "With 6-20 team members handling manual sheet updates, error rates escalate quickly. We implement automated document parser pipelines with audit checkpoints."; }
+          else { timeSaved = "180+ hrs/wk"; desc = "At enterprise volume, sheet-based data entry creates massive operational risk. We convert manual data flows into automated, human-verified background tasks."; }
+        } else if (stack === 'crm') {
+          title = "Solution: CRM Ingestion Engine & Human Data Verification";
+          bullets = [
+            "Connect automated parsing webhooks directly into your CRM (Zendesk/HubSpot).",
+            "Dedicated Manila-based data operators verify flagged records before submission.",
+            "Maintain 100% clean CRM pipeline data without burdening client reps."
+          ];
+          if (size === 'small') { timeSaved = "30+ hrs/wk"; desc = "Your account reps spend too much time updating CRM records instead of closing deals. We clean and auto-enrich ticket & deal data automatically."; }
+          else { timeSaved = "120+ hrs/wk"; desc = "Large teams waste hundreds of hours manually verifying CRM field inputs. Our solution automates field mapping with human auditing for 99.8% precision."; }
+        } else if (stack === 'db') {
+          title = "Solution: Custom API ETL Pipeline & Human Data QA";
+          bullets = [
+            "Build secure, compliant middleware API pipelines into your custom backend.",
+            "Deploy automated validation rules backed by Chris & Allan's database ops team.",
+            "Achieve real-time database updates without engineering headcount expansion."
+          ];
+          timeSaved = size === 'small' ? "35+ hrs/wk" : "200+ hrs/wk";
+          desc = "Custom databases require high accuracy. We build structured OCR & AI parsers that feed directly into your APIs, backed by human spot checks.";
+        } else { /* unstructured */
+          title = "Solution: Intelligent Document Processing (IDP) & Managed QA";
+          bullets = [
+            "Extract structured data from messy PDF invoices, emails, and attachments via LLM vision models.",
+            "Human operators resolve low-confidence extractions within guaranteed 15-minute SLAs.",
+            "Convert unstructured inbox chaos into structured, actionable JSON/database records."
+          ];
+          timeSaved = size === 'small' ? "40+ hrs/wk" : "250+ hrs/wk";
+          desc = "Unstructured documents are the #1 source of business drag. We combine vision models with specialized human reviewers to extract clean data fast.";
+        }
       }
+
+      /* 2. CUSTOMER SUPPORT BOTTLENECK */
+      else if (bottleneck === 'support') {
+        accuracy = "98.5%";
+        timeline = "1-2 Wks";
+        if (stack === 'crm') {
+          title = "Solution: Zendesk/HubSpot AI Co-Pilot & Managed Triage";
+          bullets = [
+            "Build context-aware Voiceflow/LLM agents directly inside your helpdesk CRM.",
+            "Auto-draft 70% of tier-1 support responses for 1-click agent approval.",
+            "Human tier-2 escalation team guarantees zero hallucination or brand misstep."
+          ];
+          timeSaved = size === 'small' ? "20+ hrs/wk" : "150+ hrs/wk";
+          desc = "Helpdesk bottlenecks destroy response times. We train AI models on your knowledge base to draft ticket responses instantly, backed by human review.";
+        } else if (stack === 'sheets') {
+          title = "Solution: Automated Ticket Dispatcher & Multi-Channel AI Assistant";
+          bullets = [
+            "Structure incoming customer inquiries from forms/sheets into automated queues.",
+            "Deploy automated AI initial-response agents with built-in human sentiment checks.",
+            "Cut response times from hours to under 2 minutes."
+          ];
+          timeSaved = "35+ hrs/wk";
+          desc = "Managing support out of spreadsheets or inbox aliases causes missed inquiries. We structure your support pipeline with AI categorization and human oversight.";
+        } else {
+          title = "Solution: Enterprise Conversational Agent & Escalation Tier";
+          bullets = [
+            "Develop custom RAG conversational agents connected directly to your stack.",
+            "Instant resolution for repetitive FAQs; seamless handoff to trained human teams for complex cases.",
+            "24/7 coverage with guaranteed SLAs."
+          ];
+          timeSaved = size === 'small' ? "30+ hrs/wk" : "300+ hrs/wk";
+          desc = "Scale support volume effortlessly. AI handles front-line inquiries 24/7 while human team members handle nuanced customer relationship issues.";
+        }
+      }
+
+      /* 3. REPETITIVE WORKFLOWS BOTTLENECK */
+      else if (bottleneck === 'workflows') {
+        accuracy = "99.0%";
+        if (stack === 'unstructured') {
+          title = "Solution: Unstructured Workflow Orchestration & Human Execution";
+          bullets = [
+            "Map complex document-driven processes into automated trigger workflows.",
+            "AI synthesizes long PDF/email threads into concise action summaries.",
+            "Human team members execute multi-step logic checks before final output."
+          ];
+          timeSaved = size === 'small' ? "25+ hrs/wk" : "160+ hrs/wk";
+          desc = "Handling unstructured emails and documents eats up staff hours. We automate document classification, summary generation, and process execution.";
+        } else {
+          title = "Solution: End-to-End AI Process Automation & Outsourced Execution";
+          bullets = [
+            "Conduct full workflow audit (Mico & Fred) to map repetitive operational bottlenecks.",
+            "Build custom automation scripts connecting your software tools.",
+            "Provide dedicated Kindly operators to manage and maintain output quality."
+          ];
+          timeSaved = size === 'small' ? "30+ hrs/wk" : "220+ hrs/wk";
+          desc = "Repetitive tasks drag down company momentum. We streamline software integrations and handle remaining manual steps via AI-accelerated specialists.";
+        }
+      }
+
+      /* 4. LOW AI LITERACY / ADOPTION */
+      else {
+        accuracy = "100%";
+        timeline = "1 Wk Setup";
+        title = "Solution: Practical AI Upskilling & Executive Implementation";
+        bullets = [
+          "Customized hands-on AI training curriculum built around your specific tools (" + (stack === 'crm' ? 'CRMs' : stack === 'sheets' ? 'Spreadsheets' : 'Internal Stack') + ").",
+          "Prompt engineering frameworks & custom GPT internal tool deployment for your staff.",
+          "Post-training certification and quarterly workflow audit support."
+        ];
+        timeSaved = size === 'small' ? "15+ hrs/user" : "100+ hrs total";
+        desc = `With a team size of ${size} using ${stack === 'crm' ? 'CRMs' : stack === 'sheets' ? 'Google Workspace' : 'custom software'}, introducing tailored AI training yields immediate productivity gains across all roles.`;
+      }
+
+      // Populate DOM elements dynamically
+      recTitle.innerText = title;
+      recDesc.innerText = desc;
+      timeSavedEl.innerText = timeSaved;
+      accuracyEl.innerText = accuracy;
+      timelineEl.innerText = timeline;
+
+      actionList.innerHTML = "";
+      bullets.forEach(b => {
+        const li = document.createElement('li');
+        li.innerText = b;
+        actionList.appendChild(li);
+      });
 
       resultStep.classList.add('active');
     }
