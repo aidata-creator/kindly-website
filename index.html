@@ -809,20 +809,216 @@
       font-size: 0.95rem;
     }
 
-    /* Booking Section */
+    /* BOOKING SECTION (Updated based on image mockup) */
     .booking-section {
-      text-align: center;
       margin-bottom: 6rem;
     }
 
-    .calendly-inline-widget {
-      min-width: 320px;
-      height: 720px;
+    .discovery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .discovery-info-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .discovery-subtag {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .discovery-title {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      color: var(--text-main);
+    }
+
+    .discovery-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .discovery-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .discovery-card {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2.25rem;
+      backdrop-filter: blur(16px);
+      margin-bottom: 2rem;
+    }
+
+    .discovery-card-header {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1.75rem;
+    }
+
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1;
+      padding-top: 0.2rem;
+    }
+
+    .step-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .step-text strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .discovery-checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+    }
+
+    .discovery-checks span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .discovery-checks span::before {
+      content: '✓';
+      color: var(--cyan-neon);
+      font-weight: bold;
+    }
+
+    .discovery-actions-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .calendly-embed-box {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px dashed var(--cyan-glow);
       border-radius: 16px;
       overflow: hidden;
-      margin-top: 2rem;
+      backdrop-filter: blur(16px);
+      min-height: 620px;
+    }
+
+    .calendly-inline-widget {
+      width: 100%;
+      height: 620px;
+      border: none;
+    }
+
+    .email-fallback-card {
+      background: rgba(15, 23, 42, 0.75);
       border: 1px solid var(--card-border);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      border-radius: 16px;
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+    }
+
+    .email-fallback-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .email-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(3, 7, 18, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .form-input::placeholder {
+      color: #64748b;
+    }
+
+    .form-input:focus {
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+    }
+
+    .btn-submit-call {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #f96332 0%, #d8835e 100%);
+      color: #ffffff;
+      border: none;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(249, 99, 50, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit-call:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(249, 99, 50, 0.5);
+    }
+
+    @media (max-width: 900px) {
+      .discovery-grid {
+        grid-template-columns: 1fr;
+      }
+      .email-form-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Footer */
@@ -1244,13 +1440,73 @@
       </div>
     </section>
 
-    <!-- Booking Section -->
+    <!-- REDESIGNED BOOKING / DISCOVERY CALL SECTION -->
     <section id="book" class="booking-section">
-      <div class="section-title">
-        <h2>Ready to get started?</h2>
-        <p>// SELECT AN AVAILABLE SLOT BELOW</p>
+      <div class="discovery-grid">
+        <!-- Left Column: Details -->
+        <div class="discovery-info-col">
+          <span class="discovery-subtag">The Next Step</span>
+          <h2 class="discovery-title">Book your <em>discovery call.</em></h2>
+          <p class="discovery-desc">
+            Twenty minutes with a founder. We'll map where AI and trained people could cut your operating cost — and tell you if we're not the right fit.
+          </p>
+
+          <div class="discovery-card">
+            <div class="discovery-card-header">What happens on the call</div>
+            <div class="step-list">
+              <div class="step-item">
+                <span class="step-num">01</span>
+                <div class="step-text">
+                  <strong>Your workflows</strong> — you walk us through the operations eating your team's time or budget.
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-num">02</span>
+                <div class="step-text">
+                  <strong>Instant triage</strong> — we tell you on the spot what looks automatable, what needs humans-in-the-loop, and what we'd charge.
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-num">03</span>
+                <div class="step-text">
+                  <strong>Your next step</strong> — a free 100-unit pilot, a fixed-fee audit, or an honest "you don't need us."
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="discovery-checks">
+            <span>No commitment</span>
+            <span>Founder-led, not a sales rep</span>
+            <span>NDA on request</span>
+            <span>US / EU / AU-friendly slots</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Calendly Embed + Email Option -->
+        <div class="discovery-actions-col">
+          <!-- Calendly Card Container -->
+          <div class="calendly-embed-box">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0f172a&text_color=f8fafc&primary_color=00f2fe"></div>
+          </div>
+
+          <!-- Email Fallback Form -->
+          <div class="email-fallback-card">
+            <p>Prefer email first? Tell us a little and we'll reply within 24 hours.</p>
+            <form onsubmit="event.preventDefault(); alert('Thank you! We will get back to you within 24 hours.');">
+              <div class="email-form-grid">
+                <input type="text" class="form-input" placeholder="Your name" required>
+                <input type="email" class="form-input" placeholder="Work email" required>
+                <input type="text" class="form-input" placeholder="Company">
+                <input type="text" class="form-input" placeholder="Company size">
+                <input type="text" class="form-input" placeholder="What do you need help with?">
+                <input type="text" class="form-input" placeholder="When do you want to start?">
+              </div>
+              <button type="submit" class="btn-submit-call">Request my call</button>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/jeh-hapinoy/1?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=030712&text_color=f8fafc&primary_color=00f2fe"></div>
     </section>
 
     <!-- Footer -->
