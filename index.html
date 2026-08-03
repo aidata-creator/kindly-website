@@ -12,9 +12,9 @@
   <style>
     :root {
       --bg-color: #030712;
-      --card-bg: rgba(15, 23, 42, 0.65);
-      --card-border: rgba(0, 242, 254, 0.15);
-      --card-hover-border: rgba(0, 242, 254, 0.6);
+      --card-bg: rgba(15, 23, 42, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(0, 242, 254, 0.5);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --accent: #d8835e;
@@ -27,6 +27,10 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background-color: var(--bg-color);
@@ -54,33 +58,45 @@
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(216, 131, 94, 0.18) 0%, transparent 60%),
-        radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.1) 0%, transparent 50%),
-        linear-gradient(to right, rgba(0, 242, 254, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+        radial-gradient(circle at 50% 0%, rgba(216, 131, 94, 0.15) 0%, transparent 65%),
+        radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.08) 0%, transparent 50%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
       z-index: -1;
     }
 
-    /* Static Top Cyber Accent Line */
+    /* Top Accent Line */
     body::after {
       content: "";
       position: fixed;
       top: 0; left: 0; right: 0;
       height: 2px;
       background: linear-gradient(90deg, transparent 0%, var(--cyan-neon) 40%, var(--accent) 70%, transparent 100%);
-      z-index: 100;
+      z-index: 1000;
       box-shadow: 0 0 12px var(--cyan-glow);
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1140px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
+    /* Glassmorphism Navigation Bar */
     header {
-      padding: 2.5rem 0 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      padding: 1.25rem 0;
+      background: rgba(3, 7, 18, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .nav-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -88,13 +104,36 @@
 
     .logo {
       font-family: var(--font-heading);
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       font-weight: 700;
       letter-spacing: -0.03em;
       color: var(--text-main);
       display: flex;
       align-items: center;
-      gap: 0.2rem;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--cyan-neon);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan-neon);
     }
 
     .live-status {
@@ -108,10 +147,10 @@
       font-size: 0.8rem;
       font-family: var(--font-mono);
       letter-spacing: 0.05em;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(0, 242, 254, 0.3);
+      margin-bottom: 1.75rem;
+      border: 1px solid rgba(0, 242, 254, 0.25);
       backdrop-filter: blur(12px);
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
     }
 
     .pulse-dot {
@@ -129,25 +168,26 @@
       100% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
     }
 
+    /* Hero Section */
     .hero {
       text-align: center;
-      padding: 4rem 0 5rem;
-      max-width: 900px;
+      padding: 5rem 0 6rem;
+      max-width: 920px;
       margin: 0 auto;
       position: relative;
     }
 
     .hero h1 {
       font-family: var(--font-heading);
-      font-size: 3.8rem;
+      font-size: 4rem;
       font-weight: 700;
-      line-height: 1.12;
+      line-height: 1.1;
       margin-bottom: 1.5rem;
       letter-spacing: -0.03em;
-      background: linear-gradient(180deg, #ffffff 20%, rgba(255, 255, 255, 0.65) 100%);
+      background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.7) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 40px rgba(0, 242, 254, 0.2);
+      text-shadow: 0 0 50px rgba(0, 242, 254, 0.15);
     }
 
     .hero p {
@@ -157,8 +197,18 @@
       max-width: 720px;
       margin-left: auto;
       margin-right: auto;
+      font-weight: 400;
     }
 
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Standard Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -166,17 +216,17 @@
       gap: 0.6rem;
       background: linear-gradient(135deg, var(--accent) 0%, #b8603b 100%);
       color: #ffffff;
-      padding: 1rem 2.4rem;
+      padding: 0.9rem 2.2rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
       font-family: var(--font-mono);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 25px var(--accent-glow);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 20px var(--accent-glow);
       cursor: pointer;
       position: relative;
       overflow: hidden;
@@ -187,7 +237,7 @@
       position: absolute;
       top: 0; left: -100%;
       width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
       transition: 0.5s;
     }
 
@@ -195,7 +245,20 @@
 
     .btn:hover { 
       transform: translateY(-2px);
-      box-shadow: 0 0 35px rgba(216, 131, 94, 0.7);
+      box-shadow: 0 6px 30px rgba(216, 131, 94, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      box-shadow: none;
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 242, 254, 0.08);
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
     }
 
     .section-title {
@@ -205,10 +268,10 @@
 
     .section-title h2 { 
       font-family: var(--font-heading);
-      font-size: 2.4rem; 
+      font-size: 2.5rem; 
       margin-bottom: 0.5rem; 
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 0%, var(--cyan-neon) 100%);
+      background: linear-gradient(135deg, #fff 30%, var(--cyan-neon) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -216,47 +279,55 @@
     .section-title p { 
       color: var(--text-muted); 
       font-family: var(--font-mono);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
     }
 
     /* Pillars */
     .pillars-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 3rem;
+      margin-bottom: 6rem;
     }
 
     .pillar-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      padding: 2rem;
-      border-radius: 12px;
+      padding: 2.2rem;
+      border-radius: 16px;
       backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+
+    .pillar-card:hover {
+      border-color: rgba(216, 131, 94, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .pillar-card h4 {
       font-family: var(--font-heading);
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: var(--accent);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
     .pillar-card p {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
-    /* Human-in-the-Loop Network Styling */
+    /* Human-in-the-Loop Network */
     .hitl-network-wrapper {
       max-width: 1050px;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-      background: rgba(15, 23, 42, 0.4);
+      padding: 3rem 1.5rem;
+      background: rgba(15, 23, 42, 0.45);
       border: 1px solid var(--card-border);
-      border-radius: 20px;
+      border-radius: 24px;
       backdrop-filter: blur(16px);
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
       position: relative;
     }
 
@@ -281,7 +352,7 @@
       color: var(--cyan-neon);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      box-shadow: 0 0 25px rgba(0, 242, 254, 0.25);
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.25);
       position: relative;
       z-index: 3;
     }
@@ -297,7 +368,6 @@
       z-index: 1;
     }
 
-    /* Top-to-Bottom Hierarchy Styles */
     .hierarchy-layout {
       display: flex;
       flex-direction: column;
@@ -315,7 +385,6 @@
       flex-wrap: wrap;
     }
 
-    /* Card widths per level */
     .level-head .hitl-card,
     .level-manager .hitl-card {
       width: 240px;
@@ -333,7 +402,7 @@
       background: var(--card-bg);
       backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 1.5rem 0.75rem 1.25rem;
       text-align: center;
       position: relative;
@@ -344,8 +413,8 @@
     }
 
     .hitl-card.highlight-card {
-      border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(216, 131, 94, 0.2);
+      border-color: rgba(216, 131, 94, 0.6);
+      box-shadow: 0 0 25px rgba(216, 131, 94, 0.15);
     }
 
     .hitl-card::before {
@@ -369,12 +438,12 @@
     .hitl-card .avatar-box {
       width: 75px;
       height: 75px;
-      margin: 0 auto 0.65rem;
+      margin: 0 auto 0.75rem;
       position: relative;
       border-radius: 50%;
       padding: 3px;
       background: linear-gradient(135deg, var(--accent), transparent);
-      box-shadow: 0 0 12px var(--accent-glow);
+      box-shadow: 0 0 15px var(--accent-glow);
     }
 
     .hitl-card img {
@@ -397,7 +466,7 @@
       font-family: var(--font-mono);
       font-size: 0.75rem;
       color: var(--cyan-neon);
-      margin-top: 0.2rem;
+      margin-top: 0.25rem;
       margin-bottom: 0.75rem;
       font-weight: 500;
       line-height: 1.2;
@@ -408,7 +477,7 @@
       font-size: 0.65rem;
       color: rgba(248, 250, 252, 0.5);
       border-top: 1px dashed rgba(255, 255, 255, 0.1);
-      padding-top: 0.5rem;
+      padding-top: 0.6rem;
       width: 100%;
       margin-top: auto;
     }
@@ -420,19 +489,21 @@
     }
 
     @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.8rem; }
       .level-head .hitl-card,
       .level-manager .hitl-card,
       .level-leads .hitl-card,
       .level-staff .hitl-card {
         width: 100%;
-        max-width: 240px;
+        max-width: 260px;
       }
       .hitl-core-node::after {
         display: none;
       }
     }
 
-    /* AI Card Design */
+    /* AI Services Grid */
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -444,11 +515,13 @@
       background: var(--card-bg);
       backdrop-filter: blur(16px);
       padding: 2.5rem;
-      border-radius: 12px;
+      border-radius: 16px;
       border: 1px solid var(--card-border);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .card::after {
@@ -458,7 +531,7 @@
       width: 15px; height: 15px;
       border-top: 2px solid var(--cyan-neon);
       border-right: 2px solid var(--cyan-neon);
-      opacity: 0.5;
+      opacity: 0.3;
       transition: opacity 0.3s ease;
     }
 
@@ -466,8 +539,8 @@
 
     .card:hover {
       border-color: var(--card-hover-border);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.25);
     }
 
     .card h3 {
@@ -480,7 +553,8 @@
     .card p {
       color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
+      flex-grow: 1;
     }
 
     .card ul {
@@ -491,7 +565,7 @@
 
     .card ul li {
       color: var(--text-main);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       margin-bottom: 0.6rem;
       position: relative;
       padding-left: 1.4rem;
@@ -506,16 +580,16 @@
       font-weight: bold;
     }
 
-    /* NEW SECTION: OUR STORY STYLING */
+    /* OUR STORY SECTION */
     .our-story-section {
       background: var(--card-bg);
       backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
+      border-radius: 20px;
       padding: 3.5rem 2.5rem;
       margin-bottom: 6rem;
       position: relative;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     }
 
     .story-grid {
@@ -529,14 +603,14 @@
       background: rgba(3, 7, 18, 0.6);
       border: 1px solid var(--card-border);
       padding: 2rem;
-      border-radius: 12px;
+      border-radius: 14px;
       transition: all 0.3s ease;
     }
 
     .story-card:hover {
       border-color: var(--cyan-neon);
       transform: translateY(-4px);
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.15);
     }
 
     .story-card h3 {
@@ -558,16 +632,16 @@
       padding: 1.5rem;
       background: rgba(0, 242, 254, 0.03);
       border: 1px dashed var(--cyan-neon);
-      border-radius: 8px;
+      border-radius: 12px;
     }
 
     .story-quote p {
       font-family: var(--font-mono);
       color: var(--text-main);
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
     
-    /* Testimonials / Leadership Section */
+    /* Leadership Note */
     .testimonials-section {
       margin-bottom: 6rem;
     }
@@ -583,10 +657,13 @@
       background: var(--card-bg);
       backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 2.5rem;
       position: relative;
       transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .testimonial-card:hover {
@@ -599,7 +676,7 @@
       color: var(--text-main);
       font-size: 1rem;
       line-height: 1.7;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       font-style: italic;
     }
 
@@ -617,7 +694,7 @@
       border-radius: 50%;
       border: 2px solid var(--accent);
       object-fit: cover;
-      box-shadow: 0 0 10px var(--accent-glow);
+      box-shadow: 0 0 12px var(--accent-glow);
     }
 
     .testimonial-author .author-info h5 {
@@ -632,12 +709,12 @@
       color: var(--cyan-neon);
     }
 
-    /* AI Audit Interactive Section */
+    /* Quick AI Audit Section */
     .quiz-section {
       background: rgba(10, 16, 31, 0.85);
       backdrop-filter: blur(20px);
-      border: 1px solid var(--cyan-neon);
-      border-radius: 16px;
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      border-radius: 20px;
       padding: 3.5rem 2rem;
       margin-bottom: 6rem;
       max-width: 850px;
@@ -697,7 +774,7 @@
       border: 1px solid var(--card-border);
       color: var(--text-main);
       padding: 1.2rem;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       text-align: left;
       font-family: var(--font-body);
@@ -725,13 +802,13 @@
       font-size: 1rem;
     }
 
-    /* Industry Badges */
+    /* Industries Badges */
     .industries-section {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 3rem 2rem;
+      border-radius: 16px;
+      padding: 3.5rem 2rem;
       margin-bottom: 6rem;
       text-align: center;
     }
@@ -741,13 +818,13 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.8rem;
-      margin-top: 1.75rem;
+      margin-top: 2rem;
     }
 
     .badge {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--card-border);
-      padding: 0.6rem 1.2rem;
+      padding: 0.65rem 1.3rem;
       border-radius: 30px;
       font-size: 0.85rem;
       font-family: var(--font-mono);
@@ -757,16 +834,17 @@
 
     .badge:hover {
       border-color: var(--cyan-neon);
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
       color: #fff;
+      transform: translateY(-2px);
     }
 
-    /* Timeline Section & Animated Numbers */
+    /* Timeline & Running Numbers Section */
     .timeline-section {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 3.5rem 2rem;
       margin-bottom: 6rem;
       text-align: center;
@@ -781,7 +859,7 @@
 
     .timeline-item .time {
       font-family: var(--font-heading);
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       font-weight: 700;
       color: var(--cyan-neon);
       margin-bottom: 0.25rem;
@@ -793,9 +871,10 @@
 
     .timeline-item p {
       color: var(--text-muted);
-      font-size: 0.925rem;
+      font-size: 0.95rem;
     }
 
+    /* Booking Section */
     .booking-section {
       text-align: center;
       margin-bottom: 6rem;
@@ -804,23 +883,25 @@
     .calendly-inline-widget {
       min-width: 320px;
       height: 720px;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       margin-top: 2rem;
       border: 1px solid var(--card-border);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 3.5rem 0;
       color: var(--text-muted);
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       border-top: 1px solid var(--card-border);
       font-family: var(--font-mono);
     }
 
-    footer a { color: var(--cyan-neon); text-decoration: none; }
+    footer a { color: var(--cyan-neon); text-decoration: none; transition: color 0.3s; }
+    footer a:hover { color: #fff; }
   </style>
 
   <!-- Calendly Script -->
@@ -850,27 +931,38 @@
   <!-- Neural Network Canvas background -->
   <canvas id="neural-canvas"></canvas>
 
-  <div class="container">
-    <!-- Header -->
-    <header>
-      <div class="logo">
-        kindly
-      </div>
+  <!-- Navigation Bar Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">
+        kindly<span>.</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#quiz">Audit Quiz</a></li>
+      </ul>
       <a href="#book" class="btn">Book a Call</a>
-    </header>
+    </div>
+  </header>
 
-    <!-- Hero -->
+  <div class="container">
+    <!-- Hero Section -->
     <section class="hero">
       <div class="live-status">
         <span class="pulse-dot"></span> MANILA, PH · SERVING CLIENTS WORLDWIDE
       </div>
       <h1>We make AI work for people — not the other way around.</h1>
       <p>We implement AI in your business, train your people to use it, and ensure the quality of everything it produces.</p>
-      <a href="#quiz" class="btn">Take 30-Sec Automation Audit</a>
+      <div class="hero-ctas">
+        <a href="#quiz" class="btn">Take 30-Sec Automation Audit</a>
+        <a href="#book" class="btn btn-secondary">Schedule Discovery</a>
+      </div>
     </section>
 
     <!-- Why Kindly Pillars -->
-    <section style="margin-bottom: 2rem;">
+    <section>
       <div class="section-title">
         <h2>Why Kindly</h2>
         <p>// WE ARE NOT JUST ANOTHER AI COMPANY</p>
@@ -888,7 +980,7 @@
     </section>
 
     <!-- Human-in-the-Loop Network -->
-    <section style="margin-bottom: 6rem; position: relative;">
+    <section id="team" style="margin-bottom: 6rem; position: relative;">
       <div class="section-title">
         <h2>Human-in-the-Loop Network</h2>
         <p>// REAL HUMANS OVERSIGHTING & GUARANTEEING EVERY WORKFLOW</p>
@@ -1032,8 +1124,8 @@
       </div>
     </section>
 
-    <!-- Services -->
-    <section>
+    <!-- Services Section -->
+    <section id="services">
       <div class="section-title">
         <h2>Our Services</h2>
         <p>// WORK SMARTER. GROW FASTER.</p>
@@ -1071,8 +1163,9 @@
         </div>
       </div>
     </section>
-<!-- OUR STORY SECTION -->
-    <section class="our-story-section">
+
+    <!-- OUR STORY SECTION -->
+    <section class="our-story-section" id="story">
       <div class="section-title">
         <h2>Our Story</h2>
         <p>// ROOTED IN IMPACT. DRIVEN BY INNOVATION.</p>
@@ -1131,7 +1224,7 @@
       </div>
     </section>
 
-    <!-- Quick AI Audit Section -->
+    <!-- Quick AI Audit Interactive Section -->
     <section id="quiz" class="quiz-section">
       <div class="section-title">
         <h2>Quick Automation Audit</h2>
@@ -1205,30 +1298,25 @@
       </div>
     </section>
 
- <!-- Fueling Innovation Section -->
-<section class="industries-section">
-  <div class="section-title">
-    <h2>Fueling Innovation Across Forward-Thinking Teams</h2>
-    <p>// TRUSTED PARTNERS & INDUSTRY LEADERS</p>
-  </div>
+    <!-- Fueling Innovation Section -->
+    <section class="industries-section">
+      <div class="section-title">
+        <h2>Fueling Innovation Across Forward-Thinking Teams</h2>
+        <p>// TRUSTED PARTNERS & INDUSTRY LEADERS</p>
+      </div>
 
-  <!-- Logos Container -->
-  <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.75rem;">
-    <!-- Logo 1 -->
-    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
-      <img src="assets/activasia-logo.png" alt="ActivAsia" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
-    </div>
-    <!-- Logo 2 -->
-    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
-      <img src="assets/gethapi-logo.png" alt="GetHapi" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
-    </div>
-    <!-- Logo 3 -->
-    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
-      <img src="assets/hapinoy-logo.png" alt="Hapinoy" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
-    </div>
-  </div>
-</section>
-    
+      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--card-border); padding: 2rem 2.5rem; border-radius: 14px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+          <img src="assets/activasia-logo.png" alt="ActivAsia" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--card-border); padding: 2rem 2.5rem; border-radius: 14px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+          <img src="assets/gethapi-logo.png" alt="GetHapi" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--card-border); padding: 2rem 2.5rem; border-radius: 14px; display: flex; align-items: center; justify-content: center; min-width: 220px; flex: 1; max-width: 320px;">
+          <img src="assets/hapinoy-logo.png" alt="Hapinoy" style="max-height: 65px; width: auto; max-width: 100%; object-fit: contain;">
+        </div>
+      </div>
+    </section>
 
     <!-- Booking Section -->
     <section id="book" class="booking-section">
