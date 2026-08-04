@@ -341,6 +341,10 @@
     }
 
     /* AI Services Grid */
+    #services {
+      scroll-margin-top: 100px; /* Offset for sticky nav header */
+    }
+
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1242,7 +1246,7 @@
       <p class="sub">Annotation, evaluation, QA, and back-office operations for AI, e-commerce, and fintech teams. Delivered from Manila. <b>Live in 2–3 weeks.</b> Priced per output — not per seat.</p>
       <div class="hero-ctas">
         <a href="#book" class="btn">Book a 20-min discovery call</a>
-         <button class="btn btn-ghost" onclick="switchTab('services', document.querySelectorAll('.tab-btn')[1])">Explore Services</button>  
+        <a href="#services" class="btn btn-secondary">Explore Services</a>
       </div>
     </section>
 
