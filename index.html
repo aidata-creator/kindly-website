@@ -491,22 +491,22 @@
       font-size: 0.95rem;
     }
 
-    /* AI Services Grid */
+    /* AI Services Grid Updated */
     #services {
       scroll-margin-top: 100px;
     }
 
-    .services {
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
       margin-bottom: 6rem;
     }
 
     .card {
       background: var(--card-bg);
       backdrop-filter: blur(16px);
-      padding: 2.5rem;
+      padding: 2.2rem 1.8rem;
       border-radius: 16px;
       border: 1px solid var(--card-border);
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -535,41 +535,84 @@
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(244, 85, 47, 0.2);
     }
 
+    .card.card-featured {
+      border-color: rgba(244, 85, 47, 0.6);
+      box-shadow: 0 0 25px rgba(244, 85, 47, 0.1);
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 0.5rem;
+    }
+
     .card h3 {
       font-family: var(--font-heading);
-      font-size: 1.6rem;
-      color: var(--accent-soft);
+      font-size: 1.5rem;
+      color: var(--text-main);
       margin-bottom: 0.75rem;
+    }
+
+    .card h3 span {
+      color: var(--accent);
     }
 
     .card p {
       color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 1.75rem;
-      flex-grow: 1;
+      margin-bottom: 1.25rem;
     }
 
     .card ul {
       list-style: none;
       border-top: 1px solid var(--card-border);
-      padding-top: 1.25rem;
+      padding-top: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .card ul li {
-      color: var(--text-main);
+      color: var(--text-muted);
       font-size: 0.85rem;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
       position: relative;
-      padding-left: 1.4rem;
+      padding-left: 1.2rem;
       font-family: var(--font-body);
     }
 
     .card ul li::before {
-      content: ">";
+      content: "•";
       color: var(--accent);
       position: absolute;
       left: 0;
       font-weight: bold;
+    }
+
+    .card-footer-info {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px dashed var(--card-border);
+      padding-top: 1rem;
+      margin-top: auto;
+      margin-bottom: 1rem;
+    }
+
+    .card-footer-info strong {
+      color: var(--text-main);
+    }
+
+    .card-link {
+      color: var(--accent-soft);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .card-link:hover {
+      color: #ffffff;
     }
 
     /* Human-in-the-Loop Network & Team Grid */
@@ -1378,7 +1421,7 @@
   <!-- Neural Network Canvas background -->
   <canvas id="neural-canvas"></canvas>
 
-  <!-- Navigation Bar Header (Standard Categories) -->
+  <!-- Navigation Bar Header -->
   <header>
     <div class="container nav-wrapper">
       <a href="#" class="logo">
@@ -1397,7 +1440,7 @@
 
   <div class="container">
     
-    <!-- SECTION 1: OVERVIEW (CONTAINS HERO, STATS & THE SHIFT) -->
+    <!-- SECTION 1: OVERVIEW -->
     <section id="overview">
       <div class="hero">
         <div class="live-status">
@@ -1486,42 +1529,71 @@
       </div>
     </section>
 
-    <!-- SECTION 2: SERVICES -->
+    <!-- SECTION 2: SERVICES (UPDATED COMPLETE 4-SERVICE SEQUENCE) -->
     <section id="services">
       <div class="section-title">
-        <h2>Our Services</h2>
-        <p>// WORK SMARTER. GROW FASTER.</p>
+        <h2>Four services. <em>One sequence.</em></h2>
+        <p>// START WITH AN AUDIT, SCALE WITH OPERATIONS, KEEP YOUR OWN TEAM SHARP</p>
       </div>
 
-      <div class="services">
-        <div class="card">
-          <h3>Upskill</h3>
-          <p>AI training for your people. Practical, hands-on AI literacy for employees at every level—from frontliners to managers.</p>
-          <ul>
-            <li>Customized curriculum</li>
-            <li>In-person & online</li>
-            <li>Certification included</li>
-          </ul>
+      <div class="services-grid">
+        <!-- Service 1: AI Operations Audit -->
+        <div class="card card-featured">
+          <div class="card-tag">Start Here</div>
+          <h3>AI Operations Audit<span>.</span></h3>
+          <p>A fixed-fee, fixed-timeline diagnostic. In 2–3 weeks we map every recurring workflow and rank it: automate, human-in-the-loop, or eliminate — with the ROI math and a 90-day plan.</p>
+          <div class="card-footer-info">
+            <strong>From US$4,900 fixed</strong> — 100% credited against your first month of operations.
+          </div>
+          <a href="#book" class="card-link">See what's included &rarr;</a>
         </div>
 
-        <div class="card">
-          <h3>Outsource</h3>
-          <p>Need work done? We handle end-to-end data solutions, quality control, and execution managed by AI-accelerated teams.</p>
+        <!-- Service 2: AI Data Operations -->
+        <div class="card card-featured">
+          <div class="card-tag">Core Service</div>
+          <h3>AI Data Operations<span>.</span></h3>
+          <p>The human layer behind good models. Trained specialists label, evaluate, and correct the data and outputs your AI depends on — with accuracy you can audit, at volumes you can scale.</p>
           <ul>
-            <li>Data solutions & encoding</li>
-            <li>Data labeling & annotation</li>
-            <li>AI response review & QA</li>
+            <li>Data labeling & annotation (text, image, audio, video)</li>
+            <li>RLHF and preference data collection</li>
+            <li>Model output evaluation & rubric-based scoring</li>
+            <li>Red-team support and safety review</li>
+            <li>Search relevance rating & AI content QA</li>
+            <li>Filipino / Taglish / regional language data & localization</li>
           </ul>
+          <div class="card-footer-info">
+            Priced <strong>per validated unit</strong>. Free 100-unit pilot before you commit.
+          </div>
+          <a href="#book" class="card-link">Explore AI Data Operations &rarr;</a>
         </div>
 
+        <!-- Service 3: Managed Operations -->
         <div class="card">
-          <h3>Automate</h3>
-          <p>AI systems that boost productivity. We build tailored workflows, automated processes, and custom conversational agents.</p>
+          <div class="card-tag">Recurring</div>
+          <h3>Managed Operations<span>.</span></h3>
+          <p>Dedicated pods that run your ongoing workflows end to end — AI drafts and accelerates, trained people approve, correct, and own the result.</p>
           <ul>
-            <li>AI Workflow & Automation Audit</li>
-            <li>Custom Chatbot Development</li>
-            <li>Full Setup & Maintenance</li>
+            <li>Data encoding, validation & document processing</li>
+            <li>Catalog, e-commerce & marketplace operations</li>
+            <li>KYC & regulated document review</li>
+            <li>CX escalation & quality audit</li>
+            <li>AI agent QA & production supervision</li>
           </ul>
+          <div class="card-footer-info">
+            Scale <strong>5 &rarr; 120+</strong> on one account. Live in 2–3 weeks.
+          </div>
+          <a href="#book" class="card-link">Explore Managed Operations &rarr;</a>
+        </div>
+
+        <!-- Service 4: AI Training -->
+        <div class="card">
+          <div class="card-tag">Multiplier</div>
+          <h3>AI Training<span>.</span></h3>
+          <p>Practical AI literacy for the team you keep — built around your tools and workflows, certification included. Because the point of automation isn't fewer people; it's people who do more.</p>
+          <div class="card-footer-info">
+            Custom curriculum · in-person or remote · <strong>train-the-trainer available</strong>.
+          </div>
+          <a href="#book" class="card-link">See training programs &rarr;</a>
         </div>
       </div>
     </section>
@@ -1823,7 +1895,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- BOOKING / DISCOVERY CALL SECTION -->
     <section id="book" class="booking-section">
