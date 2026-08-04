@@ -178,10 +178,10 @@
       100% { box-shadow: 0 0 0 0 rgba(244, 85, 47, 0); }
     }
 
-    /* Hero Section */
+    /* Hero Section Inside Overview */
     .hero {
       text-align: center;
-      padding: 5rem 0 4rem;
+      padding: 5rem 0 3rem;
       max-width: 920px;
       margin: 0 auto;
       position: relative;
@@ -272,7 +272,7 @@
       box-shadow: 0 0 20px rgba(244, 85, 47, 0.2);
     }
 
-    /* NEWLY ADDED: OVERVIEW TOP STATS BAR */
+    /* OVERVIEW TOP STATS BAR */
     .overview-top-bar {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -280,6 +280,7 @@
       padding: 2rem 0;
       border-top: 1px solid var(--card-border);
       border-bottom: 1px solid var(--card-border);
+      margin-top: 2rem;
       margin-bottom: 5rem;
     }
 
@@ -294,9 +295,10 @@
       font-weight: 600;
     }
 
-    /* NEWLY ADDED: THE SHIFT SECTION & CARDS */
-    .shift-section {
+    /* SHIFT SECTION (NOW INSIDE OVERVIEW) */
+    .shift-block {
       margin-bottom: 6rem;
+      text-align: left;
     }
 
     .shift-subhead {
@@ -365,7 +367,7 @@
       line-height: 1.6;
     }
 
-    /* NEWLY ADDED: SOLUTION HIGHLIGHT CARD */
+    /* SOLUTION HIGHLIGHT CARD */
     .solution-highlight-card {
       background: var(--card-bg);
       border: 1px solid var(--accent);
@@ -491,7 +493,7 @@
 
     /* AI Services Grid */
     #services {
-      scroll-margin-top: 100px; /* Offset for sticky nav header */
+      scroll-margin-top: 100px;
     }
 
     .services {
@@ -1376,7 +1378,7 @@
   <!-- Neural Network Canvas background -->
   <canvas id="neural-canvas"></canvas>
 
-  <!-- Navigation Bar Header with Updated Image Categorization -->
+  <!-- Navigation Bar Header (Standard Categories) -->
   <header>
     <div class="container nav-wrapper">
       <a href="#" class="logo">
@@ -1384,7 +1386,6 @@
       </a>
       <ul class="nav-links">
         <li><a href="#overview" class="active">Overview</a></li>
-        <li><a href="#shift">The Shift</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#how-we-work">How We Work</a></li>
         <li><a href="#pricing">Pricing</a></li>
@@ -1396,89 +1397,91 @@
 
   <div class="container">
     
-    <!-- SECTION 1: OVERVIEW -->
-    <section id="overview" class="hero">
-      <div class="live-status">
-        <span class="pulse-dot"></span> Manila, Philippines · Serving clients worldwide
-      </div>
-      <h1>AI data operations, run by people who <span class="s">own the outcome</span><span class="dot">.</span></h1>
-      <p class="sub">Annotation, evaluation, QA, and back-office operations for AI, e-commerce, and fintech teams. Delivered from Manila. <b>Live in 2–3 weeks.</b> Priced per output — not per seat.</p>
-      <div class="hero-ctas">
-        <a href="#book" class="btn">Book a 20-min discovery call</a>
-        <a href="#services" class="btn btn-secondary">Explore Services</a>
-      </div>
-    </section>
-
-    <!-- TOP BAR (IMAGE 1 TOP CONTENT) -->
-    <div class="overview-top-bar">
-      <div class="top-bar-item">
-        Founded by the team behind <strong>Hapinoy</strong> and <strong>Rags2Riches</strong> — social enterprises that have worked with thousands of Filipino micro-entrepreneurs.
-      </div>
-      <div class="top-bar-item">
-        <strong>20+ years</strong> building operations businesses across Southeast Asia.
-      </div>
-      <div class="top-bar-item">
-        <strong>English-fluent, AI-fluent</strong> workforce with deep Western business familiarity.
-      </div>
-      <div class="top-bar-item">
-        Every worker <strong>fairly paid</strong>, with portable government benefits on every output.
-      </div>
-    </div>
-
-    <!-- NEW SECTION: THE SHIFT (IMAGES 1 & 2 ATTACHED) -->
-    <section id="shift" class="shift-section">
-      <div class="shift-subhead">THE SHIFT</div>
-      <h2 class="shift-title">AI <em>broke</em> the old outsourcing model.</h2>
-
-      <div class="shift-dilemma-grid">
-        <div class="dilemma-card">
-          <div class="dilemma-num">01</div>
-          <h3>The seat-seller's dilemma</h3>
-          <p>Traditional BPOs bill by the seat. Every workflow they automate is revenue they lose — so they don't. You keep paying for headcount that software should have replaced years ago.</p>
+    <!-- SECTION 1: OVERVIEW (CONTAINS HERO, STATS & THE SHIFT) -->
+    <section id="overview">
+      <div class="hero">
+        <div class="live-status">
+          <span class="pulse-dot"></span> Manila, Philippines · Serving clients worldwide
         </div>
-
-        <div class="dilemma-card">
-          <div class="dilemma-num">02</div>
-          <h3>The automation trap</h3>
-          <p>Pure-AI vendors automate everything, then quality collapses on the work that needs judgment — edge cases, escalations, regulated reviews, brand voice. The errors reach your customers.</p>
+        <h1>AI data operations, run by people who <span class="s">own the outcome</span><span class="dot">.</span></h1>
+        <p class="sub">Annotation, evaluation, QA, and back-office operations for AI, e-commerce, and fintech teams. Delivered from Manila. <b>Live in 2–3 weeks.</b> Priced per output — not per seat.</p>
+        <div class="hero-ctas">
+          <a href="#book" class="btn">Book a 20-min discovery call</a>
+          <a href="#services" class="btn btn-secondary">Explore Services</a>
         </div>
       </div>
 
-      <!-- HIGHLIGHT BOX FROM IMAGE 2 -->
-      <div class="solution-highlight-card">
-        <div class="solution-left">
-          <h2>We're paid either way. <em>That changes everything.</em></h2>
-          <p>Seat-billers profit when nothing changes. AI vendors profit when everything does. We assess every workflow on its merits and tell you the truth about it — because our business works whether the answer is software or people. Your operating cost goes down either way.</p>
+      <!-- OVERVIEW TOP STATS BAR -->
+      <div class="overview-top-bar">
+        <div class="top-bar-item">
+          Founded by the team behind <strong>Hapinoy</strong> and <strong>Rags2Riches</strong> — social enterprises that have worked with thousands of Filipino micro-entrepreneurs.
         </div>
+        <div class="top-bar-item">
+          <strong>20+ years</strong> building operations businesses across Southeast Asia.
+        </div>
+        <div class="top-bar-item">
+          <strong>English-fluent, AI-fluent</strong> workforce with deep Western business familiarity.
+        </div>
+        <div class="top-bar-item">
+          Every worker <strong>fairly paid</strong>, with portable government benefits on every output.
+        </div>
+      </div>
 
-        <div class="solution-right">
-          <div class="solution-pill-box">
-            <strong>Automate</strong> — what machines do best: repetitive, rule-based, high-volume work
+      <!-- THE SHIFT BLOCK INSIDE OVERVIEW -->
+      <div class="shift-block">
+        <div class="shift-subhead">THE SHIFT</div>
+        <h2 class="shift-title">AI <em>broke</em> the old outsourcing model.</h2>
+
+        <div class="shift-dilemma-grid">
+          <div class="dilemma-card">
+            <div class="dilemma-num">01</div>
+            <h3>The seat-seller's dilemma</h3>
+            <p>Traditional BPOs bill by the seat. Every workflow they automate is revenue they lose — so they don't. You keep paying for headcount that software should have replaced years ago.</p>
           </div>
-          <div class="solution-pill-box">
-            <strong>Human-in-the-loop</strong> — where nuance, empathy, and accountability decide outcomes
-          </div>
-          <div class="solution-pill-box">
-            <strong>One partner</strong> — accountable for the quality of both, with SLAs and live dashboards
+
+          <div class="dilemma-card">
+            <div class="dilemma-num">02</div>
+            <h3>The automation trap</h3>
+            <p>Pure-AI vendors automate everything, then quality collapses on the work that needs judgment — edge cases, escalations, regulated reviews, brand voice. The errors reach your customers.</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Why Kindly Pillars -->
-    <section>
-      <div class="section-title">
-        <h2>Why Kindly</h2>
-        <p>// WE ARE NOT JUST ANOTHER AI COMPANY</p>
-      </div>
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <h4>AI-Enabled, Not Replaced</h4>
-          <p>We use AI to accelerate workflows and catch errors—while skilled humans do the nuanced work machines can't.</p>
+        <!-- HIGHLIGHT BOX -->
+        <div class="solution-highlight-card">
+          <div class="solution-left">
+            <h2>We're paid either way. <em>That changes everything.</em></h2>
+            <p>Seat-billers profit when nothing changes. AI vendors profit when everything does. We assess every workflow on its merits and tell you the truth about it — because our business works whether the answer is software or people. Your operating cost goes down either way.</p>
+          </div>
+
+          <div class="solution-right">
+            <div class="solution-pill-box">
+              <strong>Automate</strong> — what machines do best: repetitive, rule-based, high-volume work
+            </div>
+            <div class="solution-pill-box">
+              <strong>Human-in-the-loop</strong> — where nuance, empathy, and accountability decide outcomes
+            </div>
+            <div class="solution-pill-box">
+              <strong>One partner</strong> — accountable for the quality of both, with SLAs and live dashboards
+            </div>
+          </div>
         </div>
-        <div class="pillar-card">
-          <h4>Quality You Can Measure</h4>
-          <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLAs you can count on.</p>
+      </div>
+
+      <!-- Why Kindly Pillars -->
+      <div>
+        <div class="section-title">
+          <h2>Why Kindly</h2>
+          <p>// WE ARE NOT JUST ANOTHER AI COMPANY</p>
+        </div>
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <h4>AI-Enabled, Not Replaced</h4>
+            <p>We use AI to accelerate workflows and catch errors—while skilled humans do the nuanced work machines can't.</p>
+          </div>
+          <div class="pillar-card">
+            <h4>Quality You Can Measure</h4>
+            <p>Multi-layer QA, dedicated analysts, real-time dashboards, and weekly SLAs you can count on.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1961,7 +1964,6 @@
       let current = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
         if (pageYOffset >= (sectionTop - 200)) {
           current = section.getAttribute('id');
         }
@@ -2047,14 +2049,14 @@
 
       const { bottleneck, stack, size } = auditData;
 
-      /* 1. DATA ENTRY BOTTLENECK */
+      /* DATA ENTRY BOTTLENECK */
       if (bottleneck === 'data') {
         accuracy = "99.8%";
         if (stack === 'sheets') {
           title = "Solution: Hybrid Automated Extraction & Human QA Verification";
           bullets = [
             "Deploy LLM-powered scrapers & Apps Script triggers to ingest raw spreadsheets.",
-            "Integrate Human-in-the-Loop QA analysts (Aira/Tin) for exceptions & edge cases.",
+            "Integrate Human-in-the-Loop QA analysts for exceptions & edge cases.",
             "Eliminate repetitive manual copy-pasting without modifying existing sheets."
           ];
           if (size === 'small') { timeSaved = "25+ hrs/wk"; desc = "For small teams relying heavily on spreadsheets, manual transcription slows down client turnaround. We automate sheet ingestion while keeping a dedicated human reviewer for edge cases."; }
@@ -2073,12 +2075,12 @@
           title = "Solution: Custom API ETL Pipeline & Human Data QA";
           bullets = [
             "Build secure, compliant middleware API pipelines into your custom backend.",
-            "Deploy automated validation rules backed by Chris & Allan's database ops team.",
+            "Deploy automated validation rules backed by database ops team.",
             "Achieve real-time database updates without engineering headcount expansion."
           ];
           timeSaved = size === 'small' ? "35+ hrs/wk" : "200+ hrs/wk";
           desc = "Custom databases require high accuracy. We build structured OCR & AI parsers that feed directly into your APIs, backed by human spot checks.";
-        } else { /* unstructured */
+        } else {
           title = "Solution: Intelligent Document Processing (IDP) & Managed QA";
           bullets = [
             "Extract structured data from messy PDF invoices, emails, and attachments via LLM vision models.",
@@ -2090,7 +2092,7 @@
         }
       }
 
-      /* 2. CUSTOMER SUPPORT BOTTLENECK */
+      /* CUSTOMER SUPPORT BOTTLENECK */
       else if (bottleneck === 'support') {
         accuracy = "98.5%";
         timeline = "1-2 Wks";
@@ -2124,7 +2126,7 @@
         }
       }
 
-      /* 3. REPETITIVE WORKFLOWS BOTTLENECK */
+      /* REPETITIVE WORKFLOWS BOTTLENECK */
       else if (bottleneck === 'workflows') {
         accuracy = "99.0%";
         if (stack === 'unstructured') {
@@ -2139,7 +2141,7 @@
         } else {
           title = "Solution: End-to-End AI Process Automation & Outsourced Execution";
           bullets = [
-            "Conduct full workflow audit (Mico & Fred) to map repetitive operational bottlenecks.",
+            "Conduct full workflow audit to map repetitive operational bottlenecks.",
             "Build custom automation scripts connecting your software tools.",
             "Provide dedicated Kindly operators to manage and maintain output quality."
           ];
@@ -2148,7 +2150,7 @@
         }
       }
 
-      /* 4. LOW AI LITERACY / ADOPTION */
+      /* LOW AI LITERACY / ADOPTION */
       else {
         accuracy = "100%";
         timeline = "1 Wk Setup";
@@ -2162,7 +2164,7 @@
         desc = `With a team size of ${size} using ${stack === 'crm' ? 'CRMs' : stack === 'sheets' ? 'Google Workspace' : 'custom software'}, introducing tailored AI training yields immediate productivity gains across all roles.`;
       }
 
-      // Populate DOM elements dynamically
+      // Populate DOM
       recTitle.innerText = title;
       recDesc.innerText = desc;
       timeSavedEl.innerText = timeSaved;
