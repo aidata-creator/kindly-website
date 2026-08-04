@@ -804,7 +804,8 @@
     }
 
     .faq-item.active {
-      border-bottom: 2px solid var(--accent-soft);
+      border-color: var(--accent-soft);
+      box-shadow: 0 4px 20px rgba(244, 85, 47, 0.15);
     }
 
     .faq-question {
@@ -821,15 +822,26 @@
     .faq-toggle {
       color: var(--accent-soft);
       font-size: 1.5rem;
-      font-weight: 400;
+      font-weight: 600;
       line-height: 1;
+      user-select: none;
+      transition: transform 0.3s ease;
     }
 
     .faq-answer {
-      margin-top: 1rem;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.35s ease-out, opacity 0.3s ease, margin-top 0.3s ease;
       color: var(--text-muted);
       font-size: 0.95rem;
       line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      opacity: 1;
+      margin-top: 1rem;
     }
 
     /* Leadership Note Section */
@@ -1728,7 +1740,7 @@
       </div>
     </section>
 
-    <!-- SECTION 4: PRICING (UPDATED BASED ON IMAGES) -->
+    <!-- SECTION 4: PRICING -->
     <section id="pricing">
       <div class="section-title">
         <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; color: var(--accent-soft); text-transform: uppercase; margin-bottom: 0.5rem;">PRICING</div>
@@ -1772,7 +1784,7 @@
         Every engagement starts small: a <strong>free 100-unit pilot</strong> or a fixed-fee audit. Scale only when the numbers prove it. <a href="#book">See full pricing &rarr;</a>
       </div>
 
-      <!-- FAQ SECTION (UPDATED BASED ON IMAGE) -->
+      <!-- FAQ SECTION (UPDATED) -->
       <div class="faq-section">
         <div class="section-title" style="padding-top: 0;">
           <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; color: var(--accent-soft); text-transform: uppercase; margin-bottom: 0.5rem;">QUESTIONS & ANSWERS</div>
@@ -1783,7 +1795,7 @@
           <div class="faq-item">
             <div class="faq-question">
               <span>How do you guarantee quality with a distributed workforce?</span>
-              <span class="faq-toggle">–</span>
+              <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
               Every unit passes multi-layer QA: gold-standard calibration tasks, double-blind sampling, and dedicated QA analysts at roughly one per fifteen specialists. Accuracy rates appear on a weekly dashboard and SLAs carry credits. With per-output pricing, defective units are never billed.
@@ -1793,17 +1805,17 @@
           <div class="faq-item">
             <div class="faq-question">
               <span>How do you handle data security and privacy?</span>
-              <span class="faq-toggle">–</span>
+              <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
               Client data is accessed through controlled environments with role-based access and NDA-bound specialists. For sensitive engagements we use virtual desktop setups where data never leaves your infrastructure.
             </div>
           </div>
 
-          <div class="faq-item active">
+          <div class="faq-item">
             <div class="faq-question">
               <span>What about time zones?</span>
-              <span class="faq-toggle">–</span>
+              <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
               Output-based work is asynchronous: you send volume, we return QA'd results against a turnaround SLA. For real-time coverage we staff to your business hours.
@@ -2155,6 +2167,31 @@
     }, { threshold: 0.4 });
 
     observer.observe(timelineSection);
+
+    /* FAQ Accordion Toggle Script */
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const toggle = item.querySelector('.faq-toggle');
+      
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other open FAQ items
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+          otherItem.classList.remove('active');
+          const otherToggle = otherItem.querySelector('.faq-toggle');
+          if (otherToggle) otherToggle.textContent = '+';
+        });
+
+        // Toggle current clicked FAQ item
+        if (!isActive) {
+          item.classList.add('active');
+          toggle.textContent = '–';
+        } else {
+          toggle.textContent = '+';
+        }
+      });
+    });
 
     /* Dynamic Real Multi-Condition Quiz Logic */
     const auditData = { bottleneck: '', stack: '', size: '' };
