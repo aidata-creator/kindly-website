@@ -181,7 +181,7 @@
     /* Hero Section */
     .hero {
       text-align: center;
-      padding: 5rem 0 5rem;
+      padding: 5rem 0 4rem;
       max-width: 920px;
       margin: 0 auto;
       position: relative;
@@ -270,6 +270,155 @@
       background: rgba(255, 122, 87, 0.12);
       border-color: var(--accent-soft);
       box-shadow: 0 0 20px rgba(244, 85, 47, 0.2);
+    }
+
+    /* NEWLY ADDED: OVERVIEW TOP STATS BAR */
+    .overview-top-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 5rem;
+    }
+
+    .top-bar-item {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .top-bar-item strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* NEWLY ADDED: THE SHIFT SECTION & CARDS */
+    .shift-section {
+      margin-bottom: 6rem;
+    }
+
+    .shift-subhead {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--accent-soft);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .shift-title {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 3rem;
+    }
+
+    .shift-title em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--accent-soft);
+      font-weight: 400;
+    }
+
+    .shift-dilemma-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .dilemma-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .dilemma-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .dilemma-num {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 2.2rem;
+      color: var(--accent-soft);
+      margin-bottom: 1.25rem;
+      line-height: 1;
+    }
+
+    .dilemma-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+
+    .dilemma-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* NEWLY ADDED: SOLUTION HIGHLIGHT CARD */
+    .solution-highlight-card {
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      padding: 3.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      box-shadow: 0 0 35px rgba(244, 85, 47, 0.15);
+    }
+
+    .solution-left h2 {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      line-height: 1.25;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+    }
+
+    .solution-left h2 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--accent-soft);
+      font-weight: 400;
+    }
+
+    .solution-left p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .solution-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .solution-pill-box {
+      background: var(--bg-color);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .solution-pill-box strong {
+      color: var(--accent-soft);
+      font-family: var(--font-heading);
+      font-size: 1rem;
     }
 
     .section-title {
@@ -666,17 +815,26 @@
       .team-grid-2layer {
         grid-template-columns: repeat(3, 1fr);
       }
+      .overview-top-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .solution-highlight-card {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero h1 { font-size: 2.8rem; }
+      .shift-title { font-size: 2.2rem; }
+      .shift-dilemma-grid { grid-template-columns: 1fr; }
       .team-grid-2layer {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 480px) {
+      .overview-top-bar { grid-template-columns: 1fr; }
       .team-grid-2layer {
         grid-template-columns: 1fr;
       }
@@ -1226,6 +1384,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="#overview" class="active">Overview</a></li>
+        <li><a href="#shift">The Shift</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#how-we-work">How We Work</a></li>
         <li><a href="#pricing">Pricing</a></li>
@@ -1247,6 +1406,62 @@
       <div class="hero-ctas">
         <a href="#book" class="btn">Book a 20-min discovery call</a>
         <a href="#services" class="btn btn-secondary">Explore Services</a>
+      </div>
+    </section>
+
+    <!-- TOP BAR (IMAGE 1 TOP CONTENT) -->
+    <div class="overview-top-bar">
+      <div class="top-bar-item">
+        Founded by the team behind <strong>Hapinoy</strong> and <strong>Rags2Riches</strong> — social enterprises that have worked with thousands of Filipino micro-entrepreneurs.
+      </div>
+      <div class="top-bar-item">
+        <strong>20+ years</strong> building operations businesses across Southeast Asia.
+      </div>
+      <div class="top-bar-item">
+        <strong>English-fluent, AI-fluent</strong> workforce with deep Western business familiarity.
+      </div>
+      <div class="top-bar-item">
+        Every worker <strong>fairly paid</strong>, with portable government benefits on every output.
+      </div>
+    </div>
+
+    <!-- NEW SECTION: THE SHIFT (IMAGES 1 & 2 ATTACHED) -->
+    <section id="shift" class="shift-section">
+      <div class="shift-subhead">THE SHIFT</div>
+      <h2 class="shift-title">AI <em>broke</em> the old outsourcing model.</h2>
+
+      <div class="shift-dilemma-grid">
+        <div class="dilemma-card">
+          <div class="dilemma-num">01</div>
+          <h3>The seat-seller's dilemma</h3>
+          <p>Traditional BPOs bill by the seat. Every workflow they automate is revenue they lose — so they don't. You keep paying for headcount that software should have replaced years ago.</p>
+        </div>
+
+        <div class="dilemma-card">
+          <div class="dilemma-num">02</div>
+          <h3>The automation trap</h3>
+          <p>Pure-AI vendors automate everything, then quality collapses on the work that needs judgment — edge cases, escalations, regulated reviews, brand voice. The errors reach your customers.</p>
+        </div>
+      </div>
+
+      <!-- HIGHLIGHT BOX FROM IMAGE 2 -->
+      <div class="solution-highlight-card">
+        <div class="solution-left">
+          <h2>We're paid either way. <em>That changes everything.</em></h2>
+          <p>Seat-billers profit when nothing changes. AI vendors profit when everything does. We assess every workflow on its merits and tell you the truth about it — because our business works whether the answer is software or people. Your operating cost goes down either way.</p>
+        </div>
+
+        <div class="solution-right">
+          <div class="solution-pill-box">
+            <strong>Automate</strong> — what machines do best: repetitive, rule-based, high-volume work
+          </div>
+          <div class="solution-pill-box">
+            <strong>Human-in-the-loop</strong> — where nuance, empathy, and accountability decide outcomes
+          </div>
+          <div class="solution-pill-box">
+            <strong>One partner</strong> — accountable for the quality of both, with SLAs and live dashboards
+          </div>
+        </div>
       </div>
     </section>
 
