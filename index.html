@@ -424,36 +424,31 @@
     }
 
     .section-title {
-      text-align: center;
-      margin-bottom: 3.5rem;
+      text-align: left;
+      margin-bottom: 2.5rem;
       padding-top: 2rem;
     }
 
     .section-title h2 { 
       font-family: var(--font-heading);
-      font-size: 2.5rem; 
-      margin-bottom: 0.5rem; 
+      font-size: 3rem; 
+      margin-bottom: 0.75rem; 
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 30%, var(--text-main) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text-main);
     }
 
     .section-title h2 em {
       font-family: var(--font-serif);
       font-style: italic;
-      color: var(--accent);
-      background: linear-gradient(135deg, var(--accent-soft) 0%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--accent-soft);
+      font-weight: 400;
     }
     
     .section-title p { 
       color: var(--text-muted); 
       font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-size: 1.05rem;
+      font-weight: 400;
     }
 
     /* Pillars */
@@ -708,20 +703,19 @@
       box-shadow: 0 12px 30px rgba(244, 85, 47, 0.25);
     }
 
-    /* PRICING SECTION STYLES */
+    /* UPDATED PRICING SECTION STYLES MATCHING IMAGE DESIGN */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-bottom: 6rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .pricing-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 2.5rem;
-      position: relative;
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -729,61 +723,113 @@
       transition: all 0.3s ease;
     }
 
-    .pricing-card.featured {
-      border-color: var(--accent);
-      box-shadow: 0 0 30px rgba(244, 85, 47, 0.2);
+    .pricing-card:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-4px);
+    }
+
+    .pricing-header h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
     }
 
     .pricing-tag {
       font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
     }
 
-    .pricing-header h3 {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      color: var(--text-main);
-      margin-bottom: 0.5rem;
+    .pricing-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 2.5rem;
+      min-height: 4.5em;
     }
 
     .pricing-price {
       font-family: var(--font-heading);
-      font-size: 2.5rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--accent-soft);
-      margin: 1rem 0;
+      margin-top: auto;
     }
 
-    .pricing-price span {
-      font-size: 1rem;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
-    .pricing-features {
-      list-style: none;
-      margin: 1.5rem 0 2rem;
-      border-top: 1px solid var(--card-border);
-      padding-top: 1.5rem;
-    }
-
-    .pricing-features li {
-      margin-bottom: 0.8rem;
+    .pricing-footer-note {
       color: var(--text-muted);
       font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      margin-bottom: 6rem;
     }
 
-    .pricing-features li::before {
-      content: '✓';
-      color: var(--accent);
-      font-weight: bold;
+    .pricing-footer-note strong {
+      color: var(--text-main);
+    }
+
+    .pricing-footer-note a {
+      color: var(--accent-soft);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s ease;
+    }
+
+    .pricing-footer-note a:hover {
+      color: #ffffff;
+    }
+
+    /* FAQ SECTION STYLES */
+    .faq-section {
+      margin-bottom: 6rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faq-item.active {
+      border-bottom: 2px solid var(--accent-soft);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .faq-toggle {
+      color: var(--accent-soft);
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .faq-answer {
+      margin-top: 1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     /* Leadership Note Section */
@@ -864,6 +910,9 @@
         grid-template-columns: repeat(2, 1fr);
       }
       .solution-highlight-card {
+        grid-template-columns: 1fr;
+      }
+      .pricing-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -1512,11 +1561,11 @@
       </div>
     </section>
 
-    <!-- SECTION 2: SERVICES (UPDATED COMPLETE 4-SERVICE SEQUENCE IN BALANCED 2-COLUMN GRID) -->
+    <!-- SECTION 2: SERVICES -->
     <section id="services">
       <div class="section-title">
         <h2>Four services. <em>One sequence.</em></h2>
-        <p>// START WITH AN AUDIT, SCALE WITH OPERATIONS, KEEP YOUR OWN TEAM SHARP</p>
+        <p>START WITH AN AUDIT, SCALE WITH OPERATIONS, KEEP YOUR OWN TEAM SHARP</p>
       </div>
 
       <div class="services-grid">
@@ -1608,7 +1657,7 @@
       <!-- Dedicated Operations Network -->
       <div class="section-title">
         <h2>Meet the people who'd <em>run your account.</em></h2>
-        <p style="text-transform: none; max-width: 680px; margin: 0.75rem auto 0; font-family: var(--font-body); font-size: 1rem; color: var(--text-muted);">
+        <p style="text-transform: none; max-width: 680px; font-family: var(--font-body); font-size: 1rem; color: var(--text-muted);">
           Not stock photos. Not an offshore black box. These are the named people accountable for your work — and you'll talk to them, not an account manager.
         </p>
       </div>
@@ -1679,44 +1728,87 @@
       </div>
     </section>
 
-    <!-- SECTION 4: PRICING -->
+    <!-- SECTION 4: PRICING (UPDATED BASED ON IMAGES) -->
     <section id="pricing">
       <div class="section-title">
-        <h2>Transparent Pricing</h2>
-        <p>// PRICED PER OUTPUT — NEVER PER SEAT</p>
+        <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; color: var(--accent-soft); text-transform: uppercase; margin-bottom: 0.5rem;">PRICING</div>
+        <h2>Pay for what you get. <em>Not for chairs.</em></h2>
+        <p>Most providers hide their pricing. We don't — it filters out bad fits for both of us.</p>
       </div>
 
       <div class="pricing-grid">
+        <!-- Per output -->
         <div class="pricing-card">
-          <div class="pricing-header">
-            <div class="pricing-tag">Trial Option</div>
-            <h3>Free 100-Unit Pilot</h3>
-            <div class="pricing-price">$0 <span>/ initial test</span></div>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Test our output accuracy with zero risk before committing to an operational contract.</p>
+          <div>
+            <h3>Per output</h3>
+            <div class="pricing-tag">VOLUME WORK</div>
+            <p class="pricing-desc">Per labeled record, validated document, or enriched listing. You pay only when a unit passes QA — defective units are never billed.</p>
           </div>
-          <ul class="pricing-features">
-            <li>Up to 100 units of manual/unstructured data</li>
-            <li>Custom workflow schema setup</li>
-            <li>Human-in-the-loop accuracy report</li>
-            <li>Turnaround within 48 hours</li>
-          </ul>
-          <a href="#book" class="btn btn-secondary">Claim Free Pilot</a>
+          <div class="pricing-price">From US$0.XX / unit</div>
         </div>
 
-        <div class="pricing-card featured">
-          <div class="pricing-header">
-            <div class="pricing-tag">Most Popular</div>
-            <h3>Pay Per Output</h3>
-            <div class="pricing-price">Custom <span>/ per completed item</span></div>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Predictable, volume-adjusted rate models for high-velocity teams needing scale.</p>
+        <!-- Per seat -->
+        <div class="pricing-card">
+          <div>
+            <h3>Per seat</h3>
+            <div class="pricing-tag">DEDICATED TEAMS</div>
+            <p class="pricing-desc">Named specialists embedded in your workflows, for operations that need continuity and accumulated context.</p>
           </div>
-          <ul class="pricing-features">
-            <li>No fixed seat licensing or overhead</li>
-            <li>Strict multi-stage SLA & accuracy guarantee</li>
-            <li>Dedicated account supervisor & lead</li>
-            <li>Weekly QA audits & direct Slack connection</li>
-          </ul>
-          <a href="#book" class="btn">Get Custom Quote</a>
+          <div class="pricing-price">From US$X,XXX / month</div>
+        </div>
+
+        <!-- Per outcome -->
+        <div class="pricing-card">
+          <div>
+            <h3>Per outcome</h3>
+            <div class="pricing-tag">RESOLUTION WORK</div>
+            <p class="pricing-desc">Per resolved ticket, qualified lead, or approved review. Our incentives point exactly where yours do.</p>
+          </div>
+          <div class="pricing-price">Scoped per engagement</div>
+        </div>
+      </div>
+
+      <div class="pricing-footer-note">
+        Every engagement starts small: a <strong>free 100-unit pilot</strong> or a fixed-fee audit. Scale only when the numbers prove it. <a href="#book">See full pricing &rarr;</a>
+      </div>
+
+      <!-- FAQ SECTION (UPDATED BASED ON IMAGE) -->
+      <div class="faq-section">
+        <div class="section-title" style="padding-top: 0;">
+          <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; color: var(--accent-soft); text-transform: uppercase; margin-bottom: 0.5rem;">QUESTIONS & ANSWERS</div>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do you guarantee quality with a distributed workforce?</span>
+              <span class="faq-toggle">–</span>
+            </div>
+            <div class="faq-answer">
+              Every unit passes multi-layer QA: gold-standard calibration tasks, double-blind sampling, and dedicated QA analysts at roughly one per fifteen specialists. Accuracy rates appear on a weekly dashboard and SLAs carry credits. With per-output pricing, defective units are never billed.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do you handle data security and privacy?</span>
+              <span class="faq-toggle">–</span>
+            </div>
+            <div class="faq-answer">
+              Client data is accessed through controlled environments with role-based access and NDA-bound specialists. For sensitive engagements we use virtual desktop setups where data never leaves your infrastructure.
+            </div>
+          </div>
+
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>What about time zones?</span>
+              <span class="faq-toggle">–</span>
+            </div>
+            <div class="faq-answer">
+              Output-based work is asynchronous: you send volume, we return QA'd results against a turnaround SLA. For real-time coverage we staff to your business hours.
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1727,7 +1819,7 @@
       <div class="our-story-section">
         <div class="section-title" style="padding-top:0;">
           <h2>Our Story & Impact</h2>
-          <p>// ROOTED IN IMPACT. DRIVEN BY INNOVATION.</p>
+          <p>ROOTED IN IMPACT. DRIVEN BY INNOVATION.</p>
         </div>
         
         <div class="story-grid">
@@ -1756,7 +1848,7 @@
       <div class="leadership-section">
         <div class="section-title">
           <h2>Leadership Note</h2>
-          <p>// FROM OUR FOUNDERS</p>
+          <p>FROM OUR FOUNDERS</p>
         </div>
         <div class="leadership-grid">
           <div class="leadership-card">
@@ -1788,7 +1880,7 @@
     <section class="industries-section">
       <div class="section-title" style="margin-bottom: 0;">
         <h2>Industries We Serve</h2>
-        <p>// WHERE ACCURATE DATA & AI CREATE COMPETITIVE ADVANTAGE</p>
+        <p>WHERE ACCURATE DATA & AI CREATE COMPETITIVE ADVANTAGE</p>
       </div>
       <div class="industry-badges">
         <span class="badge">FMCG</span>
@@ -1804,7 +1896,7 @@
     <section id="quiz" class="quiz-section">
       <div class="section-title">
         <h2>Quick Automation Audit</h2>
-        <p>// DIAGNOSE YOUR HIGHEST-IMPACT AUTOMATION PATH</p>
+        <p>DIAGNOSE YOUR HIGHEST-IMPACT AUTOMATION PATH</p>
       </div>
 
       <div class="quiz-container">
