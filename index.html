@@ -123,7 +123,7 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.75rem;
       align-items: center;
       list-style: none;
     }
@@ -133,11 +133,16 @@
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
-      transition: color 0.3s ease;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--accent-soft);
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-main);
+      background: rgba(244, 85, 47, 0.1);
+      border: 1px solid rgba(244, 85, 47, 0.3);
     }
 
     .live-status {
@@ -176,7 +181,7 @@
     /* Hero Section */
     .hero {
       text-align: center;
-      padding: 5rem 0 6rem;
+      padding: 5rem 0 5rem;
       max-width: 920px;
       margin: 0 auto;
       position: relative;
@@ -270,6 +275,7 @@
     .section-title {
       text-align: center;
       margin-bottom: 3.5rem;
+      padding-top: 2rem;
     }
 
     .section-title h2 { 
@@ -504,9 +510,88 @@
       box-shadow: 0 12px 30px rgba(244, 85, 47, 0.25);
     }
 
+    /* PRICING SECTION STYLES */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 6rem;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 0 30px rgba(244, 85, 47, 0.2);
+    }
+
+    .pricing-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-header h3 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-price {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-soft);
+      margin: 1rem 0;
+    }
+
+    .pricing-price span {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 1.5rem 0 2rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.5rem;
+    }
+
+    .pricing-features li {
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+    }
+
     /* Leadership Note Section */
     .leadership-section {
       margin-top: 3.5rem;
+      margin-bottom: 6rem;
     }
 
     .leadership-grid {
@@ -1129,25 +1214,27 @@
   <!-- Neural Network Canvas background -->
   <canvas id="neural-canvas"></canvas>
 
-  <!-- Navigation Bar Header -->
+  <!-- Navigation Bar Header with Updated Image Categorization -->
   <header>
     <div class="container nav-wrapper">
       <a href="#" class="logo">
         kindly<span>.</span>
       </a>
       <ul class="nav-links">
+        <li><a href="#overview" class="active">Overview</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#story">Our Story</a></li>
-        <li><a href="#quiz">Audit Quiz</a></li>
+        <li><a href="#how-we-work">How We Work</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#impact">Impact & About</a></li>
       </ul>
       <a href="#book" class="btn">Book a Call</a>
     </div>
   </header>
 
   <div class="container">
-    <!-- Hero Section -->
-    <section class="hero">
+    
+    <!-- SECTION 1: OVERVIEW -->
+    <section id="overview" class="hero">
       <div class="live-status">
         <span class="pulse-dot"></span> Manila, Philippines · Serving clients worldwide
       </div>
@@ -1177,7 +1264,7 @@
       </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- SECTION 2: SERVICES -->
     <section id="services">
       <div class="section-title">
         <h2>Our Services</h2>
@@ -1217,8 +1304,31 @@
       </div>
     </section>
 
-    <!-- Team Wall / Human-in-the-Loop Network & Leadership Note -->
-    <section id="team" style="margin-bottom: 6rem; position: relative;">
+    <!-- SECTION 3: HOW WE WORK -->
+    <section id="how-we-work" style="position: relative;">
+      
+      <!-- Speed / Timeline Section -->
+      <div class="timeline-section" id="timeline-section">
+        <div class="section-title" style="margin-bottom: 0;">
+          <h2>AI Acceleration, Human at Heart</h2>
+        </div>
+        <div class="timeline-grid">
+          <div class="timeline-item">
+            <div class="time"><span class="counter" data-target="24">0</span>h</div>
+            <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time"><span class="counter" data-target="48">0</span>h</div>
+            <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time"><span class="counter" data-target="2">0</span>wk</div>
+            <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dedicated Operations Network -->
       <div class="section-title">
         <h2>Meet the people who'd <em>run your account.</em></h2>
         <p style="text-transform: none; max-width: 680px; margin: 0.75rem auto 0; font-family: var(--font-body); font-size: 1rem; color: var(--text-muted);">
@@ -1290,6 +1400,80 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- SECTION 4: PRICING -->
+    <section id="pricing">
+      <div class="section-title">
+        <h2>Transparent Pricing</h2>
+        <p>// PRICED PER OUTPUT — NEVER PER SEAT</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-tag">Trial Option</div>
+            <h3>Free 100-Unit Pilot</h3>
+            <div class="pricing-price">$0 <span>/ initial test</span></div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Test our output accuracy with zero risk before committing to an operational contract.</p>
+          </div>
+          <ul class="pricing-features">
+            <li>Up to 100 units of manual/unstructured data</li>
+            <li>Custom workflow schema setup</li>
+            <li>Human-in-the-loop accuracy report</li>
+            <li>Turnaround within 48 hours</li>
+          </ul>
+          <a href="#book" class="btn btn-secondary">Claim Free Pilot</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-header">
+            <div class="pricing-tag">Most Popular</div>
+            <h3>Pay Per Output</h3>
+            <div class="pricing-price">Custom <span>/ per completed item</span></div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Predictable, volume-adjusted rate models for high-velocity teams needing scale.</p>
+          </div>
+          <ul class="pricing-features">
+            <li>No fixed seat licensing or overhead</li>
+            <li>Strict multi-stage SLA & accuracy guarantee</li>
+            <li>Dedicated account supervisor & lead</li>
+            <li>Weekly QA audits & direct Slack connection</li>
+          </ul>
+          <a href="#book" class="btn">Get Custom Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: IMPACT & ABOUT -->
+    <section id="impact">
+      <!-- OUR STORY SECTION -->
+      <div class="our-story-section">
+        <div class="section-title" style="padding-top:0;">
+          <h2>Our Story & Impact</h2>
+          <p>// ROOTED IN IMPACT. DRIVEN BY INNOVATION.</p>
+        </div>
+        
+        <div class="story-grid">
+          <div class="story-card">
+            <h3>Established Legacy</h3>
+            <p>Our roots run deep in local empowerment through <strong>Hapinoy and Rags2Riches</strong>. We bring years of proven experience in driving community impact, economic development, and sustainable systems to the digital and AI landscape.</p>
+          </div>
+          
+          <div class="story-card">
+            <h3>Bridging Human & AI</h3>
+            <p>We believe technology shouldn't displace people—it should unleash their potential. We combine smart automation with a skilled, dedicated workforce to handle high-stakes data workflows, AI QA, and custom implementations.</p>
+          </div>
+
+          <div class="story-card">
+            <h3>Dignified Digital Work</h3>
+            <p>Through our hybrid model—combining core in-house specialists with scalable output-based talent—we deliver precision to businesses while providing dignified, high-value opportunities to our communities.</p>
+          </div>
+        </div>
+
+        <div class="story-quote">
+          <p>"Combining deep-rooted community impact with enterprise-grade digital execution."</p>
+        </div>
+      </div>
 
       <!-- LEADERSHIP NOTE -->
       <div class="leadership-section">
@@ -1320,56 +1504,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Speed / Timeline Section -->
-    <section class="timeline-section" id="timeline-section">
-      <div class="section-title" style="margin-bottom: 0;">
-        <h2>AI Acceleration, Human at Heart</h2>
-      </div>
-      <div class="timeline-grid">
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="24">0</span>h</div>
-          <p>Response within 24 hours — a real conversation, not an automated sequence.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="48">0</span>h</div>
-          <p>Custom proposal in 48 hours — tailored scope, pricing, and SLA.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="time"><span class="counter" data-target="2">0</span>wk</div>
-          <p>Team live in 2–3 weeks — recruited, trained, QA'd, and ready to deliver.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- OUR STORY SECTION -->
-    <section class="our-story-section" id="story">
-      <div class="section-title">
-        <h2>Our Story</h2>
-        <p>// ROOTED IN IMPACT. DRIVEN BY INNOVATION.</p>
-      </div>
-      
-      <div class="story-grid">
-        <div class="story-card">
-          <h3>Established Legacy</h3>
-          <p>Our roots run deep in local empowerment through <strong>Hapinoy and Rags2Riches</strong>. We bring years of proven experience in driving community impact, economic development, and sustainable systems to the digital and AI landscape.</p>
-        </div>
-        
-        <div class="story-card">
-          <h3>Bridging Human & AI</h3>
-          <p>We believe technology shouldn't displace people—it should unleash their potential. We combine smart automation with a skilled, dedicated workforce to handle high-stakes data workflows, AI QA, and custom implementations.</p>
-        </div>
-
-        <div class="story-card">
-          <h3>Dignified Digital Work</h3>
-          <p>Through our hybrid model—combining core in-house specialists with scalable output-based talent—we deliver precision to businesses while providing dignified, high-value opportunities to our communities.</p>
-        </div>
-      </div>
-
-      <div class="story-quote">
-        <p>"Combining deep-rooted community impact with enterprise-grade digital execution."</p>
       </div>
     </section>
 
@@ -1598,6 +1732,28 @@
       requestAnimationFrame(animateNeuralNetwork);
     }
     animateNeuralNetwork();
+
+    /* Active Link Switcher on Scroll */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === `#${current}`) {
+          a.classList.add('active');
+        }
+      });
+    });
 
     /* Number Counter Animation Observer */
     let animated = false;
